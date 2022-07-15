@@ -263,6 +263,69 @@ return [
                 'address' => 'Via Teano 12',
                 'vat_number' => '12005498765',
             ],
+        ],
+
+        // Array types
+        'arrayTypes' => [
+            [
+                'name' => 'Internazionale',
+            ],
+
+            [
+                'name' => 'Italiano',
+            ],
+
+            [
+                'name' => 'Giapponese',
+            ],
+
+            [
+                'name' => 'Cinese',
+            ],
+
+            [
+                'name' => 'Indiano',
+            ],
+
+            [
+                'name' => 'Messicano',
+            ],
+
+            [
+                'name' => 'Americano',
+            ],
+
+            [
+                'name' => 'Pesce',
+            ],
+
+            [
+                'name' => 'Steak House',
+            ],
+
+            [
+                'name' => 'Greco',
+            ],
+
+            [
+                'name' => 'Pizzeria',
+            ],
+
+            [
+                'name' => 'Bar',
+            ],
+
+            [
+                'name' => 'Fast-Food',
+            ],
+
+            [
+                'name' => 'All you can eat',
+            ],
+
+            [
+                'name' => 'Spagnolo',
+            ],
         ]
     ];
 
