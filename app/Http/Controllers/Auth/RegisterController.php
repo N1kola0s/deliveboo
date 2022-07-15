@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str; // Questo per lo slug
+use Illuminate\Support\Facades\Storage;
 
 
 class RegisterController extends Controller
@@ -57,7 +58,7 @@ class RegisterController extends Controller
             'telephone_number' => ['required', 'string', 'max:11'],
             'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'cover_img' => ['required', 'string', 'max:255', 'file', 'image', 'mimetypes:image/jpeg,image/png,image/svg,image/jpg'],
+            'cover_img' => ['required', 'file', 'image', 'mimetypes:image/jpeg,image/png,image/svg,image/jpg'],
             'zip_code' => ['required', 'string', 'max:5'],
             'address' => ['required', 'string', 'max:255'],
             'vat_number' => ['required', 'string', 'max:11', 'regex:/^[0-9]+$/'],
@@ -84,7 +85,7 @@ class RegisterController extends Controller
         $img_path = Storage::put('uploads', $data['cover_img']);
         // Imposto il valore dell'immagine utente uguale a img_path
         $data['cover_img'] = $img_path;
-        $data['slug'] = Str::slug($data[business_name], '-');
+        $data['slug'] = Str::slug($data['business_name'], '-');
 
         return User::create([
             'name' => $data['name'],
