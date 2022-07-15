@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Type;
 
 class TypeSeeder extends Seeder
 {
@@ -11,6 +12,12 @@ class TypeSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $types = config('db.arrayTypes');
+
+        foreach($types as $type) {
+            $new_type = new Type();
+            $new_type->name = $type['name'];
+            $new_type->save();
+        }
     }
 }
