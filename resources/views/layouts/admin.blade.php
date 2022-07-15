@@ -21,7 +21,7 @@
 <body>
     <div id="app">
         <!-- #1 incollo l'header dal clone app.blade -->
-        @include('partials.header')
+        
 
         <!-- /.container-fluid -->
         <div class="container-fluid">
@@ -35,10 +35,10 @@
                             <li class="nav-item active"><a class="nav-link" href="{{route('admin.dashboard')}}">Dashboard</a></li>
                             <!-- Collegamento a Comics  -->
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('admin.comics.index')}}">Comics</a>
+                                <a class="nav-link" href="">Comics</a>
                                     <!-- Nuovo link per le series -->
                                     <ul class="flex-column">
-                                        <li class="nav-item"><a class="nav-link" href="{{route('admin.series.index')}}">Series</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="">Series</a></li>
                                     </ul>
                             </li>
                         </ul>
@@ -53,7 +53,7 @@
         </div>
 
         <!-- #6 - Aggiungo anche il Footer. Nella schermata admin non serve -->
-        <!-- @include('partials.footer') -->
+        
 
         <!-- #7 - Incollo il file js -->
         <script src="{{asset('js/admin.js')}}"></script>
