@@ -1,6 +1,8 @@
 <?php
 
 namespace App;
+use Illuminate\Database\Eloquent\Model;
+
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -16,8 +18,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'surname', 'telephone_number', 'email', 'password', 'business_name', 'slug', 'cover_img', 'city', 'zip_code', 'address', 'vat_number'
     ];
+
+    /* Fillable è Ok */
 
     /**
      * The attributes that should be hidden for arrays.
