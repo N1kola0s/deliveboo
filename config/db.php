@@ -2,7 +2,7 @@
 
 return [
 
-    'arrayUsers' => [
+        'arrayUsers' => [
             [
                 'name' => 'gianluca',
                 'surname' => 'gioacchino',
@@ -351,7 +351,24 @@ return [
                 'visibility' => true,
                 'description' => 'La pizza Margherita è la tipica pizza napoletana, condita con pomodoro, mozzarella (tradizionalmente è usato il fior di latte, non quella di bufala), basilico fresco, sale e olio; è, assieme alla pizza marinara, la più popolare pizza italiana.'
             ],
-        ]
-    ];
+        ],
 
-?>
+        'arrayOrders' => [
+
+            [
+                'guest_name' => 'Alessandro',
+                'guest_surname' => 'Boccardi',
+                'guest_phone_number' => '3345080954',
+                'guest_email' => 'alexbox@gmail.com',
+                'guest_city' => 'Milano',
+                'guest_zip_code' => '20019',
+                'guest_address' => 'Via Tarlati 15',
+                'note' => 'terzo piano',
+                'total_price' => 50.48,
+                'status' => true, 
+                /* 'id_transaction' => '12354g5fsd4g2sdfg534sd354asdf24asdf457',   */
+            ],
+
+        ]
+
+    ];
