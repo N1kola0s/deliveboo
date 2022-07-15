@@ -326,6 +326,31 @@ return [
             [
                 'name' => 'Spagnolo',
             ],
+        ],
+
+        'piatti' => [
+
+            [
+                'name' => 'Pizza bianca',
+                'cover_img' => 'uploads/pizza_bianca.jpg',
+                'price' => 4.50,
+                'visibility' => true,
+                'description' => 'La pizza bianca è un piatto italiano tradizionale di Roma. È un impasto soffice e cotto al forno a base di farina, acqua, sale, malto, lievito di birra e olio che viene spesso farcito con salumi e formaggi a piacere. Se ne consiglia il consumo appena sfornata.'
+            ],
+            [
+                'name' => 'Pizza Margherita',
+                'cover_img' => 'uploads/pizza_margherita.jpg',
+                'price' => 5.50,
+                'visibility' => true,
+                'description' => 'La pizza Margherita è la tipica pizza napoletana, condita con pomodoro, mozzarella (tradizionalmente è usato il fior di latte, non quella di bufala), basilico fresco, sale e olio; è, assieme alla pizza marinara, la più popolare pizza italiana.'
+            ],
+            [
+                'name' => 'Pizza Marinara',
+                'cover_img' => 'uploads/pizza_marinara.jpg',
+                'price' => 6.00,
+                'visibility' => true,
+                'description' => 'La pizza Margherita è la tipica pizza napoletana, condita con pomodoro, mozzarella (tradizionalmente è usato il fior di latte, non quella di bufala), basilico fresco, sale e olio; è, assieme alla pizza marinara, la più popolare pizza italiana.'
+            ],
         ]
     ];
 
