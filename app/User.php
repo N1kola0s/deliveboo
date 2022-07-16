@@ -9,6 +9,7 @@ use App\Type;
 use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -56,9 +57,9 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
-    public function types(): HasMany
+    public function types(): BelongsToMany
     {
-        return $this->hasMany(Type::class);
+        return $this->belongsToMany(Type::class);
     }
 
 
