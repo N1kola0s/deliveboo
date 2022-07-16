@@ -53451,10 +53451,10 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\MAMP\htdocs\progetto_finale\deliveboo\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\MAMP\htdocs\progetto_finale\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! C:\MAMP\htdocs\progetto_finale\deliveboo\resources\sass\admin.scss */"./resources/sass/admin.scss");
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\progetto_finale\deliveboo\resources\sass\_variables.scss */"./resources/sass/_variables.scss");
+__webpack_require__(/*! C:\Users\GordonGekko87\Desktop\CLASSE60\deliveboo\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\Users\GordonGekko87\Desktop\CLASSE60\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\GordonGekko87\Desktop\CLASSE60\deliveboo\resources\sass\admin.scss */"./resources/sass/admin.scss");
+module.exports = __webpack_require__(/*! C:\Users\GordonGekko87\Desktop\CLASSE60\deliveboo\resources\sass\_variables.scss */"./resources/sass/_variables.scss");
 
 
 /***/ })
