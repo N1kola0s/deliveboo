@@ -2,7 +2,8 @@
 
 namespace App;
 
-use App\Product;
+use App\Product; // Modello riguardante Product
+use App\Order; // Modello riguardante Order
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -48,4 +49,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Product::class);
     }
+
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
+    }
+
+
 }

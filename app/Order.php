@@ -2,7 +2,11 @@
 
 namespace App;
 
+use App\User; // Modello relativo allo User
+
+
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Order extends Model
 {
@@ -19,4 +23,9 @@ class Order extends Model
         'status',
         /* 'id_transaction' */
     ];
+
+    public function user(): BelongsTo
+    {
+    return $this->belongsTo(User::class);
+    }
 }
