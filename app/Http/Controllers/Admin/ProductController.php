@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ProductsRequest;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use App\User;
 
 class ProductController extends Controller
@@ -32,7 +33,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.products.create');
+        $users = User::all();
+        return view('admin.products.create', compact('users'));
     }
 
     /**
@@ -47,7 +49,7 @@ class ProductController extends Controller
         //validare dati
         $val_data = $request->validated();
         //generare slug
-        $slug = Product::generateSlug($request->name);
+        $slug = Str::slug($request->name, '-');
         //dd($slug);
         $val_data['slug'] = $slug;
         //assegno il posto all'utente autenticato
@@ -65,9 +67,11 @@ class ProductController extends Controller
             //passo il percorso all'array di dati validati per il salvataggio della risorsa
             $val_data['cover_img'] = $path;
         }
-        /* //creare istanza con dati validati
-        $new_product = Product::create($val_data); */
-
+        // dd($val_data);
+        //creare istanza con dati validati
+        Product::create($val_data);
+        
+        
         return redirect()->route('admin.products.index');
     }
 
@@ -111,7 +115,7 @@ class ProductController extends Controller
         $val_data = $request->validated();
 
         // Genera lo slug
-        $slug = Product::generateSlug($request->name);
+        $slug = Str::slug($request->name, '-');
         $val_data['slug'] = $slug;
 
         /*

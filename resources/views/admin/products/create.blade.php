@@ -9,44 +9,34 @@
 @include('partials.errors')
 <form action="{{route('admin.products.store')}}" method="post" enctype="multipart/form-data">
     @csrf
-    <!-- Input del titolo -->
+    <!-- Input del Nome -->
     <div class="mb-4">
-        <label for="title">Titolo</label>
-        <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" placeholder="Scrivi un titolo" aria-describedby="titleHelper" value="{{old('title')}}">
-        <small id="titleHelper" class="text-muted">Max 150 Caratteri</small>
+        <label for="name">Nome</label>
+        <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" placeholder="Scrivi nome piatto" aria-describedby="nameHelper" value="{{old('name')}}">
+        <small id="nameHelper" class="text-muted">Max 150 Caratteri</small>
     </div>
     <!-- Input immagine del prodotto -->
     <div class="mb-4">
-        <label for="cover">Immagine</label>
-        <input type="file" name="cover" id="cover" class="form-control @error('cover') is-invalid @enderror" placeholder="Learn php article" aria-describedby="coverHelper">
-        <small id="cover" class="text-muted">Immagine del Prodotto</small>
+        <label for="cover_img">Immagine</label>
+        <input type="file" name="cover_img" id="cover_img" class="form-control @error('cover_img') is-invalid @enderror" placeholder="Learn php article" aria-describedby="cover_imgHelper">
+        <small id="cover_img" class="text-muted">Immagine del Prodotto</small>
     </div>
-    <!-- Selezione della categoria -->
-    <div class="mb-3">
-        <label for="category_id" class="form-label">Categoria</label>
-        <select class="form-control @error('category_id') is-invalid @enderror" name="category_id" id="category_id">
-            <option value="">Seleziona una categoria</option>
-            @foreach($categories as $category)
-                <option value="{{$category->id}}">{{$category->name}}</option>
-            @endforeach
-        </select>
+     <!-- Input prezzo del prodotto -->
+    <div class="mb-4">
+        <label for="price">Prezzo</label>
+        <input type="number" step="0.01" name="price" id="price" class="form-control @error('price') is-invalid @enderror" placeholder="Scrivi nome piatto" aria-describedby="priceHelper" value="{{old('price')}}">
+        <small id="priceHelper" class="text-muted">Max 150 Caratteri</small>
     </div>
-    <!-- Tag della categoria -->
-    <div class="form-group">
-        <label for="tags">Tags</label>
-        <select multiple class="form-control" name="tags[]" id="tags">
-            @if($tags) @foreach($tags as $tag)
-            <option value="{{$tag->id}}">{{$tag->name}}</option>
-            @endforeach @endif
-        </select>
+
+    <div class="form-check form-switch mb-4">
+        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked  name='visibility'>
+        <label class="form-check-label" for="flexSwitchCheckChecked">Seleziona visibilità</label>
     </div>
-    @error('tags')
-    <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
+
     <!-- Contenuto del post -->
     <div class="mb-4">
-        <label for="content">Contenuto</label>
-        <textarea class="form-control  @error('content') is-invalid @enderror" name="content" id="content" rows="4">{{old('content')}}</textarea>
+        <label for="description">Descrizione</label>
+        <textarea class="form-control  @error('description') is-invalid @enderror" name="description" id="description" rows="4">{{old('description')}}</textarea>
     </div>
     <button type="submit" class="btn btn-primary">Aggiungi Prodotto</button>
 </form>
