@@ -6,6 +6,8 @@ use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ProductsRequest;
+use Illuminate\Support\Facades\Storage;
 use App\User;
 
 class ProductController extends Controller
@@ -30,7 +32,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.products.create');
     }
 
     /**
@@ -39,9 +41,34 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductsRequest $request)
     {
-        //
+        // ddd($request->all());
+        //validare dati
+        $val_data = $request->validated();
+        //generare slug
+        $slug = Product::generateSlug($request->name);
+        //dd($slug);
+        $val_data['slug'] = $slug;
+        //assegno il posto all'utente autenticato
+        $val_data['user_id'] = Auth::id();
+       
+        //verifico se la richiesta contiene un file   ------> posso farlo anche cosi $request->hasFile('cover_image')
+        if(array_key_exists('cover_img', $request->all())){
+            //validiamo il file
+            $request->validate([
+                'cover_img' => 'nullable|image|max:500'
+            ]);
+            //lo salviamo nel filesystem
+            //recupero il percorso path
+            $path = Storage::put('uploads', $request->cover_img);
+            //passo il percorso all'array di dati validati per il salvataggio della risorsa
+            $val_data['cover_img'] = $path;
+        }
+        /* //creare istanza con dati validati
+        $new_product = Product::create($val_data); */
+   
+        return redirect()->route('admin.products.index');
     }
 
     /**
