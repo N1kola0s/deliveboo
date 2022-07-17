@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
 class ProductsRequest extends FormRequest
 {
     /**
@@ -29,6 +28,7 @@ class ProductsRequest extends FormRequest
             'price' => ['required', 'numeric'],
             'visibility' =>['nullable'],
             'description' =>['required'],
+            'user_id' => ['nullable', 'exists:users,id']
         ];
     }
 }

@@ -18,7 +18,8 @@ class Product extends Model
         'cover_img',
         'price',
         'visibility',
-        'description'
+        'description',
+        'user_id'
         
     ];
 
