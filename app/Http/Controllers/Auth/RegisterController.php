@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Type;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -26,6 +27,16 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
+
+    public function showRegistrationForm()
+    {
+        // Recupero dal db le tipologie e le ordine per nome 
+        $types = Type::orderBy('name', 'ASC')->get();
+
+        // Return view auth register 
+        return view('auth.register', compact('types'));
+    }
+
 
     /**
      * Where to redirect users after registration.
@@ -58,10 +69,12 @@ class RegisterController extends Controller
             'telephone_number' => ['required', 'string', 'max:11'],
             'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'types' => ['required', 'exists:types,id'],
             'cover_img' => ['required', 'file', 'image', 'mimetypes:image/jpeg,image/png,image/svg,image/jpg'],
             'zip_code' => ['required', 'string', 'max:5'],
             'address' => ['required', 'string', 'max:255'],
             'vat_number' => ['required', 'string', 'max:11', 'regex:/^[0-9]+$/'],
+            
         ],
         [
         //messaggi d'errore custom
@@ -87,7 +100,7 @@ class RegisterController extends Controller
         $data['cover_img'] = $img_path;
         $data['slug'] = Str::slug($data['business_name'], '-');
 
-        return User::create([
+        $user =  User::create([
             'name' => $data['name'],
             'surname' => $data['surname'],
             'telephone_number' => $data['telephone_number'],
@@ -101,6 +114,11 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'vat_number' => $data['vat_number'],
         ]);
+
+         // Attach tiplogie ristorante inserite dall'utente tramite checkbox
+         $user->types()->attach($data['types']);
+
+         return $user;
     }
 }
 
