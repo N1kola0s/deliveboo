@@ -28,11 +28,11 @@
                 <!-- Colonna dell'ID -->
                 <td scope="row">{{$product->id}}</td>
                 <!-- Colonna del Titolo -->
-                <td>{{$product->title}}</td>
+                <td>{{$product->name}}</td>
                 <!-- Colonna dello Slug (praticamente mette i trattini al titolo (?) ) -->
                 <td>{{$product->slug}}</td>
                 <!-- Colonna dell'immagine -->
-                <td><img width="150" src="{{asset('storage/' . $product->cover)}}" alt="{{$product->title}}"></td>
+                <td><img width="150" src="{{asset('storage/' . $product->cover_img)}}" alt="{{$product->name}}"></td>
                 <!-- Colonna delle opzioni -->
                 <td class="flex flex-row">
                     <!-- Button per la rotta show.blade.php -->

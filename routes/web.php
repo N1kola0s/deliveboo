@@ -23,7 +23,12 @@ Auth::routes();
 /* Home principale della dashboard */
 Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', 'HomeController@index')->name('dashboard');
+    Route::resource('products', 'ProductController')->parameters([
+        'products' => 'product:slug'   //per mettere lo slug su product
+    ]);
 });
+
+
 
 // come ultima rotta
 Route::get('{any?}', function () {

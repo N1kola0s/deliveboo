@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Product;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class ProductController extends Controller
 {
@@ -14,7 +17,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $currentUser= Auth::id();
+        $products= Product::where('user_id', '=', $currentUser)->orderByDesc('id')->get();
+        /* $products = Auth::user()->products; */
+        return view('admin.products.index', compact('products'));
     }
 
     /**

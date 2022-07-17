@@ -35,11 +35,9 @@
                             <li class="nav-item active"><a class="nav-link" href="{{route('admin.dashboard')}}">Dashboard</a></li>
                             <!-- Collegamento a Comics  -->
                             <li class="nav-item">
-                                <a class="nav-link" href="">Comics</a>
-                                    <!-- Nuovo link per le series -->
-                                    <ul class="flex-column">
-                                        <li class="nav-item"><a class="nav-link" href="">Series</a></li>
-                                    </ul>
+                                <a class="nav-link" href="{{route('admin.products.index')}}">
+                                    Products
+                                </a>
                             </li>
                         </ul>
                     </nav>
