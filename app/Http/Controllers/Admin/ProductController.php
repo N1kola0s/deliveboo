@@ -52,12 +52,12 @@ class ProductController extends Controller
         $val_data['slug'] = $slug;
         //assegno il posto all'utente autenticato
         $val_data['user_id'] = Auth::id();
-       
+
         //verifico se la richiesta contiene un file   ------> posso farlo anche cosi $request->hasFile('cover_image')
         if(array_key_exists('cover_img', $request->all())){
             //validiamo il file
             $request->validate([
-                'cover_img' => 'nullable|image|max:500'
+                'cover_img' => 'required|image|max:500'
             ]);
             //lo salviamo nel filesystem
             //recupero il percorso path
@@ -67,7 +67,7 @@ class ProductController extends Controller
         }
         /* //creare istanza con dati validati
         $new_product = Product::create($val_data); */
-   
+
         return redirect()->route('admin.products.index');
     }
 
@@ -90,7 +90,12 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        /* Qua Dichiaro i dati da editare tramite modello */
+        /*
+            $categories = Category::all();
+        */
+        /* Qua ritorno la view del form per editare */
+        return view('admin.products.edit', compact('product'/* , 'categories' */));
     }
 
     /**
@@ -100,9 +105,44 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(ProductsRequest $request, Product $product)
     {
-        //
+        /* Validazione dei dati */
+        $val_data = $request->validated();
+
+        // Genera lo slug
+        $slug = Product::generateSlug($request->name);
+        $val_data['slug'] = $slug;
+
+        /*
+            Rimetto la stessa identica cosa di Create
+            prima di post update
+        */
+        if(array_key_exists('cover_img', $request->all())) {
+            // Valida il file
+            $request->validate(
+                [
+                    'cover_img' => 'required|image|max:500'
+                ]
+            );
+            /* Questo è lo storage dell'immagine per eliminarlo*/
+            Storage::delete($product->cover_img);
+            // Salvarlo nel file System
+            $path = Storage::put('uploads', $request->cover_img);
+            // passo il percorso all'array di dati per il salvataggio
+            $val_data['cover_img'] = $path;
+        }
+
+
+        /* Avvio l'update */
+        $product->update($val_data);
+        /* ??? lo posso sincronizzare con Orders ??? */
+        /* $product->orders()->sync($request->orders); */
+
+        // return (new PostUpdatedAdminMessage($post))->render(); // Return necessario per la Mail (1)
+        /* Mail::to('user@example.com')->send(new PostUpdatedAdminMessage($product)); */
+        /* Ora eseguo il return della rotta */
+        return redirect()->route('admin.products.index')->with('message', "$product->title è stato aggiornato");
     }
 
     /**

@@ -25,7 +25,7 @@ class ProductsRequest extends FormRequest
     {
         return [
             'name' => ['required', 'max:50'],
-            'cover_image' => ['required'],
+            'cover_img' => ['required'],
             'price' => ['required', 'numeric'],
             'visibility' =>['nullable'],
             'description' =>['required'],
