@@ -32,7 +32,11 @@
                 <!-- Colonna dello Slug (praticamente mette i trattini al titolo (?) ) -->
                 <td>{{$product->slug}}</td>
                 <!-- Colonna dell'immagine -->
+                @if(str_contains($product->cover_img, '/img/'))
+                <td><img width="150" src="{{$product->cover_img}}" alt="{{$product->name}}"></td>
+                @else
                 <td><img width="150" src="{{asset('storage/' . $product->cover_img)}}" alt="{{$product->name}}"></td>
+                @endif  
                 <!-- Colonna delle opzioni -->
                 <td class="flex flex-row">
                     <!-- Button per la rotta show.blade.php -->
