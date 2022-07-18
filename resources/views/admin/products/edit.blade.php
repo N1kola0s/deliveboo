@@ -23,7 +23,11 @@
     <div class="d-flex">
         <!-- Immagine (FATTO) -->
         <div class="media me-4 pb-4">
-            <img class="shadow" width="140" src="{{asset('storage/' . $product->cover_img)}}" alt="{{$product->name}}">
+            @if(str_contains($product->cover_img, '/img/'))
+            <td><img width="150" src="{{$product->cover_img}}" alt="{{$product->name}}"></td>
+            @else
+            <td><img width="150" src="{{asset('storage/' . $product->cover_img)}}" alt="{{$product->name}}"></td>
+            @endif
         </div>
         <!-- Messaggi -->
         <div class="mb-4 px-3">
@@ -39,7 +43,7 @@
     </div>
     <!-- Visibility corretto -->
     <div class="form-check form-switch mb-4">
-        <input class="form-check-input" value="1" type="checkbox" id="flexSwitchCheckChecked" name='visibility' @if ($product->visibility) checked  @endif>
+        <input class="form-check-input" value="1" type="checkbox" id="flexSwitchCheckChecked" name='visibility' @if ($product->visibility) checked @endif>
         <label class="form-check-label" for="visibility">Seleziona visibilità</label>
     </div>
     <!-- Descrizione del Prodotto -->
