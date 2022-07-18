@@ -27,12 +27,11 @@
         <input type="number" step="0.01" name="price" id="price" class="form-control @error('price') is-invalid @enderror" placeholder="Scrivi il prezzo" aria-describedby="priceHelper" value="{{old('price')}}" required>
         <small id="priceHelper" class="text-muted">Solo Numeri</small>
     </div>
-
+    <!-- Toggle del visibility -->
     <div class="form-check form-switch mb-4">
         <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked  name='visibility'>
         <label class="form-check-label" for="flexSwitchCheckChecked">Seleziona visibilità</label>
     </div>
-
     <!-- Contenuto del post -->
     <div class="mb-4">
         <label for="description">Descrizione *</label>

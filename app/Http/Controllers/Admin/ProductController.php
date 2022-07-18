@@ -34,6 +34,7 @@ class ProductController extends Controller
     public function create()
     {
         $users = User::all();
+        /* $products = Product::all(); */
         return view('admin.products.create', compact('users'));
     }
 
@@ -70,8 +71,8 @@ class ProductController extends Controller
         // dd($val_data);
         //creare istanza con dati validati
         Product::create($val_data);
-        
-        
+
+
         return redirect()->route('admin.products.index');
     }
 
@@ -137,6 +138,11 @@ class ProductController extends Controller
             $val_data['cover_img'] = $path;
         }
 
+        /* Aggiungo condizione visibilità per il toggle */
+        if (!array_key_exists('visibility', $val_data)) {
+            $val_data['visibility'] = 0;
+        }
+
 
         /* Avvio l'update */
         $product->update($val_data);
@@ -146,7 +152,7 @@ class ProductController extends Controller
         // return (new PostUpdatedAdminMessage($post))->render(); // Return necessario per la Mail (1)
         /* Mail::to('user@example.com')->send(new PostUpdatedAdminMessage($product)); */
         /* Ora eseguo il return della rotta */
-        return redirect()->route('admin.products.index')->with('message', "$product->title è stato aggiornato");
+        return redirect()->route('admin.products.index')->with('message', "$product->name è stato aggiornato correttamente");
     }
 
     /**
