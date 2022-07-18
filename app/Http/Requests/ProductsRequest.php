@@ -26,7 +26,7 @@ class ProductsRequest extends FormRequest
             'name' => ['required', 'max:50'],
             'cover_img' => ['required'],
             'price' => ['required', 'numeric'],
-            'visibility' =>['nullable'],
+            'visibility' =>['nullable', 'boolean'],
             'description' =>['required'],
             'user_id' => ['nullable', 'exists:users,id']
         ];
