@@ -1,26 +1,35 @@
 @extends('layouts.admin')
 
 @section('content')
-<!-- Show about single product here -->
-<!-- Questa pagina è stata creata -->
-<!-- Da popolare correttamente -->
+ 
+ <div class="posts d-flex px-4">
+     <div class="cover_image">
+         <img width="400" class="img-fluid" src="{{asset('storage/' . $product->cover_img)}}" alt="{{$product->name}}">
+     </div>
+     <div class="post-data px-4">
+        <h1>{{$product->name}}</h1>
 
+        <div class="price">
 
+            <h3>{{$product->price}}</h3>
 
-<!-- prima la classe era posts, occhio se prendi da boolpress -->
-<div class="products d-flex py-4">
-    <!-- Immagine del Post -->
-    <img class="img-fluid" src="{{asset('storage/' . $product->cover_img)}}" alt="{{$product->name}}">
-    <!-- Contenuto di tutto il product con le categorie -->
-    <div class="product-data px-4">
-        <!-- Titolo -->
-        <h1>{{$product->title}}</h1>
-        <!-- Categoria -->
+        </div>
+         
+        <div class="content">
+            {{$product->description}}
+        </div>
 
+        <div class="visbility">
 
-        <!-- Contenuto -->
-        <div class="content"> <strong>Content: </strong> {{$product->description}}</div>
-    </div>
-</div>
+            <p>visibility:</p>
+            <h1>{{$product->visibility}}</h1>
 
-@endsection
+        </div>
+
+     </div>
+ </div>
+ 
+ 
+ 
+ @endsection
+ 
