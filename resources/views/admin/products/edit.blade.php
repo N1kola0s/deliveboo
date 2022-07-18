@@ -31,34 +31,8 @@
             <small id="coverHelper" class="text-muted">Edita l'immagine del Prodotto</small>
         </div>
     </div>
-    <!-- Seleziona una categoria -->
-    <div class="mb-3">
-        <label for="category_id" class="form-label">Categorie</label>
-        <select class="form-control @error('category_id') is-invalid @enderror" name="category_id" id="category_id">
-            <option value="">Select a category</option>
-            @foreach($categories as $category)
-            <option value="{{$category->id}}" {{$category->id == old('category_id', $product->category->id)  ? 'selected' : ''}}>{{$category->name}}</option>
-            @endforeach
-        </select>
-    </div>
-    <!-- Zona del tag -->
-    <div class="mb-4">
-        <label for="tags" class="form-label m-0">Tags</label>
-        <!-- Select -->
-        <select multiple class="form-select" name="tags[]" id="tags" aria-label="tags">
-        <option value="" disabled>Seleziona un Tag</option>
-        @forelse ($tags as $tag)
-            @if($errors->any())
-                <option value="{{$tag->id}}" {{in_array($tag->id,old('tags')) ? 'selected' : ''}}>{{$tag->name}}</option>
-            @else
-                <option value="{{$tag->id}}" {{$product->tags->contains($tag->id) ? 'selected' : ''}}>{{$tag->name}}</option>
-            @endif
-            <!-- Condizione -->
-        @empty
-            <option value="">No tags</option>
-        @endforelse
-        </select>
-    </div>
+
+    
     <!-- Contenuto del Prodotto -->
     <div class="mb-4">
         <label for="content">Contenuto del Prodotto</label>
