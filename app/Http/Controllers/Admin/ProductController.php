@@ -127,7 +127,7 @@ class ProductController extends Controller
             // Valida il file
             $request->validate(
                 [
-                    'cover_img' => 'required|image|max:500'
+                    'cover_img' => 'required|image|file|max:500|mimetypes:image/jpeg,image/png,image/svg,image/jpg'    
                 ]
             );
             /* Questo è lo storage dell'immagine per eliminarlo*/

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 class ProductsRequest extends FormRequest
 {
     /**
@@ -23,9 +24,9 @@ class ProductsRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'max:50'],
+            'name' => ['required', Rule::unique('products')->ignore($this->product), 'min:3', 'max:50', 'regex:/^[a-zA-Z\s]+$/'],
             'cover_img' => ['required'],
-            'price' => ['required', 'numeric'],
+            'price' => ['required', 'numeric', 'max:99.99', 'min:0.01'],
             'visibility' =>['nullable', 'boolean'],
             'description' =>['required'],
             'user_id' => ['nullable', 'exists:users,id']
