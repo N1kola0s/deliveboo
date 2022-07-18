@@ -20,8 +20,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $currentUser= Auth::id();
-        $products= Product::where('user_id', '=', $currentUser)->orderByDesc('id')->get();
+        $currentUser = Auth::id();
+        $products = Product::where('user_id', '=', $currentUser)->orderByDesc('id')->get();
         /* $products = Auth::user()->products; */
         return view('admin.products.index', compact('products'));
     }
@@ -57,7 +57,7 @@ class ProductController extends Controller
         $val_data['user_id'] = Auth::id();
 
         //verifico se la richiesta contiene un file   ------> posso farlo anche cosi $request->hasFile('cover_image')
-        if(array_key_exists('cover_img', $request->all())){
+        if (array_key_exists('cover_img', $request->all())) {
             //validiamo il file
             $request->validate([
                 'cover_img' => 'required|image|max:500'
@@ -84,7 +84,14 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('admin.products.show', compact('product'));
+
+        $currentUser = Auth::id();
+        if ($currentUser == $product->user_id) {
+            return view('admin.products.show', compact('product'));
+        } else {
+            return redirect()->route('admin.products.index');
+        }
+        
     }
 
     /**
@@ -95,12 +102,14 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        /* Qua Dichiaro i dati da editare tramite modello */
-        /*
-            $categories = Category::all();
-        */
-        /* Qua ritorno la view del form per editare */
-        return view('admin.products.edit', compact('product'/* , 'categories' */));
+
+        $currentUser = Auth::id();
+        if ($currentUser == $product->user_id) {
+            return view('admin.products.edit', compact('product'/* , 'categories' */));
+        } else {
+            return redirect()->route('admin.products.index');
+        }
+
     }
 
     /**
@@ -123,11 +132,11 @@ class ProductController extends Controller
             Rimetto la stessa identica cosa di Create
             prima di post update
         */
-        if(array_key_exists('cover_img', $request->all())) {
+        if (array_key_exists('cover_img', $request->all())) {
             // Valida il file
             $request->validate(
                 [
-                    'cover_img' => 'required|image|file|max:500|mimetypes:image/jpeg,image/png,image/svg,image/jpg'    
+                    'cover_img' => 'required|image|file|max:500|mimetypes:image/jpeg,image/png,image/svg,image/jpg'
                 ]
             );
             /* Questo è lo storage dell'immagine per eliminarlo*/
