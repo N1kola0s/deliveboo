@@ -13,6 +13,12 @@
     <div class="post-data px-4">
         <h1>{{$product->name}}</h1>
 
+        <div class="category">
+
+            <h3>{{ $product->category ? $product->category->name : 'Uncategorized'}}</h3>
+
+        </div>
+
         <div class="price">
 
             <h3>{{$product->price}}</h3>

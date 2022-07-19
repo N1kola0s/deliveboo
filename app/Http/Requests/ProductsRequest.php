@@ -23,9 +23,12 @@ class ProductsRequest extends FormRequest
      */
     public function rules()
     {
+        $categories = config('db.arrayCategories');
+
         return [
             'name' => ['required', 'min:3', 'max:50', 'regex:/^[a-zA-Z\s]+$/'],
-            'cover_img' => ['required'],
+            'cover_img' => ['nullable'],
+            'category_id' => ['nullable', 'exists:categories,id'],
             'price' => ['required', 'numeric', 'max:99.99', 'min:0.01'],
             'visibility' =>['nullable', 'boolean'],
             'description' =>['required'],

@@ -29,12 +29,25 @@
             <td><img width="150" src="{{asset('storage/' . $product->cover_img)}}" alt="{{$product->name}}"></td>
             @endif
         </div>
-        <!-- Messaggi -->
+        <!-- immagine -->
         <div class="mb-4 px-3">
             <input type="file" name="cover_img" id="cover_img" class="form-control w-100  @error('cover_img') is-invalid @enderror" placeholder="Immagine Prodotto" aria-describedby="cover_imgHelper">
             <small id="cover_imgHelper" class="text-muted">Edita l'immagine del Prodotto</small>
         </div>
     </div>
+
+    <!-- categorie -->
+    <div class="form-group">
+        <label for="category_id">Categories</label>
+        <select class="form-control" name="category_id" id="category_id">
+            <option value="">Select a category</option>
+            @foreach($categories as $category)
+            <option value="{{$category->id}}" {{$category->id == old('category', $product->category_id) ? 'selected' : ''}}>{{$category->name}}</option>
+            @endforeach
+
+        </select>
+    </div>
+
     <!-- Prezzo -->
     <div class="mb-4 w-25">
         <label for="price">Prezzo *</label>
