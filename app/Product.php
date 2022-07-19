@@ -4,7 +4,7 @@ namespace App;
 
 use App\User;
 use App\Order;
-
+use App\Category;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -19,7 +19,8 @@ class Product extends Model
         'price',
         'visibility',
         'description',
-        'user_id'
+        'user_id',
+        'category_id'
         
     ];
 
@@ -33,5 +34,8 @@ class Product extends Model
         return $this->belongsToMany(Order::class);
     }
 
-    
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

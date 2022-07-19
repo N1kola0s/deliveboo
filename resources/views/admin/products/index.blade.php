@@ -16,7 +16,7 @@
             <tr>
                 <th>ID</th>
                 <th>TITOLO</th>
-                <th>SLUG</th>
+                <th>CATEGORY</th>
                 <th>IMAGE</th>
                 <th class="text-center">AZIONI</th>
             </tr>
@@ -29,8 +29,8 @@
                 <td scope="row">{{$product->id}}</td>
                 <!-- Colonna del Titolo -->
                 <td>{{$product->name}}</td>
-                <!-- Colonna dello Slug (praticamente mette i trattini al titolo (?) ) -->
-                <td>{{$product->slug}}</td>
+                <!-- Colonna dello category (praticamente mette i trattini al titolo (?) ) -->
+                <td>{{ $product->category ? $product->category->name : 'Uncategorized'}}</td>
                 <!-- Colonna dell'immagine -->
                 @if(str_contains($product->cover_img, '/img/'))
                 <td><img width="150" src="{{$product->cover_img}}" alt="{{$product->name}}"></td>

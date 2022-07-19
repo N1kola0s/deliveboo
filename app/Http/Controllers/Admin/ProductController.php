@@ -10,6 +10,7 @@ use App\Http\Requests\ProductsRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\User;
+use App\Category;
 use Illuminate\Validation\Rule;
 
 class ProductController extends Controller
@@ -23,8 +24,9 @@ class ProductController extends Controller
     {
         $currentUser = Auth::id();
         $products = Product::where('user_id', '=', $currentUser)->orderByDesc('id')->get();
+        /* $categories = Category::all(); */
         /* $products = Auth::user()->products; */
-        return view('admin.products.index', compact('products'));
+        return view('admin.products.index', compact('products', /* 'categories' */));
     }
 
     /**
@@ -36,7 +38,9 @@ class ProductController extends Controller
     {
         $users = User::all();
         /* $products = Product::all(); */
-        return view('admin.products.create', compact('users'));
+        $categories = Category::all();
+       /*  ddd($categories, $users); */
+        return view('admin.products.create', compact('users', 'categories'));
     }
 
     /**
@@ -47,6 +51,9 @@ class ProductController extends Controller
      */
     public function store(ProductsRequest $request)
     {
+
+         /* ddd($request->all()); */
+
         //devo validarlo qua nel controller
         $request->validate([
             'name' => [Rule::unique('products')->where(function ($query) {
@@ -61,15 +68,15 @@ class ProductController extends Controller
         //dd($slug);
         $val_data['slug'] = $slug;
         //assegno il posto all'utente autenticato
-        $val_data['user_id'] = Auth::id();
-        
+        $val_data['user_id'] = Auth::id(); 
 
+        $val_data['category_id'] = $request->category_id;
 
         //verifico se la richiesta contiene un file   ------> posso farlo anche cosi $request->hasFile('cover_image')
         if (array_key_exists('cover_img', $request->all())) {
             //validiamo il file
             $request->validate([
-                'cover_img' => 'required|image|max:500'
+                'cover_img' => 'required|image|file|max:500|mimetypes:image/jpeg,image/png,image/svg,image/jpg'
                 
             ]);
             //lo salviamo nel filesystem
@@ -77,12 +84,15 @@ class ProductController extends Controller
             $path = Storage::put('uploads', $request->cover_img);
             //passo il percorso all'array di dati validati per il salvataggio della risorsa
             $val_data['cover_img'] = $path;
+        } else {
+            $path = Storage::putFile('uploads', 'img/placeholder_plate.png');
+
+            $val_data['cover_img'] = $path;
         }
         // dd($val_data);
         //creare istanza con dati validati
         Product::create($val_data);
-
-
+    
         return redirect()->route('admin.products.index');
     }
 
@@ -112,10 +122,10 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-
+        $categories = Category::all();
         $currentUser = Auth::id();
         if ($currentUser == $product->user_id) {
-            return view('admin.products.edit', compact('product'/* , 'categories' */));
+            return view('admin.products.edit', compact('product', 'categories'));
         } else {
             return redirect()->route('admin.products.index');
         }
@@ -143,15 +153,13 @@ class ProductController extends Controller
         $slug = Str::slug($request->name, '-');
         $val_data['slug'] = $slug;
 
-        /*
-            Rimetto la stessa identica cosa di Create
-            prima di post update
-        */
+        $val_data['category_id'] = $request->category_id;
+        
         if (array_key_exists('cover_img', $request->all())) {
             // Valida il file
             $request->validate(
                 [
-                    'cover_img' => 'required|image|file|max:500|mimetypes:image/jpeg,image/png,image/svg,image/jpg'
+                    'cover_img' => 'nullable|image|file|max:500|mimetypes:image/jpeg,image/png,image/svg,image/jpg'
                 ]
             );
             /* Questo è lo storage dell'immagine per eliminarlo*/

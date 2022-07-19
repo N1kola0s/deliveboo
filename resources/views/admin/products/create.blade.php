@@ -33,6 +33,31 @@
         @enderror
 
     </div>
+
+    <!-- select category del prodotto -->
+
+    <div class="mb-4">
+
+        <label for="category_id" class="form-label">Categoria *</label>
+        <select class="form-control" name="category_id" id="category_id" required>
+            <option value selected>Seleziona una categoria </option>
+            @foreach($categories as $category)
+            <option value="{{$category->id}}">{{$category->name}}</option>
+            @endforeach
+        </select>
+
+
+        @error('category_id')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ 'Seleziona una categoria' }}</strong>
+        </span>
+        @enderror
+
+
+
+    </div>
+
+
     <!-- Input prezzo del prodotto -->
     <div class="mb-4">
         <label for="price">Prezzo *</label>
