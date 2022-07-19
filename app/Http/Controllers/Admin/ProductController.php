@@ -10,6 +10,7 @@ use App\Http\Requests\ProductsRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\User;
+use Illuminate\Validation\Rule;
 
 class ProductController extends Controller
 {
@@ -46,8 +47,14 @@ class ProductController extends Controller
      */
     public function store(ProductsRequest $request)
     {
-        // ddd($request->all());
-        //validare dati
+        //devo validarlo qua nel controller
+        $request->validate([
+            'name' => [Rule::unique('products')->where(function ($query) {
+                return $query->where('user_id', Auth::id());
+            })],
+        ]);
+
+        /* Validazione degli altri dati */
         $val_data = $request->validated();
         //generare slug
         $slug = Str::slug($request->name, '-');
@@ -55,12 +62,15 @@ class ProductController extends Controller
         $val_data['slug'] = $slug;
         //assegno il posto all'utente autenticato
         $val_data['user_id'] = Auth::id();
+        
+
 
         //verifico se la richiesta contiene un file   ------> posso farlo anche cosi $request->hasFile('cover_image')
         if(array_key_exists('cover_img', $request->all())){
             //validiamo il file
             $request->validate([
                 'cover_img' => 'required|image|max:500'
+                
             ]);
             //lo salviamo nel filesystem
             //recupero il percorso path
@@ -112,6 +122,11 @@ class ProductController extends Controller
      */
     public function update(ProductsRequest $request, Product $product)
     {
+        $request->validate([
+            'name' => [Rule::unique('products')->ignore($product)->where(function ($query) {
+                return $query->where('user_id', Auth::id());
+            })],
+        ]);
         /* Validazione dei dati */
         $val_data = $request->validated();
 
