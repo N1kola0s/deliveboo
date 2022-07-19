@@ -51,7 +51,12 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        $currentUser = Auth::id();
+        if ($currentUser == $order->user_id) {
+            return view('admin.orders.show', compact('order'));
+        } else {
+            return redirect()->route('admin.products.index');
+        }
     }
 
     /**
