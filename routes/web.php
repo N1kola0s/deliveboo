@@ -26,6 +26,7 @@ Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')->
     Route::resource('products', 'ProductController')->parameters([
         'products' => 'product:slug'   //per mettere lo slug su product
     ]);
+    Route::resource('orders', 'OrderController');
 });
 
 
