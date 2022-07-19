@@ -50,10 +50,16 @@
                         <ul class="nav navbar-nav flex-column">
                             <!-- Collegamento alla Dashboard -->
                             <li class="nav-item active"><a class="nav-link" href="{{route('admin.dashboard')}}">Dashboard</a></li>
-                            <!-- Collegamento a Comics  -->
+                            <!-- Collegamento a products  -->
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('admin.products.index')}}">
                                     Products
+                                </a>
+                            </li>
+                            <!-- Collegamento a orders  -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('admin.orders.index')}}">
+                                    Orders
                                 </a>
                             </li>
                         </ul>

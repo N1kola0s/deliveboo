@@ -368,6 +368,33 @@ return [
             'status' => true,
             /* 'id_transaction' => '12354g5fsd4g2sdfg534sd354asdf24asdf457',   */
         ],
+        [
+            'guest_name' => 'Mattia',
+            'guest_surname' => 'Arostini',
+            'guest_phone_number' => '3347852665',
+            'guest_email' => 'Mattiaarostini@gmail.com',
+            'guest_city' => 'Milano',
+            'guest_zip_code' => '20019',
+            'guest_address' => 'Via Giani 18',
+            'note' => 'campanello Agostini / Arostini',
+            'total_price' => 90.87,
+            'status' => true,
+            /* 'id_transaction' => '12354g5fsd4g2sdfg534sd354asdf24asdf457',   */
+        ],
+
+        [
+            'guest_name' => 'Sonia',
+            'guest_surname' => 'Della Prete',
+            'guest_phone_number' => '3347815885',
+            'guest_email' => 'Soniadp@gmail.com',
+            'guest_city' => 'Milano',
+            'guest_zip_code' => '20019',
+            'guest_address' => 'Via san marino 25',
+            'note' => 'campanello Agostini / Arostini',
+            'total_price' => 21.30,
+            'status' => true,
+            /* 'id_transaction' => '12354g5fsd4g2sdfg534sd354asdf24asdf457',   */
+        ]
 
     ],
 
@@ -417,6 +444,6 @@ return [
         [
             'name' => 'pizze',
         ]
-    ]
+        ]
 
 ];

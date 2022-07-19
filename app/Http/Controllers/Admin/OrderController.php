@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -15,7 +16,10 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $currentUser= Auth::id();
+        $orders= Order::where('user_id', '=', $currentUser)->orderByDesc('id')->get();
+        
+        return view('admin.orders.index', compact('orders'));
     }
 
     /**
