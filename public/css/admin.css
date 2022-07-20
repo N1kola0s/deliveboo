@@ -10215,6 +10215,86 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+
+/*#region Common utilities */
+.partials_index {
+  background-color: #F4F4F8;
+  font-family: "Nunito", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.bordo {
+  border: 2px solid black;
+}
+
+/**
+* flexDispose => Mixin for display positioning
+* $display => display flex
+* $justify-content => Positioning along the horizontal axis
+* $align-items => Positioning along the vertical axis
+*/
+/* Flex center center */
+.flex_cent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*#endregion */
+/*#region Index Header */
+.index_header {
+  height: 100px;
+  border-bottom: 2px solid lightgray;
+  /* Title */
+}
+.index_header h1, .index_header .h1 {
+  color: #212F35;
+  /* Span interni */
+}
+.index_header h1 span, .index_header .h1 span {
+  font-style: italic;
+}
+
+.create_button {
+  background-color: #FF724C;
+}
+
+/*#endregion */
+/*#region Card orizzontali prodotti */
+.index_main {
+  width: 100%;
+  height: calc(100% - 100px);
+}
+
+/* Box della card principale */
+.index_card {
+  height: 175px;
+  border-bottom: 2px solid lightgray;
+}
+
+/* Immagine del prodotto */
+.index_product_img {
+  width: 150px;
+  height: 150px;
+  border-radius: 75px;
+  background-position: center center;
+}
+
+/* Questa è la zona descrittiva del piatto */
+.index_description h2, .index_description .h2 {
+  color: #212F35;
+}
+.index_description .strong {
+  font-weight: bold;
+}
+
+/*#endregion */
+
 .container {
   color: #212F35;
 }
@@ -10224,6 +10304,7 @@ textarea.form-control-lg {
   -o-object-fit: cover;
      object-fit: cover;
 }
+
 
 .color {
   color: red;

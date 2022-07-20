@@ -1,0 +1,86 @@
+/*#region Common utilities */
+.partials_index {
+    background-color: $bg_light;
+    font-family: $font-family-sans-serif
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.bordo {
+    border: 2px solid black;
+}
+
+/**
+* flexDispose => Mixin for display positioning
+* $display => display flex
+* $justify-content => Positioning along the horizontal axis
+* $align-items => Positioning along the vertical axis
+*/
+@mixin flexDispose($display, $justify-content, $align-items) {
+    display: $display;
+    justify-content: $justify-content;
+    align-items: $align-items;
+}
+/* Flex center center */
+.flex_cent {
+    @include flexDispose(flex, center, center);
+}
+
+/*#endregion */
+
+/*#region Index Header */
+.index_header {
+    height: 100px;
+    border-bottom: 2px solid lightgray;
+    /* Title */
+    h1 {
+        color: $text_primary;
+        /* Span interni */
+        span {
+            font-style: italic;
+        }
+    }
+}
+
+.create_button {
+    background-color: $btn_orange;
+}
+
+/*#endregion */
+
+/*#region Card orizzontali prodotti */
+.index_main {
+    width: 100%;
+    height: calc(100% - 100px);
+}
+
+/* Box della card principale */
+.index_card {
+    height: 175px;
+    border-bottom: 2px solid lightgray;
+}
+
+/* Immagine del prodotto */
+.index_product_img {
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+    background-position: center center;
+}
+
+/* Questa è la zona descrittiva del piatto */
+.index_description {
+    h2 {
+        color: $text_primary;
+    }
+    .strong {
+        font-weight: bold;
+    }
+}
+
+
+/*#endregion */

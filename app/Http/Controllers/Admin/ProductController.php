@@ -23,10 +23,18 @@ class ProductController extends Controller
     public function index()
     {
         $currentUser = Auth::id();
+        $nomeUtente = Auth::user()->where('id', '=', $currentUser)->get('name');
+        $cognomeUtente = Auth::user()->where('id', '=', $currentUser)->get('surname');
+        /* Nome completo */
+        $name = $nomeUtente;
+        $surname = $cognomeUtente;
+        /* dd($fullname); */
+
+
         $products = Product::where('user_id', '=', $currentUser)->orderByDesc('id')->get();
         /* $categories = Category::all(); */
         /* $products = Auth::user()->products; */
-        return view('admin.products.index', compact('products', /* 'categories' */));
+        return view('admin.products.index', compact('products', 'currentUser', 'name', 'surname' /* 'categories' */));
     }
 
     /**
@@ -68,7 +76,7 @@ class ProductController extends Controller
         //dd($slug);
         $val_data['slug'] = $slug;
         //assegno il posto all'utente autenticato
-        $val_data['user_id'] = Auth::id(); 
+        $val_data['user_id'] = Auth::id();
 
         $val_data['category_id'] = $request->category_id;
 
@@ -77,7 +85,7 @@ class ProductController extends Controller
             //validiamo il file
             $request->validate([
                 'cover_img' => 'required|image|file|max:500|mimetypes:image/jpeg,image/png,image/svg,image/jpg'
-                
+
             ]);
             //lo salviamo nel filesystem
             //recupero il percorso path
@@ -92,7 +100,7 @@ class ProductController extends Controller
         // dd($val_data);
         //creare istanza con dati validati
         Product::create($val_data);
-    
+
         return redirect()->route('admin.products.index');
     }
 
@@ -111,7 +119,7 @@ class ProductController extends Controller
         } else {
             return redirect()->route('admin.products.index');
         }
-        
+
     }
 
     /**
@@ -154,7 +162,7 @@ class ProductController extends Controller
         $val_data['slug'] = $slug;
 
         $val_data['category_id'] = $request->category_id;
-        
+
         if (array_key_exists('cover_img', $request->all())) {
             // Valida il file
             $request->validate(
