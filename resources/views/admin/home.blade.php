@@ -1,23 +1,84 @@
 @extends('layouts.admin')
 
 @section('content')
+
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+
+    {{-- resturant card --}}
+    <div class="main-card rounded-3 shadow">
+
+        <div class="row justify-content-center">
+
+            <div class="col-7">
+                <img class="img-fluid resturant-img rounded-start" src="{{$user[0]->cover_img}}" alt="{{$user[0]->name}}">
+            </div>
+
+            <div class="col-5">
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                    <h3 class="card-title">{{$user[0]->business_name}}</h3>
+                    <address class="text-muted pb-3">{{$user[0]->city}}, {{$user[0]->address}}, {{$user[0]->zip_code}}</address>
 
-                    {{ __('You are logged in!') }}
+                    <h5 class="pb-2">{{$user[0]->telephone_number}}</h5>
+                    <h5>{{$user[0]->email}}</h5>
+
                 </div>
+
             </div>
+
+
         </div>
+
     </div>
+
+    <div class="row my-4">
+
+        {{-- user card --}}
+        <div class="col me-3 rounded-3 shadow">
+
+            <div class="row justify-content-center">
+
+                <div class="card-header bg-dark text-white">
+
+                    Utente
+
+                </div>
+
+                <div class="col-3">
+                    immagine avatar
+                </div>
+    
+                <div class="col-9">
+
+                    <div class="card-body">
+                        <h3 class="card-title">{{$user[0]->name}} {{$user[0]->surname}}</h3>
+    
+                    </div>
+    
+                </div>
+    
+    
+            </div>
+
+        </div>
+
+        <div class="col me-3 p-0 rounded-3 shadow">
+
+            <div class="card-header bg-dark text-white">
+
+                Analythics
+
+            </div>
+
+
+            <div class="card-body">
+                <h3 class="card-title">Grafico Prodotti</h3>
+
+            </div>
+
+        </div>
+
+    </div>
+    
 </div>
 @endsection
