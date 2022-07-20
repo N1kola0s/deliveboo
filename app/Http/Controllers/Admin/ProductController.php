@@ -33,8 +33,7 @@ class ProductController extends Controller
         /* dd($fullname); */
 
 
-        $products = Product::where('user_id', '=', $currentUser)->orderByDesc('id')->get();
-        $products = Product::where('user_id', '>=', 3)->paginate(4);
+        $products = Product::where('user_id', '=', $currentUser)->latest()->paginate(4);
         // Cosi divido il seeder in 3 pagine
         /* Verifica del paginate ed effettivamente funziona */
         /* dd($paginate); */
@@ -79,6 +78,8 @@ class ProductController extends Controller
         /* Validazione degli altri dati */
         $val_data = $request->validated();
         //generare slug
+        $currentUser = Auth::id();
+        $request->name .= ' ' . strval($currentUser);
         $slug = Str::slug($request->name, '-');
         //dd($slug);
         $val_data['slug'] = $slug;
