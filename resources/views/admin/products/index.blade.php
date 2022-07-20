@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Index table goes here -->
-<div class="container-fluid p-0 partials_index w-100 h-100">
+<div class="container-fluid p-0 partials_index w-100">
     <div class="row w-100 m-0 p-0 h-100">
         <!-- Colonna con Titolo e button -->
         <div class="col-12 index_header">
@@ -96,16 +96,10 @@
         </div>
     </div>
     <!-- Paginazione -->
-    <div>
-        {{ $products->links() }}
+    <div class="pt-3 d-flex justify-content-center">
+    {{ $products->links() }}
     </div>
 
 </div>
 
 @endsection
-
-
-
-
-
-

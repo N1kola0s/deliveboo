@@ -44,7 +44,7 @@
                     <label for="price">Prezzo *</label>
                     <input type="number" step="0.01" name="price" id="price" class="form-control @error('price') is-invalid @enderror" placeholder="Scrivi il prezzo" aria-describedby="priceHelper" value="{{old('price')}}" required>
                     <small id="priceHelper" class="text-muted">Solo Numeri</small>
-                    @error('cover_img')
+                    @error('price')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ 'Min 0.01-Max 99.99' }}</strong>
                     </span>
@@ -69,7 +69,7 @@
                 <div class="mb-4">
                     <label for="cover_img">Immagine *</label>
                     <input type="file" accept="image/*" name="cover_img" id="cover_img" class="form-control @error('cover_img') is-invalid @enderror" placeholder="Learn php article" aria-describedby="cover_imgHelper" required>
-                    <small id="cover_imgHelper" class="text-muted">Max 500kb</small>
+                    <small id="cover_imgHelper" class="text-muted pb-2">Max 500kb</small>
                     <img class="plate_image" src="{{asset('img/placeholder_plate.png')}}" id="img">
 
                     @error('cover_img')
