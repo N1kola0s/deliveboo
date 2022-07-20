@@ -27,19 +27,6 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-
-
-
 const app = new Vue({
     el: '#app',
-    
 });
-
-
-//funzionalità per la preview immagine quando si carica
-cover_img.onchange = evt => {
-    const [file] = cover_img.files
-    if (file) {
-      img.src = URL.createObjectURL(file)
-    }
-  }

@@ -17,7 +17,6 @@
     <!-- Styles -->
     <!-- #8 - Aggiorna il foglio di stile con quello clonato in precedenza -->
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
-    
 </head>
 <body>
     <div id="app">
@@ -68,7 +67,7 @@
                 </aside>
                 <!-- Colonna dell'admin, show ecc -->
                 <!--  #2 taglio menu di navigazione e lo incollo nel partials header -->
-                <main class="col-9 col-sm-10 col-md-10 p-5">
+                <main class="col-9 col-sm-10 col-md-10 py-4">
                     @yield('content')
                 </main>
             </div>
