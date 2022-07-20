@@ -10,7 +10,7 @@ return [
             'email' => 'gianluca@gmail.com',
             'password' => 'password',
             'business_name' => "Mc. Donalds Milano",
-            'cover_img' => "/img/mcdonalds.jpg",
+            'cover_img' => "/img/mcdonald.jpg",
             'city' => "Milano",
             'zip_code' => "20019",
             'address' => 'Via Giordano Bruno 40',
