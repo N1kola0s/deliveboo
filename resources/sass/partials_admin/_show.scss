@@ -1,3 +1,28 @@
-.color {
-    color: red;
+.container {
+    .plate_details {
+        .row {
+            .col-12 {
+                .cover_image {
+                    img {
+                        height: 350px;
+                        object-fit: cover;
+                        border-radius: 5px;
+                        box-shadow: 0 2px 4px 0 rgb(0 0 0 / 50%);
+                    }
+                }
+            }
+            .col {
+                .card_admin {
+                    min-height: 200px;
+                    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 50%);
+                    .card-header {
+                        background-color: transparent;
+                    }
+                    h6 {
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
 }
