@@ -10212,6 +10212,10 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.color {
+  color: red;
+}
+
 html,
 body {
   background-color: #fff;

@@ -70,7 +70,7 @@
                         <!-- seleziona tipologia ristorante -->
                         <div class="types row pt-2 mb-3">
                             <!-- Info -->
-                            <h6 class="fw-bolder">Tipo di cucina (min. 1) <span class="text-primary">*</span></h6>
+                            <h6 class="fw-bolder color">Tipo di cucina (min. 1) <span class="text-primary">*</span></h6>
                             <!-- Form checkbox  -->
 
                             <div class="btn-group d-flex flex-wrap" role="group" aria-label="Basic checkbox toggle button group">

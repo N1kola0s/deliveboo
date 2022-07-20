@@ -25,7 +25,7 @@
 
         </div>
 
-        <div class="content">
+        <div class="content color">
             {{$product->description}}
         </div>
 
