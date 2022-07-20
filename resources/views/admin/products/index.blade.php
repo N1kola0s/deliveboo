@@ -26,11 +26,10 @@
         @include('partials.session_message')
 
         <!-- Ciclo forEach -->
-        @forelse($products as $product)
-        <!-- Colonna con Card, questa da ciclare con ForEach -->
-        <div class="col-12 index_main p-0">
+        <div class="col-12 index_main p-0 ">
+            @forelse($products as $product)
             <!-- Questo è da fare con forEach, da questo punto -->
-            <div class="index_card col-12 flex_cent p-1">
+            <div class="index_card col-12 h-25 flex_cent p-1">
                 <!-- Immagine di profilo dinamico -->
                 <div class="col-2 h-100 p-0 flex_cent">
                     <!-- Box immagine (dovrà diventare img) -->
@@ -51,7 +50,7 @@
                         <!-- Descrizione piatto -->
                         <p class="mb-0"><span class="strong">Descrizione : </span>{{$product->description}}</p>
                         <!-- Prezzo piatto -->
-                        <p class="mb-0"><span class="strong">Prezzo : </span> {{$product->price}} </p>
+                        <p class="mb-0"><span class="strong">Prezzo : </span> {{$product->price}} € </p>
                         <!-- ID piatto -->
                         <p class="mb-0"><span class="strong">ID : </span> {{$product->id}} </p>
                     </div>
@@ -61,7 +60,7 @@
                     <!-- Tasto visualizza -->
                     <a href="{{route('admin.products.show', $product->slug)}}" class="btn w-50 btn-primary">Visualizza</a>
                     <!-- Tasto edita -->
-                    <a href="{{route('admin.products.edit', $product->slug)}}" class="btn w-50 btn-secondary">Edita</a>
+                    <a href="{{route('admin.products.edit', $product->slug)}}" class="btn w-50 btn-warning">Edita</a>
                     <!-- Tasto cancella -->
                     <a type="button" class="btn w-50 btn-danger" data-toggle="modal" data-target="#delete-product-{{$product->id}}">Cancella </a>
                     <!-- Modale del cancella (da implementare) -->
@@ -96,7 +95,13 @@
             @endforelse
         </div>
     </div>
+    <!-- Paginazione -->
+    <div>
+        {{ $products->links() }}
+    </div>
+
 </div>
+
 @endsection
 
 

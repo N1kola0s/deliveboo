@@ -9,8 +9,10 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ProductsRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Category;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Validation\Rule;
 
 class ProductController extends Controller
@@ -32,9 +34,14 @@ class ProductController extends Controller
 
 
         $products = Product::where('user_id', '=', $currentUser)->orderByDesc('id')->get();
+        $products = Product::where('user_id', '>=', 3)->paginate(4);
+        // Cosi divido il seeder in 3 pagine
+        /* Verifica del paginate ed effettivamente funziona */
+        /* dd($paginate); */
         /* $categories = Category::all(); */
         /* $products = Auth::user()->products; */
-        return view('admin.products.index', compact('products', 'currentUser', 'name', 'surname' /* 'categories' */));
+    return view('admin.products.index', compact('products', 'currentUser', 'name', 'surname' /* 'categories' */));
+
     }
 
     /**

@@ -60,7 +60,7 @@
 
 /* Box della card principale */
 .index_card {
-    height: 175px;
+    /* height: 197.5px; */
     border-bottom: 2px solid lightgray;
 }
 
@@ -70,6 +70,7 @@
     height: 150px;
     border-radius: 75px;
     background-position: center center;
+    object-fit: cover;
 }
 
 /* Questa è la zona descrittiva del piatto */
