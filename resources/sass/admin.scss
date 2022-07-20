@@ -2,8 +2,14 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 // Variables
 @import 'variables';
+@import 'partials_admin/admin';
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+@import 'partials_admin/home';
+@import 'partials_admin/index';
+@import 'partials_admin/show';
+@import 'partials_admin/edit';
+@import 'partials_admin/create';
 html,
 body {
     background-color: #fff;
