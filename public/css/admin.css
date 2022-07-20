@@ -10215,6 +10215,7 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+
 /*#region Common utilities */
 .partials_index {
   background-color: #F4F4F8;
@@ -10293,6 +10294,18 @@ textarea.form-control-lg {
 }
 
 /*#endregion */
+
+.container {
+  color: #212F35;
+}
+.container .resturant-img {
+  height: 300px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+
 .color {
   color: red;
 }
