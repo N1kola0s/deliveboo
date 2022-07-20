@@ -30,3 +30,11 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+//funzionalità per la preview immagine quando si carica
+cover_img.onchange = evt => {
+  const [file] = cover_img.files
+  if (file) {
+    img.src = URL.createObjectURL(file)
+  }
+}
