@@ -16,7 +16,7 @@
                     <label for="name">Nome *</label>
                     <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" placeholder="Scrivi nome piatto" aria-describedby="nameHelper" value="{{old('name')}}" maxlength="50" minlength="3" pattern="[A-Z a-z]{0,50}" required>
                     <small id="nameHelper" class="text-muted">Max 50 Caratteri</small>
-                    @error('cover_img')
+                    @error('name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ 'Solo lettere' }}</strong>
                     </span>
@@ -70,7 +70,7 @@
                     <label for="cover_img">Immagine *</label>
                     <input type="file" accept="image/*" name="cover_img" id="cover_img" class="form-control @error('cover_img') is-invalid @enderror" placeholder="Learn php article" aria-describedby="cover_imgHelper" required>
                     <small id="cover_imgHelper" class="text-muted pb-2">Max 500kb</small>
-                    <img width="710" class="plate_image" src="{{asset('img/placeholder_plate.png')}}" id="img">
+                    <img class="plate_image" src="{{asset('img/placeholder_plate.png')}}" id="img">
 
                     @error('cover_img')
                     <span class="invalid-feedback" role="alert">
@@ -82,7 +82,6 @@
                 <button type="submit" class="btn btn-primary button">Aggiungi Prodotto</button>
             </div>
         </div>
-
     </form>
 </div>
 
