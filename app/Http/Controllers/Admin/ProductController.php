@@ -32,7 +32,6 @@ class ProductController extends Controller
         $surname = $cognomeUtente;
         /* dd($fullname); */
 
-
         $products = Product::where('user_id', '=', $currentUser)->latest()->paginate(4);
         // Cosi divido il seeder in 3 pagine
         /* Verifica del paginate ed effettivamente funziona */
@@ -166,6 +165,8 @@ class ProductController extends Controller
         $val_data = $request->validated();
 
         // Genera lo slug
+        $currentUser = Auth::id();
+        $request->name .= ' ' . strval($currentUser);
         $slug = Str::slug($request->name, '-');
         $val_data['slug'] = $slug;
 

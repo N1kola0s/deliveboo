@@ -56,7 +56,7 @@
                     </div>
                 </div>
                 <!-- Buttons goes here -->
-                <div class="col-2 h-100 d-flex justify-content-evenly align-items-end pe-2 flex-column p-0">
+                <div class="col-2 h-100 d-flex justify-content-evenly align-items-end pe-2 flex-column">
                     <!-- Tasto visualizza -->
                     <a href="{{route('admin.products.show', $product->slug)}}" class="btn w-50 btn-primary">Visualizza</a>
                     <!-- Tasto edita -->

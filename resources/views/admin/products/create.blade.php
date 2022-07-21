@@ -70,7 +70,7 @@
                     <label for="cover_img">Immagine *</label>
                     <input type="file" accept="image/*" name="cover_img" id="cover_img" class="form-control @error('cover_img') is-invalid @enderror" placeholder="Learn php article" aria-describedby="cover_imgHelper" required>
                     <small id="cover_imgHelper" class="text-muted pb-2">Max 500kb</small>
-                    <img class="plate_image" src="{{asset('img/placeholder_plate.png')}}" id="img">
+                    <img width="710" class="plate_image" src="{{asset('img/placeholder_plate.png')}}" id="img">
 
                     @error('cover_img')
                     <span class="invalid-feedback" role="alert">
