@@ -12,6 +12,35 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script>
+        function valthis() {
+            let checkBoxes = document.getElementsByClassName('btn-check');
+            let password = document.getElementById('password').value;
+            let passwordConfirm = document.getElementById('password-confirm').value;
+            let isChecked = false;
+
+            for (let i = 0; i < checkBoxes.length; i++) {
+                if (checkBoxes[i].checked) {
+                    isChecked = true;
+                    break; //don't need to continue the loop once a checkbox was found
+                }
+            }
+
+            if (!isChecked) {
+                document.getElementById("errors_type").innerHTML = "Seleziona almeno una categoria";
+
+                return false;
+            }
+
+            if(password != passwordConfirm) {
+                document.getElementById('errors_password').innerHTML = 'Le password devono essere uguali';
+                
+                return false
+            }
+
+            return true;
+        }
+    </script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">

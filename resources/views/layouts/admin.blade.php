@@ -74,10 +74,7 @@
         </div>
 
         <!-- #6 - Aggiungo anche il Footer. Nella schermata admin non serve -->
-        
 
-        <!-- #7 - Incollo il file js -->
-        <script src="{{asset('js/admin.js')}}"></script>
         @yield('script-footer')
     </div>
 </body>
