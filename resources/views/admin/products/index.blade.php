@@ -62,21 +62,21 @@
                     <!-- Tasto edita -->
                     <a href="{{route('admin.products.edit', $product->slug)}}" class="btn w-50 btn-warning my-2">Edita</a>
                     <!-- Tasto cancella -->
-                    <a type="button" class="btn w-50 btn-danger" data-toggle="modal" data-target="#delete-product-{{$product->id}}">Cancella </a>
+                    <a type="button" class="btn w-50 btn-danger" data-bs-toggle="modal" data-bs-target="#delete-product-{{$product->id}}">Cancella </a>
                     <!-- Modale del cancella (da implementare) -->
                     <div class="modal fade" id="delete-product-{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="modelTitle-{{$product->id}}" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title">Cancella</h5>
-                                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <!-- Domanda del Modale -->
                                 <div class="modal-body">
                                     Sicuro di voler cancellare?
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                     <!-- Form per Eliminare -->
                                     <form action="{{route('admin.products.destroy', $product->slug)}}" method="post">
                                         @csrf

@@ -212,6 +212,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        Storage::delete($product->cover_img);
+        $product->delete();
+        return redirect()->route('admin.products.index')->with('message', "$product->name rimosso con successo");
     }
 }
