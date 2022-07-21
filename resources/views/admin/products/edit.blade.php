@@ -39,7 +39,7 @@
     <!-- categorie -->
     <div class="form-group">
         <label for="category_id">Categories</label>
-        <select class="form-control" name="category_id" id="category_id">
+        <select class="form-control" name="category_id" id="category_id" required>
             <option value="">Select a category</option>
             @foreach($categories as $category)
             <option value="{{$category->id}}" {{$category->id == old('category', $product->category_id) ? 'selected' : ''}}>{{$category->name}}</option>

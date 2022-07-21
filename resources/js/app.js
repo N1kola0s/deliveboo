@@ -30,3 +30,33 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+
+function valthis() {
+    let checkBoxes = document.querySelectorAll('btn-check');
+    let psw1 = document.getElementById('password')
+    let psw2 = document.getElementById('password-confirm')
+    console.log(checkBoxes)
+    let isChecked = false;
+
+    for (let i = 0; i < checkBoxes.length; i++) {
+        if (checkBoxes[i].checked) {
+            isChecked = true;
+            break; //don't need to continue the loop once a checkbox was found
+        }
+    }
+
+    if (!isChecked) {
+        /* alert('At least one checkbox is NOT checked!'); */
+        document.getElementById("errors_type").innerHTML = "Seleziona almeno una categoria";
+        if (psw1 != psw2) {
+            document.getElementById('password').innerHTML = '';
+            document.getElementById('password-confirm').innerHTML = '';
+            document.getElementById("errors_password").innerHTML = "Le password devono essere uguali";
+        }
+        event.preventDefault();
+        return false;
+    }
+
+    return true;
+}

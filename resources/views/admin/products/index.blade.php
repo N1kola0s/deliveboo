@@ -60,7 +60,7 @@
                     <!-- Tasto visualizza -->
                     <a href="{{route('admin.products.show', $product->slug)}}" class="btn w-50 btn-primary">Visualizza</a>
                     <!-- Tasto edita -->
-                    <a href="{{route('admin.products.edit', $product->slug)}}" class="btn w-50 btn-warning">Edita</a>
+                    <a href="{{route('admin.products.edit', $product->slug)}}" class="btn w-50 btn-warning my-2">Edita</a>
                     <!-- Tasto cancella -->
                     <a type="button" class="btn w-50 btn-danger" data-toggle="modal" data-target="#delete-product-{{$product->id}}">Cancella </a>
                     <!-- Modale del cancella (da implementare) -->
