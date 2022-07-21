@@ -96,6 +96,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        /* dd($data); */
         // Salvo il path dell'immagine e la pusho su storage uploads
         $img_path = Storage::put('uploads', $data['cover_img']);
         // Imposto il valore dell'immagine utente uguale a img_path
