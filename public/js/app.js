@@ -5174,7 +5174,27 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Restaurant'
+  name: 'Restaurant',
+  data: function data() {
+    return {
+      restaurant: ''
+    };
+  },
+  methods: {
+    getRestaurant: function getRestaurant() {
+      var _this = this;
+
+      axios.get('/api/' + this.$route.params.slug).then(function (response) {
+        console.log(response);
+        _this.restaurant = response.data;
+      })["catch"](function (e) {
+        console.error(e);
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getRestaurant();
+  }
 });
 
 /***/ }),
@@ -5308,22 +5328,30 @@ var render = function render() {
     return _c("a", {
       key: type.id,
       staticClass: "mx-2 my-1 btn btn-primary"
-    }, [_vm._v("\n      " + _vm._s(type.name) + "\n    ")]);
+    }, [_vm._v("\n        " + _vm._s(type.name) + "\n      ")]);
   }), 0), _vm._v(" "), _c("div", {
     staticClass: "row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4"
   }, _vm._l(_vm.restaurantsResponse.data, function (restaurant) {
     return _c("div", {
       key: restaurant.id,
       staticClass: "col"
-    }, [_c("div", {
-      staticClass: "restaurant"
+    }, [_c("router-link", {
+      staticClass: "restaurant",
+      attrs: {
+        to: {
+          name: "restaurant",
+          params: {
+            slug: restaurant.slug
+          }
+        }
+      }
     }, [_c("img", {
       staticClass: "img-fluid",
       attrs: {
         src: restaurant.cover_img.includes("uploads") ? "/storage/" + restaurant.cover_img : restaurant.cover_img,
         alt: restaurant.business_name
       }
-    })])]);
+    })])], 1);
   }), 0), _vm._v(" "), _c("div", {
     staticClass: "py-2 justify-content-center"
   }, [_c("nav", {
@@ -5411,7 +5439,19 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("h1", [_vm._v("Pagina ristorante")]);
+  return _c("div", {
+    staticClass: "menu-ristorante"
+  }, [_c("div", {
+    staticClass: "container"
+  }, [_c("div", {
+    staticClass: "w-50"
+  }, [_c("img", {
+    staticClass: "img-fluid",
+    attrs: {
+      src: _vm.restaurant.cover_img.includes("uploads") ? "/storage/" + _vm.restaurant.cover_img : _vm.restaurant.cover_img,
+      alt: _vm.restaurant.business_name
+    }
+  })])])]);
 };
 
 var staticRenderFns = [];
@@ -58304,7 +58344,7 @@ var routes = [{
   name: 'home',
   component: _Pages_Home__WEBPACK_IMPORTED_MODULE_0__["default"]
 }, {
-  path: '/restaurant/:slug',
+  path: '/:slug',
   name: 'restaurant',
   component: _Pages_Restaurant__WEBPACK_IMPORTED_MODULE_1__["default"]
 }];
@@ -58421,10 +58461,10 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/deliveboo/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Applications/MAMP/htdocs/deliveboo/resources/sass/app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! /Applications/MAMP/htdocs/deliveboo/resources/sass/admin.scss */"./resources/sass/admin.scss");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/deliveboo/resources/sass/_variables.scss */"./resources/sass/_variables.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\progetto_finale\deliveboo\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\MAMP\htdocs\progetto_finale\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\progetto_finale\deliveboo\resources\sass\admin.scss */"./resources/sass/admin.scss");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\progetto_finale\deliveboo\resources\sass\_variables.scss */"./resources/sass/_variables.scss");
 
 
 /***/ })

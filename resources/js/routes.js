@@ -3,7 +3,7 @@ import Restaurant from "./Pages/Restaurant";
 
 const routes = [
     { path: '/', name: 'home', component: Home },
-    { path: '/restaurant/:slug', name: 'restaurant', component: Restaurant }
+    { path: '/:slug', name: 'restaurant', component: Restaurant }
 ]
 
 
