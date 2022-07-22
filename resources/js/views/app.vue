@@ -1,6 +1,16 @@
 <template>
 
-    <div>
+    <div> 
+     
+            
+        <main>
+            
+            <!-- 
+            QUESTO SERVE PER REINDIRIZZARE TUTTE LE ROTTE QUI   
+            -->
+                <router-view></router-view>
+            </main>
+        
         
     </div>
 
@@ -13,8 +23,8 @@ export default {
     name: 'App',
     data() {
         return {
-            
-        }
+
+       }
     }
 }
 
