@@ -5515,12 +5515,33 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", {
-    staticClass: "container py-5"
-  }, [_vm._v("\n    LAVORA CON NOI\n")]);
+  return _vm._m(0);
 };
 
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "py-5"
+  }, [_c("div", {
+    staticClass: "p-5 bg-dark"
+  }, [_c("div", {
+    staticClass: "container text-white"
+  }, [_c("h1", {
+    staticClass: "display-3 pb-3"
+  }, [_vm._v("Lavora con noi")]), _vm._v(" "), _c("p", {
+    staticClass: "lead w-50 pb-4"
+  }, [_vm._v("\n                Diventa nostro partner e raggiungi più clienti con Deliveboo. Mentre noi ci occupiamo\n                della consegna tu puoi offrire i migliori piatti per i tuoi clienti.\n                ")]), _vm._v(" "), _c("p", {
+    staticClass: "lead"
+  }, [_c("a", {
+    staticClass: "btn btn-danger text-white btn-lg",
+    attrs: {
+      href: "Jumbo action link",
+      role: "button"
+    }
+  }, [_vm._v("Scopri di più")])])])])]);
+}];
 render._withStripped = true;
 
 
