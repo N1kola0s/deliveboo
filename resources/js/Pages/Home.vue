@@ -3,23 +3,23 @@
   <div class="home_page">
     <JumboSection />
 
-    <!-- RISTORANTI che poi vanno filtrati e TIPI  -->   
+    <!-- RISTORANTI che poi vanno filtrati e TIPI  -->
     <div class="container py-5">
-       <div class="types py-3">
-      <a  class="mx-2 my-1 btn btn-primary" v-for="type in types" :key="type.id">
-        {{type.name}}
-      </a>
-    </div>
+      <div class="types py-3">
+        <a class="mx-2 my-1 btn btn-primary" v-for="type in types" :key="type.id">
+          {{ type.name }}
+        </a>
+      </div>
 
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
 
         <div class="col" v-for="restaurant in restaurantsResponse.data" :key="restaurant.id">
 
-          <div class="restaurant">
+          <router-link :to="{name: 'restaurant', params: {'slug': restaurant.slug}}" class="restaurant"> 
             <img class="img-fluid"
               :src="restaurant.cover_img.includes('uploads') ? '/storage/' + restaurant.cover_img : restaurant.cover_img"
               :alt="restaurant.business_name">
-          </div>
+          </router-link>
 
         </div>
 
@@ -46,7 +46,7 @@
             </li>
 
             <li class="page-item" v-if="restaurantsResponse.current_page < restaurantsResponse.last_page">
-              <a class="page-link"  aria-label="Next"
+              <a class="page-link" aria-label="Next"
                 @click.prevent="getRestaurants(restaurantsResponse.current_page + 1)">
                 <span aria-hidden="true">&raquo;</span>
                 <span class="visually-hidden">Next</span>
@@ -85,6 +85,7 @@ export default {
       /* restaurants: '', */ // senza paginazione
       restaurantsResponse: '', // per paginazione
       types: '',
+      
     }
   },
   methods: {
@@ -108,7 +109,7 @@ export default {
         .get('/api/types')
         .then((response) => {
           console.log(response);
-          this.types = response.data 
+          this.types = response.data
 
         }).catch(e => {
           console.error(e);

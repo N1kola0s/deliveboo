@@ -28,4 +28,7 @@ Route::namespace('API')->group( function () {
 
     // rotta tipologia ristoranti
     Route::get('/types', 'TypeController@index');
+
+    // rotta menu ristorante
+    Route::get('/{restaurant:slug}', 'UserController@show');
 });
