@@ -2,8 +2,8 @@
 /* text palette*/
 /* background palette*/
 /* btn / hover palette*/
-.color {
-  color: red;
+.row.justify-content-center .card.border-0 {
+  box-shadow: 0 0 12px 5px rgba(210, 207, 207, 0.4196078431);
 }
 
 /*!

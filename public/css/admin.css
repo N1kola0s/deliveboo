@@ -10215,6 +10215,15 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.container {
+  color: #212F35;
+}
+.container .resturant-img {
+  height: 300px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 
 /*#region Common utilities */
 .partials_index {
@@ -10273,7 +10282,7 @@ textarea.form-control-lg {
 
 /* Box della card principale */
 .index_card {
-  height: 175px;
+  /* height: 197.5px; */
   border-bottom: 2px solid lightgray;
 }
 
@@ -10283,6 +10292,8 @@ textarea.form-control-lg {
   height: 150px;
   border-radius: 75px;
   background-position: center center;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 /* Questa è la zona descrittiva del piatto */
@@ -10294,20 +10305,93 @@ textarea.form-control-lg {
 }
 
 /*#endregion */
-
-.container {
-  color: #212F35;
-}
-.container .resturant-img {
-  height: 300px;
-  width: 100%;
+.container .plate_details .row .col-12 .cover_image img {
+  height: 350px;
   -o-object-fit: cover;
      object-fit: cover;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+}
+.container .plate_details .row .col .card_admin {
+  min-height: 200px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+}
+.container .plate_details .row .col .card_admin .card-header {
+  background-color: transparent;
+}
+.container .plate_details .row .col .card_admin h6, .container .plate_details .row .col .card_admin .h6 {
+  font-weight: bold;
 }
 
+.container-fluid, .container-sm, .container-md, .container-lg, .container-xl, .container-xxl {
+  color: #212F35;
+}
 
-.color {
-  color: red;
+.plate_image {
+  width: 100%;
+}
+
+.button {
+  background-color: #EC5451;
+  border: 1px solid #EC5451;
+  color: white;
+}
+
+.button:hover {
+  background-color: #FF724C;
+  color: white;
+  border: 1px solid #FF724C;
+}
+
+.border_bottom {
+  border-bottom: 1px solid black;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.visibility {
+  background-color: #FF724C;
+  border-color: #FF724C;
+}
+
+textarea:focus,
+input:focus,
+select:focus {
+  border-color: #EC5451 !important;
+  box-shadow: 0 0 0 0.25rem #EC5451 !important;
+}
+
+.container-fluid, .container-sm, .container-md, .container-lg, .container-xl, .container-xxl {
+  color: #212F35;
+}
+
+.plate_image {
+  width: 100%;
+}
+
+.button {
+  background-color: #EC5451;
+  border: 1px solid #EC5451;
+  color: white;
+}
+
+.button:hover {
+  background-color: #FF724C;
+  color: white;
+  border: 1px solid #FF724C;
+}
+
+.border_bottom {
+  border-bottom: 1px solid black;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+textarea:focus,
+input:focus,
+select:focus {
+  border-color: #EC5451 !important;
+  box-shadow: 0 0 0 0.25rem #EC5451 !important;
 }
 
 html,
@@ -10318,6 +10402,10 @@ body {
   font-weight: 200;
   height: 100vh;
   margin: 0;
+}
+
+main {
+  background-color: #F4F4F8;
 }
 
 .full-height {
