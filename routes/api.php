@@ -21,8 +21,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/', function () {
-    $restaurants = User::with(['types', 'products'])->paginate(12);
 
-    return $restaurants;
+Route::namespace('API')->group( function () {
+    // rotta ristoranti
+    Route::get('/restaurants', 'UserController@index');
+
+    // rotta tipologia ristoranti
+    Route::get('/types', 'TypeController@index');
 });

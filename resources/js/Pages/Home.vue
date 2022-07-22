@@ -12,7 +12,7 @@
             <div class="restaurant">
               <img class="img-fluid" :src="restaurant.cover_img" :alt="restaurant.business_name">
             </div>
-          
+           
           </div>
 
         </div>

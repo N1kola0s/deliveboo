@@ -5120,18 +5120,45 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      restaurants: ''
+      /* restaurants: '', */
+      // senza paginazione
+      restaurantsResponse: '',
+      // per paginazione
+      types: ''
     };
   },
-  mounted: function mounted() {
-    var _this = this;
+  methods: {
+    getRestaurants: function getRestaurants(restaurantPage) {
+      var _this = this;
 
-    axios.get('/api/').then(function (response) {
-      /* console.log(response); */
-      _this.restaurants = response.data.data;
-    })["catch"](function (e) {
-      console.error(e);
-    });
+      axios.get('/api/restaurants', {
+        params: {
+          page: restaurantPage
+        }
+      }).then(function (response) {
+        /* console.log(response); */
+
+        /* this.restaurants = response.data.data */
+        // senza paginazione
+        _this.restaurantsResponse = response.data; // con paginazione
+      })["catch"](function (e) {
+        console.error(e);
+      });
+    },
+    getTypes: function getTypes() {
+      var _this2 = this;
+
+      axios.get('/api/types').then(function (response) {
+        console.log(response);
+        _this2.types = response.data;
+      })["catch"](function (e) {
+        console.error(e);
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getRestaurants(1);
+    this.getTypes();
   }
 });
 
@@ -5276,8 +5303,15 @@ var render = function render() {
   }, [_c("JumboSection"), _vm._v(" "), _c("div", {
     staticClass: "container py-5"
   }, [_c("div", {
+    staticClass: "types py-3"
+  }, _vm._l(_vm.types, function (type) {
+    return _c("a", {
+      key: type.id,
+      staticClass: "mx-2 my-1 btn btn-primary"
+    }, [_vm._v("\n      " + _vm._s(type.name) + "\n    ")]);
+  }), 0), _vm._v(" "), _c("div", {
     staticClass: "row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4"
-  }, _vm._l(_vm.restaurants, function (restaurant) {
+  }, _vm._l(_vm.restaurantsResponse.data, function (restaurant) {
     return _c("div", {
       key: restaurant.id,
       staticClass: "col"
@@ -5286,11 +5320,74 @@ var render = function render() {
     }, [_c("img", {
       staticClass: "img-fluid",
       attrs: {
-        src: restaurant.cover_img,
+        src: restaurant.cover_img.includes("uploads") ? "/storage/" + restaurant.cover_img : restaurant.cover_img,
         alt: restaurant.business_name
       }
     })])]);
-  }), 0)]), _vm._v(" "), _c("WorkWithUs"), _vm._v(" "), _c("AboutUs"), _vm._v(" "), _c("FooterSection")], 1);
+  }), 0), _vm._v(" "), _c("div", {
+    staticClass: "py-2 justify-content-center"
+  }, [_c("nav", {
+    staticClass: "py-5",
+    attrs: {
+      "aria-label": "Page navigation"
+    }
+  }, [_c("ul", {
+    staticClass: "pagination justify-content-center"
+  }, [_vm.restaurantsResponse.current_page > 1 ? _c("li", {
+    staticClass: "page-item"
+  }, [_c("a", {
+    staticClass: "page-link",
+    attrs: {
+      "aria-label": "Previous"
+    },
+    on: {
+      click: function click($event) {
+        $event.preventDefault();
+        return _vm.getRestaurants(_vm.restaurantsResponse.current_page - 1);
+      }
+    }
+  }, [_c("span", {
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }, [_vm._v("«")]), _vm._v(" "), _c("span", {
+    staticClass: "visually-hidden"
+  }, [_vm._v("Previous")])])]) : _vm._e(), _vm._v(" "), _vm._l(_vm.restaurantsResponse.last_page, function (page) {
+    return _c("li", {
+      key: page.index,
+      "class": {
+        "page-item": true,
+        active: page == _vm.restaurantsResponse.current_page
+      }
+    }, [_c("a", {
+      staticClass: "page-link",
+      on: {
+        click: function click($event) {
+          $event.preventDefault();
+          return _vm.getRestaurants(page);
+        }
+      }
+    }, [_vm._v("\n              " + _vm._s(page) + "\n            ")])]);
+  }), _vm._v(" "), _vm.restaurantsResponse.current_page < _vm.restaurantsResponse.last_page ? _c("li", {
+    staticClass: "page-item"
+  }, [_c("a", {
+    staticClass: "page-link",
+    attrs: {
+      "aria-label": "Next"
+    },
+    on: {
+      click: function click($event) {
+        $event.preventDefault();
+        return _vm.getRestaurants(_vm.restaurantsResponse.current_page + 1);
+      }
+    }
+  }, [_c("span", {
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }, [_vm._v("»")]), _vm._v(" "), _c("span", {
+    staticClass: "visually-hidden"
+  }, [_vm._v("Next")])])]) : _vm._e()], 2)])])]), _vm._v(" "), _c("WorkWithUs"), _vm._v(" "), _c("AboutUs"), _vm._v(" "), _c("FooterSection")], 1);
 };
 
 var staticRenderFns = [];
