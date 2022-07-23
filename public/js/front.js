@@ -5615,7 +5615,7 @@ var render = function render() {
   return _c("div", {
     staticClass: "menu-ristorante"
   }, [_c("div", {
-    staticClass: "container"
+    staticClass: "container pb-5"
   }, [_c("div", {
     staticClass: "w-50"
   }, [_c("img", {
@@ -5624,10 +5624,50 @@ var render = function render() {
       src: _vm.restaurant.cover_img.includes("uploads") ? "/storage/" + _vm.restaurant.cover_img : _vm.restaurant.cover_img,
       alt: _vm.restaurant.business_name
     }
-  })])])]);
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "container menu-carrello py-4"
+  }, [_c("div", {
+    staticClass: "container-fluid"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-7"
+  }, [_c("div", {
+    staticClass: "row row-cols-1 row-cols-md-2 g-4"
+  }, _vm._l(_vm.restaurant.products, function (product) {
+    return _c("div", {
+      key: product.id,
+      staticClass: "col"
+    }, [_c("img", {
+      staticClass: "img-fluid w-75",
+      attrs: {
+        src: product.cover_img.includes("uploads") ? "/storage/" + product.cover_img : product.cover_img,
+        alt: product.name
+      }
+    }), _vm._v(" "), _c("div", {
+      staticClass: "card-bottom"
+    }, [_vm._v("\n                " + _vm._s(product.name) + "\n              ")]), _vm._v(" "), _c("a", {
+      staticClass: "btn btn-primary",
+      attrs: {
+        role: "button"
+      }
+    }, [_vm._v("+")])]);
+  }), 0)]), _vm._v(" "), _vm._m(0)])])])]);
 };
 
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "col-5"
+  }, [_c("div", {
+    staticClass: "card",
+    staticStyle: {
+      height: "200px"
+    }
+  }, [_c("h3", [_vm._v("CARRELLO")])])]);
+}];
 render._withStripped = true;
 
 
