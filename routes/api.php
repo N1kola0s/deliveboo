@@ -26,9 +26,13 @@ Route::namespace('API')->group( function () {
     // rotta ristoranti
     Route::get('/restaurants', 'UserController@index');
 
+    Route::get("restaurants/filter", "UserController@filteredUsers");
+
     // rotta tipologia ristoranti
     Route::get('/types', 'TypeController@index');
 
     // rotta menu ristorante
     Route::get('/{restaurant:slug}', 'UserController@show');
 });
+
+

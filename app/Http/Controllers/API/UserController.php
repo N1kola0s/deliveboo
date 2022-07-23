@@ -23,6 +23,19 @@ class UserController extends Controller
     }
 
 
+     /* FILTRAGGIO RISTORANTI */
+     public function filteredUsers(Request $request){
+        /* array di tipologie ottenute dalle checkbox */
+       $richiesta = $request['type'];
+
+        /* chiamata a db con relazione */
+        $restaurants = User::whereHas('types', function($q) use($richiesta) {
+            $q->whereIn('type_id', $richiesta);
+        })->paginate(12);
+
+        return response()->json($restaurants);
+    }
+
     /**
      * Display the specified resource.
      *
