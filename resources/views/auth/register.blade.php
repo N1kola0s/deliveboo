@@ -127,7 +127,7 @@
                                 <label for="zip_code" class="col-md-4 col-form-label text-md-right">{{ __('Cap') }} <span class="text-primary">*</span></label>
 
                                 <div class="col-md-6">
-                                    <input id="zip_code" type="text" class="form-control @error('zip_code') is-invalid @enderror" name="zip_code" value="{{ old('zip_code') }}" required autocomplete="zip_code" minlength="5" maxlength="5" autofocus>
+                                    <input id="zip_code" type="text" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" size="5" class="form-control @error('zip_code') is-invalid @enderror" name="zip_code" value="{{ old('zip_code') }}" required autocomplete="zip_code" minlength="5" maxlength="5" autofocus>
 
                                     @error('zip_code')
                                     <span class="text-danger" role="alert">
@@ -155,7 +155,7 @@
                                 <label for="vat_number" class="col-md-4 col-form-label text-md-right">{{ __('Partita IVA') }} <span class="text-primary">*</span></label>
 
                                 <div class="col-md-6">
-                                    <input id="vat_number" type="text" class="form-control @error('vat_number') is-invalid @enderror" name="vat_number" value="{{ old('vat_number') }}" required autocomplete="vat_number" minlength="11" maxlength="11" autofocus>
+                                    <input id="vat_number" type="text" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" class="form-control @error('vat_number') is-invalid @enderror" name="vat_number" value="{{ old('vat_number') }}" required autocomplete="vat_number" minlength="11" maxlength="11" autofocus>
 
                                     @error('vat_number')
                                     <span class="text-danger" role="alert">
