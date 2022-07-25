@@ -51,6 +51,16 @@
                     @enderror
                 </div>
 
+                <!-- Input visibilità del prodotto -->
+                <div class="form-check form-switch mb-4">
+                    <label class="form-check-label" for="visibility">Seleziona visibilità</label>
+                    <div class="form-check form-switch mb-4">
+                        <input class="form-check-input" value="0" type="hidden" id="flexSwitchCheckChecked" name='visibility'>
+                        <input class="form-check-input" value="1" type="checkbox" id="flexSwitchCheckChecked" name='visibility'>
+                    </div>
+
+                </div>
+
                 <!-- Input descrizione del prodotto -->
                 <div class="mb-4">
                     <label for="description">Descrizione *</label>

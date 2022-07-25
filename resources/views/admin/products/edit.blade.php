@@ -15,7 +15,7 @@
                 <!-- Input del Nome -->
                 <div class="mb-4">
                     <label for="name">Nome *</label>
-                    <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" placeholder="Scrivi nome piatto" aria-describedby="nameHelper" value="{{old('name', $product->name)}}" maxlength="50" minlength="3" pattern="[A-Z a-z]{0,50}" >
+                    <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" placeholder="Scrivi nome piatto" aria-describedby="nameHelper" value="{{old('name', $product->name)}}" maxlength="50" minlength="3" pattern="[A-Z a-z]{0,50}">
                     <small id="nameHelper" class="text-muted">Max 50 Caratteri</small>
                     @error('name')
                     <span class="invalid-feedback" role="alert">
@@ -50,6 +50,12 @@
                         <strong>{{ 'Min 0.01-Max 99.99' }}</strong>
                     </span>
                     @enderror
+                </div>
+
+                <!-- Input descrizione del prodotto -->
+                <div class="form-check form-switch mb-4">
+                    <input class="form-check-input" value="1" type="checkbox" id="flexSwitchCheckChecked" name='visibility' @if ($product->visibility) checked @endif>
+                    <label class="form-check-label" for="visibility">Seleziona visibilità</label>
                 </div>
 
                 <!-- Input descrizione del prodotto -->
