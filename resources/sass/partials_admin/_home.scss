@@ -7,6 +7,18 @@
         object-fit: cover;
     }
 
+    .card-header{
+        background-color: $bg_orange !important;
+    }
+
+    .analythics{
+        @media screen and (max-width: 400px) {
+            margin-top: 2rem;
+            
+        }
+
+    }
+
 }
 
 
