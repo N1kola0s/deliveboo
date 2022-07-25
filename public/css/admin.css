@@ -10224,6 +10224,14 @@ textarea.form-control-lg {
   -o-object-fit: cover;
      object-fit: cover;
 }
+.container .card-header {
+  background-color: rgb(255, 115, 0) !important;
+}
+@media screen and (max-width: 400px) {
+  .container .analythics {
+    margin-top: 2rem;
+  }
+}
 
 /*#region Common utilities */
 .partials_index {
@@ -10402,6 +10410,21 @@ body {
   font-weight: 200;
   height: 100vh;
   margin: 0;
+}
+html .navbar,
+body .navbar {
+  background-color: rgb(255, 115, 0) !important;
+}
+html .navbar .user_avatar,
+body .navbar .user_avatar {
+  width: 45px;
+  border-radius: 50%;
+}
+@media screen and (max-width: 768px) {
+  html .navbar .nav-logo,
+body .navbar .nav-logo {
+    display: none !important;
+  }
 }
 
 main {
