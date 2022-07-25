@@ -11061,7 +11061,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.card-footer[data-v-3db4936f]{\r\n    background-color: rgba(224, 224, 224, 0.091);\r\n    height: 458.23px;\n};\r\n\r\n", ""]);
+exports.push([module.i, "\n.card-footer[data-v-3db4936f]{\n    background-color: rgba(224, 224, 224, 0.091);\n    height: 458.23px;\n};\n\n", ""]);
 
 // exports
 
@@ -58777,10 +58777,10 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\MAMP\htdocs\progetto_finale\deliveboo\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\MAMP\htdocs\progetto_finale\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! C:\MAMP\htdocs\progetto_finale\deliveboo\resources\sass\admin.scss */"./resources/sass/admin.scss");
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\progetto_finale\deliveboo\resources\sass\_variables.scss */"./resources/sass/_variables.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/deliveboo/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Applications/MAMP/htdocs/deliveboo/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/deliveboo/resources/sass/admin.scss */"./resources/sass/admin.scss");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/deliveboo/resources/sass/_variables.scss */"./resources/sass/_variables.scss");
 
 
 /***/ })
