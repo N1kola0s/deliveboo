@@ -33,6 +33,9 @@ Route::namespace('API')->group( function () {
 
     // rotta menu ristorante
     Route::get('/{restaurant:slug}', 'UserController@show');
+
+     // rotta checkout
+     Route::get('/checkout/{restaurant:slug}', 'UserController@show');
 });
 
 
