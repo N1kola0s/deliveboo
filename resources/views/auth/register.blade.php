@@ -19,7 +19,7 @@
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }} <span class="text-primary">*</span></label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                    <input onkeypress="return (event.charCode >= 60 || event.charCode == 8 || event.charCode == 32)" id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                     @error('name')
                                     <span class="text-danger" role="alert">
@@ -33,7 +33,7 @@
                                 <label for="surname" class="col-md-4 col-form-label text-md-right">{{ __('Cognome') }} <span class="text-primary">*</span></label>
 
                                 <div class="col-md-6">
-                                    <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ old('surname') }}" required autocomplete="surname" autofocus>
+                                    <input onkeypress="return (event.charCode >= 60 || event.charCode == 8 || event.charCode == 32)" id="surname" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ old('surname') }}" required autocomplete="surname" autofocus>
 
                                     @error('surname')
                                     <span class="text-danger" role="alert">
@@ -47,7 +47,7 @@
                                 <label for="telephone_number" class="col-md-4 col-form-label text-md-right">{{ __('Numero di Telefono') }} <span class="text-primary">*</span></label>
 
                                 <div class="col-md-6">
-                                    <input id="telephone_number" type="text" class="form-control @error('telephone_number') is-invalid @enderror" name="telephone_number" value="{{ old('telephone_number') }}" required autocomplete="telephone_number" minlength="10" maxlength="10" autofocus>
+                                    <input id="telephone_number" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" type="text" class="form-control @error('telephone_number') is-invalid @enderror" name="telephone_number" value="{{ old('telephone_number') }}" required autocomplete="telephone_number" minlength="10" maxlength="10" autofocus>
 
                                     @error('telephone_number')
                                     <span class="text-danger" role="alert">
