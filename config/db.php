@@ -678,7 +678,199 @@ return [
             'visibility' => true,
             'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
         ],
-
+        /* Il gustoso */
+        [
+            'name' => 'Affumicato',
+            'cover_img' => '/img/affumicato.jpg',
+            'category' => 'panini',
+            'price' => 4.50,
+            'visibility' => true,
+            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        ],
+        /* L'affumicato */
+        [
+            'name' => 'Affumicato',
+            'cover_img' => '/img/affumicato.jpg',
+            'category' => 'panini',
+            'price' => 5.50,
+            'visibility' => true,
+            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        ],
+        /* Big Mac */
+        [
+            'name' => 'Big Mac',
+            'cover_img' => '/img/bigmac.jpg',
+            'category' => 'panini',
+            'price' => 5.90,
+            'visibility' => true,
+            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        ],
+        /* Chicken Burger */
+        [
+            'name' => 'Chicken Burger',
+            'cover_img' => '/img/chicken-burger.jpg',
+            'category' => 'panini',
+            'price' => 5.90,
+            'visibility' => true,
+            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        ],
+        /***** Fritti *****/
+        /* Patatine fritte */
+        [
+            'name' => 'Patatine Fritte',
+            'cover_img' => '/img/patatine-fritte.jpg',
+            'category' => 'fritti',
+            'price' => 1.40,
+            'visibility' => true,
+            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        ],
+        /* Le Ricche Cheddar */
+        [
+            'name' => 'Le Ricche Cheddar',
+            'cover_img' => '/img/le-ricche-cheddar.jpg',
+            'category' => 'fritti',
+            'price' => 4.10,
+            'visibility' => true,
+            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        ],
+        /* Le Ricche Cheese&Bacon */
+        [
+            'name' => 'Le Ricche Cheese&Bacon',
+            'cover_img' => '/img/le-ricche-cheese-bacon.jpg',
+            'category' => 'fritti',
+            'price' => 3.90,
+            'visibility' => true,
+            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        ],
+        /* Nuggets */
+        [
+            'name' => 'Nuggets',
+            'cover_img' => '/img/chicken-nuggets.jpg',
+            'category' => 'fritti',
+            'price' => 2.90,
+            'visibility' => true,
+            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        ],
+        /***** Piadine *****/
+        /* McWrap */
+        [
+            'name' => 'McWrap',
+            'cover_img' => '/img/mcwrap.jpg',
+            'category' => 'panini',
+            'price' => 5.50,
+            'visibility' => true,
+            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        ],
+        /* McWrap petto di pollo */
+        [
+            'name' => 'McWrap petto di pollo',
+            'cover_img' => '/img/mcwrap-petto.jpg',
+            'category' => 'piadine',
+            'price' => 5.90,
+            'visibility' => true,
+            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        ],
+        /* Piadina Romagnola */
+        [
+            'name' => 'Piadina Romagnola',
+            'cover_img' => '/img/piadina-romagnola.jpg',
+            'category' => 'piadine',
+            'price' => 6.50,
+            'visibility' => true,
+            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        ],
+        /* Piadina Vegetariana */
+        [
+            'name' => 'Piadina Vegetariana',
+            'cover_img' => '/img/piadina-vegetariana.jpg',
+            'category' => 'piadine',
+            'price' => 6.50,
+            'visibility' => true,
+            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        ],
+        /* Piadina Kebab */
+        [
+            'name' => 'Piadina Kebab',
+            'cover_img' => '/img/piadina-kebab.jpg',
+            'category' => 'piadine',
+            'price' => 5.00,
+            'visibility' => true,
+            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        ],
+        /***** Bevande *****/
+        /* Coca Cola */
+        [
+            'name' => 'Coca Cola',
+            'cover_img' => '/img/coca-cola.jpg',
+            'category' => 'bevande',
+            'price' => 2.50,
+            'visibility' => true,
+            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        ],
+        /* Pepsi */
+        [
+            'name' => 'Pepsi',
+            'cover_img' => '/img/pepsi.jpg',
+            'category' => 'bevande',
+            'price' => 2.20,
+            'visibility' => true,
+            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        ],
+        /* Sprite */
+        [
+            'name' => 'Sprite',
+            'cover_img' => '/img/sprite.jpg',
+            'category' => 'bevande',
+            'price' => 2.20,
+            'visibility' => true,
+            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        ],
+        /* Dr Pepper */
+        [
+            'name' => 'Dr Pepper',
+            'cover_img' => '/img/dr-pepper.jpg',
+            'category' => 'bevande',
+            'price' => 2.80,
+            'visibility' => true,
+            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        ],
+        /* Acqua Naturale */
+        [
+            'name' => 'Acqua',
+            'cover_img' => '/img/acqua.jpg',
+            'category' => 'bevande',
+            'price' => 1.50,
+            'visibility' => true,
+            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        ],
+        /***** Birre *****/
+        /* Ichnusa */
+        [
+            'name' => 'Birra Ichnusa',
+            'cover_img' => '/img/ichnusa.jpg',
+            'category' => 'birre',
+            'price' => 2.50,
+            'visibility' => true,
+            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        ],
+        /* Peroni */
+        [
+            'name' => 'Birra Peroni',
+            'cover_img' => '/img/birra-peroni.jpg',
+            'category' => 'birre',
+            'price' => 2.50,
+            'visibility' => true,
+            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        ],
+        /* Heineken */
+        [
+            'name' => 'Birra Peroni',
+            'cover_img' => '/img/birra-heineken.jpg',
+            'category' => 'birre',
+            'price' => 2.50,
+            'visibility' => true,
+            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        ],
     ],
 
 
@@ -751,27 +943,27 @@ return [
         [
             'name' => 'contorni',
         ],
-        /* SOLO 2 */
+        /* OK */
         [
             'name' => 'panini',
         ],
-        /* DA FARE */
+        /* OK */
         [
             'name' => 'bevande',
         ],
-        /* DA FARE */
+        /* OK */
         [
             'name' => 'fritti',
         ],
-        /* DA FARE */
+        /* OK */
         [
             'name' => 'piadine',
         ],
-        /* DA FARE */
+        /* NON NE HO CREATI */
         [
             'name' => 'vini',
         ],
-        /* DA FARE */
+        /* OK */
         [
             'name' => 'birre',
         ],
