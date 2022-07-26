@@ -1,19 +1,62 @@
 <template>
-    <div class="py-5">
-        <div class="p-5 bg-dark">
-            <div class="container text-white">
-                <h1 class="display-3 pb-3">Lavora con noi</h1>
-                <p class="lead w-50 pb-4">
-                    Diventa nostro partner e raggiungi più clienti con Deliveboo. Mentre noi ci occupiamo
-                    della consegna tu puoi offrire i migliori piatti per i tuoi clienti.
-                    </p>
+    <section class="work_with_us py-5">
+        
+        <div class="container my-3">
+
+            <h2 class="display-3 pb-3 text-center">Lavora con noi</h2>
+
+            <div class="introduction_text d-flex justify-content-center pb-3">
 
                 <p class="lead">
-                    <a class="btn btn-danger text-white btn-lg" href="Jumbo action link" role="button">Scopri di più</a>
+                    Hai un'attività o vuoi lavorare come Driver?
                 </p>
+                <!-- /.lead -->
+
             </div>
+            <!-- /.introduction_text -->
+
+            <div class="cooperation d-flex justify-content-center my-4">
+
+                <div class="row row-cols-md-2 gx-5">
+
+                    <div class="col-md-6">
+                        <div class="card" style="width: 25rem;">
+                        <img src="../../img/rider01.png" class="card-img-top" alt="lavora con noi come rider">
+                        <div class="card-body text-center">
+                            <h4 class="card-title">Driver</h4>
+                            <p class="card-text">Hai una bici o un monopattino?</p>
+                            <a href="#" class="btn text-white">Lavora con noi</a>
+                        </div>
+                        </div>
+                    </div>
+                    <!-- /.col -->
+
+                    <div class="col-md-6">
+                        <div class="card" style="width: 25rem;">
+                        <img src="../../img/consegna_attivita01.png" class="card-img-top" alt="lavora con noi come attività">
+                        <div class="card-body text-center">
+                            <h4 class="card-title">Attività</h4>
+                            <p class="card-text">Non vuoi più pensare alla consegna?</p>
+                            <a href="#" class="btn text-white">Lavora con noi</a>
+                        </div>
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                    
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.cooperation -->
+
+        <!-- <p class="lead">
+                <a class="btn btn-danger text-white btn-lg" href="Jumbo action link" role="button">Scopri di più</a>
+            </p> -->
         </div>
-    </div>
+        <!-- /.container -->
+
+    </section>
+    <!-- /.work_with_us -->
+
 </template>
 
 <script>
@@ -24,3 +67,40 @@
         }
     }
 </script>
+
+<style lang="scss" scoped>
+   
+    @import 'resources/sass/_variables';
+
+    section{
+        background-color: $bg_light;
+        color:$text_primary;
+
+        h2{
+            font-weight: 600;
+        }
+
+        .card{
+            box-shadow: 0 2px 4px 0 rgb(0 0 0 / 50%);
+            border-radius:20px;
+            border:none;
+            .card-img-top{
+                border-top-left-radius: 20px;
+                border-top-right-radius: 20px;
+            }
+            .card-body{
+                h4{
+                    font-weight: 600;
+                    
+                }
+                .btn{
+                    background-color: $btn_orange;
+                }
+                .btn:hover{
+                    background-color: $btn_red;
+                }
+            }
+        }
+    }
+    
+</style>
