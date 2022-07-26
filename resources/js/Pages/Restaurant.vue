@@ -37,7 +37,7 @@
               <div class="container-fluid">
                 <div class="row row-cols-1">
                   <div class="col" v-for="(product, index) in cart.products" :key="index">
-                    {{ product.name }} - {{ product.price }} - qty: {{ product.quantity }} - total: {{ product.total }}
+                    {{ product.name }} - € {{ product.price }} - qty: {{ product.quantity }} - total: € {{ product.total }}
                     <button class="py-2" @click="removeQty(product)">-</button>
                     <button class="py-2" @click="addQty(product)">+</button>
                   </div>
@@ -45,6 +45,10 @@
                   <div v-show="totalPriceCart > 0" class="total-price-cart">
                     Totale: € {{ totalPriceCart }}
                   </div>
+                  <!-- LINK AL PAGAMENTO -->
+                  <router-link :to="{ name: 'checkout', params: { 'slug': restaurant.slug } }" class="restaurant">
+                    Vai al Pagamento
+                  </router-link>
                 </div>
               </div>
             </div>
@@ -87,7 +91,7 @@ export default {
             this.setLocalStorage()  // setto il local storage
 
           } else {
-            this.cart.products = JSON.parse(localStorage.getItem(this.cart.key))
+            this.cartLocalStorage()
           }
         }).catch(e => {
           console.error(e);
@@ -100,7 +104,8 @@ export default {
 
     // RIPRENDO I DATI DALLO STORAGE
     cartLocalStorage() {
-      this.cart.products = localStorage.getItem(this.cart.key)
+      this.cart.products = JSON.parse(localStorage.getItem(this.cart.key))
+      this.getTotalPrice()
     },
 
     addProduct(product) {
@@ -177,15 +182,15 @@ export default {
       let priceNotRounded = 0
       if (this.cart.products.length >= 1) {
         this.cart.products.forEach(element => {
-        priceNotRounded += element.total;
-  
+          priceNotRounded += element.total;
+
         })
       } else {
         this.totalPriceCart = 0
       }
-      console.log(priceNotRounded)
+      /* console.log(priceNotRounded) */
       this.totalPriceCart = priceNotRounded.toFixed(2)
-      console.log(this.totalPriceCart)
+      /* console.log(this.totalPriceCart) */
     }
   },
 
