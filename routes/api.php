@@ -33,6 +33,12 @@ Route::namespace('API')->group( function () {
 
     // rotta menu ristorante
     Route::get('/{restaurant:slug}', 'UserController@show');
+
+    Route::get('/orders/generate', 'OrderController@generate');
+
+    Route::post('/orders/make/payment', 'OrderController@makePayment');
+
+
 });
 
 
