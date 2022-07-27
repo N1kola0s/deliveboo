@@ -29,7 +29,7 @@
         "braintree-dropin-vue": "0.0.7",
         "braintree-web-drop-in": "^1.31.0",
         "core-js": "^3.15.2",
-        "vue-braintree": "^2.0.3",
+        "vue-braintree": "^2.1.0",
         "vue-router": "^3.5.4"
     }
 }
