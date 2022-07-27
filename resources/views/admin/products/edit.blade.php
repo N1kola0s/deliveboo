@@ -15,7 +15,7 @@
                 <!-- Input del Nome -->
                 <div class="mb-4">
                     <label for="name">Nome *</label>
-                    <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" placeholder="Scrivi nome piatto" aria-describedby="nameHelper" value="{{old('name', $product->name)}}" maxlength="50" minlength="3" pattern="[A-Z a-z]{0,50}">
+                    <input type="text" onkeypress="return (event.charCode >= 60 || event.charCode == 8 || event.charCode == 32)" name="name" id="name" class="form-control @error('name') is-invalid @enderror" placeholder="Scrivi nome piatto" aria-describedby="nameHelper" value="{{old('name', $product->name)}}" maxlength="50" minlength="3" pattern="[A-Z a-z]{0,50}">
                     <small id="nameHelper" class="text-muted">Max 50 Caratteri</small>
                     @error('name')
                     <span class="invalid-feedback" role="alert">
@@ -43,7 +43,7 @@
                 <!-- Input prezzo del prodotto -->
                 <div class="mb-4">
                     <label for="price">Prezzo *</label>
-                    <input type="number" step="0.01" name="price" id="price" class="form-control @error('price') is-invalid @enderror" placeholder="Scrivi il prezzo" aria-describedby="priceHelper" value="{{old('price', $product->price)}}" required>
+                    <input type="number" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" step="0.01" name="price" id="price" class="form-control @error('price') is-invalid @enderror" placeholder="Scrivi il prezzo" aria-describedby="priceHelper" value="{{old('price', $product->price)}}" required>
                     <small id="priceHelper" class="text-muted">Solo Numeri</small>
                     @error('price')
                     <span class="invalid-feedback" role="alert">
