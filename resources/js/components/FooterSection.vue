@@ -6,7 +6,7 @@
                 
             <div class="row">
 
-                <div class="col flex-column">
+                <div class="col-xs-12 col-md-6 col-lg-3 mb-4 flex-column">
 
                     <div class="card text-start p-4 card-footer">
 
@@ -34,7 +34,7 @@
 
                 </div>
 
-                <div class="col flex-column">
+                <div class="col-xs-12 col-md-6 col-lg-3 mb-4  flex-column">
 
                     <div class="card text-start p-4 card-footer">
 
@@ -55,7 +55,7 @@
 
                 </div>
 
-                <div class="col flex-column">
+                <div class="col-xs-12 col-md-6 col-lg-3 mb-4  flex-column">
 
                     <div class="card text-start p-4 card-footer">
 
@@ -76,7 +76,7 @@
 
                 </div>
 
-                <div class="col flex-column">
+                <div class="col-xs-12 col-md-6 col-lg-3 mb-4  flex-column">
 
                     <div class="card text-start p-4 card-footer">
 
