@@ -1,65 +1,153 @@
 <template>
-  <div class="menu-ristorante">
-
-    <!-- IMMAGINE DATI RISTORANTE -->
-    <div class="container pb-5">
-      <div class="w-50">
-        <img class="img-fluid"
-          :src="restaurant.cover_img.includes('uploads') ? '/storage/' + restaurant.cover_img : restaurant.cover_img"
-          :alt="restaurant.business_name">
-      </div>
-
-    </div>
-
-    <!-- SEZIONE MENU CARRELLO -->
-    <div class="container menu-carrello py-4">
-      <div class="container-fluid">
-        <div class="row">
-          <!-- MENU -->
-          <div class="col-7">
-            <div class="row row-cols-1 row-cols-md-2 g-4">
-              <div class="col" v-for="product in restaurant.products" :key="product.id">
-                <img class="img-fluid w-75"
-                  :src="product.cover_img.includes('uploads') ? '/storage/' + product.cover_img : product.cover_img"
-                  :alt="product.name">
-                <div class="card-bottom">
-                  {{ product.name }}
-                </div>
-                <a class="btn btn-primary" role="button" @click="addProduct(product)">+</a>
-              </div>
+    <div class="menu-ristorante">
+        <!-- Hero Image ristorante più titolo -->
+        <div class="container pb-5">
+            <div class="w-100">
+                <!-- Nome del Ristorante -->
+                <h1 class="restaurant_title">{{restaurant.business_name}}</h1>
+                <!-- Immagine del ristorante -->
+                <img class="img-fluid hero_restaurant"
+                :src="restaurant.cover_img.includes('uploads') ? '/storage/' + restaurant.cover_img : restaurant.cover_img"
+                :alt="restaurant.business_name">
             </div>
-          </div>
-
-          <!-- CARRELLO -->
-          <div class="col-5">
-            <div class="card">
-              <h3>CARRELLO</h3>
-              <div class="container-fluid">
-                <div class="row row-cols-1">
-                  <div class="col" v-for="(product, index) in cart.products" :key="index">
-                    {{ product.name }} - € {{ product.price }} - qty: {{ product.quantity }} - total: € {{ product.total }}
-                    <button class="py-2" @click="removeQty(product)">-</button>
-                    <button class="py-2" @click="addQty(product)">+</button>
-                  </div>
-                  <hr>
-                  <div v-show="totalPriceCart > 0" class="total-price-cart">
-                    Totale: € {{ totalPriceCart }}
-                  </div>
-                  <!-- LINK AL PAGAMENTO -->
-                  <router-link :to="{ name: 'checkout', params: { 'slug': restaurant.slug } }" class="restaurant">
-                    Vai al Pagamento
-                  </router-link>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
+
+        <!-- SEZIONE MENU CARRELLO -->
+        <div class="container menu-carrello py-4">
+            <div class="row h-100 p-0 m-0">
+                <!-- Lista di piatti -->
+                <div class="col-9 flex_start_restaurant gx-1 m-0 h-100 flex-wrap">
+                    <!-- Questo è quello da ciclare -->
+                    <!-- /.product_restaurant -->
+                    <div class="product_restaurant col-auto" v-for="product in restaurant.products" :key="product.id">
+                        <!-- Immagine del piatto -->
+                        <div class="col-12 h-50 p-0">
+                            <img class="product_image_restaurant" :src="product.cover_img.includes('uploads') ? '/storage/' + product.cover_img : product.cover_img" :alt="product.name">
+                        </div>
+                        <!-- Descrizione del piatto -->
+                        <div class="col-12 h-25 p-0">
+                            <!-- Nome piatto -->
+                            <h4 class="text-black mb-0 p-1">{{product.name}}</h4>
+                            <!-- Prezzo -->
+                            <p class="text-black p-1 mb-0">Prezzo : {{product.price}} €</p>
+                            <!-- Descrizione -->
+                            <p class="text-black p-1 mb-0">Descrizione : {{product.description}}</p>
+                        </div>
+                        <!-- Button per aggiungi al carrello -->
+                        <div class="col-12 h-25 flex_end_restaurant pb-3 p-0">
+                            <a class="btn btn-primary" role="button" @click="addProduct(product)">Aggiungi</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Carrello laterale -->
+                <div class="col-3 bordo_visibile">
+                    <!-- Card del carrello -->
+                    <div class="card">
+                        <!-- Titolo del carrello -->
+                        <h3>CARRELLO</h3>
+                        <!-- Carrello -->
+                        <div class="container-fluid">
+                            <!-- Row -->
+                            <div class="row row-cols-1">
+                                <div class="col" v-for="(product, index) in cart.products" :key="index">
+                                    {{ product.name }} - € {{ product.price }} - qty: {{ product.quantity }} - total: € {{ product.total }}
+                                    <button class="py-2" @click="removeQty(product)">-</button>
+                                    <button class="py-2" @click="addQty(product)">+</button>
+                                </div>
+                            </div>
+                            <!-- Linea separazione -->
+                            <hr>
+                            <!-- Prezzo Prodotto -->
+                            <div v-show="totalPriceCart > 0" class="total-price-cart">
+                                Totale: € {{ totalPriceCart }}
+                            </div>
+                            <!-- LINK AL PAGAMENTO -->
+                            <router-link :to="{ name: 'checkout', params: { 'slug': restaurant.slug } }" class="restaurant">
+                                Vai al Pagamento
+                            </router-link>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+                <!-- <div class="row row-cols-3 row-cols-xxl-3 bordo_visibile row-cols-md-2 g-4">
+                    <div class="col bordo_visibile h-100" v-for="product in restaurant.products" :key="product.id"> -->
+                        <!-- Immagine profilo -->
+                        <!-- <img :src="product.cover_img.includes('uploads') ? '/storage/' + product.cover_img : product.cover_img" :alt="product.name">
+                        <div class="card-bottom">
+                            {{ product.name }}
+                        </div>
+                        <a class="btn btn-primary" role="button" @click="addProduct(product)">+</a>
+                    </div>
+                </div>
+            </div> -->
+
+
+
+        </div>
     </div>
-
-
-  </div>
 </template>
+
+<style lang="scss" scoped>
+/* Immagine profilo Ristorante */
+
+.product_image_restaurant,
+.hero_restaurant {
+    object-fit: cover;
+    object-position: center center;
+}
+
+.hero_restaurant {
+    width: 100%;
+    height: 500px;
+}
+
+/* Questo è il titolo del ristorante */
+.restaurant_title {
+    font-size: 40px;
+    color:black;
+    margin-top:1rem;
+}
+
+/* Questa è la singola card */
+.product_restaurant {
+    width: 300px;
+    margin-left: 15px;
+    height: 500px;
+    border-radius: 25px;
+    color: #fff;
+    border: 0.5px solid rgb(10, 10, 10);
+    box-shadow: 0 0 10px solid rgb(10, 10, 10);
+}
+
+.bordo_visibile {
+    border: 2px solid black;
+}
+
+.flex_start_restaurant {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.flex_end_restaurant {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+/* Immagine del singolo prodotto */
+.product_image_restaurant {
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+</style>
+
 
 <script>
 export default {
@@ -204,4 +292,5 @@ export default {
 }
 
 </script>
+
 

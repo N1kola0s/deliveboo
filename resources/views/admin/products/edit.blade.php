@@ -89,8 +89,8 @@
                     </span>
                     @enderror
                 </div>
-                <!-- Button aggiungi prodotto -->
-                <button type="submit" class="btn btn-primary button">Aggiungi Prodotto</button>
+                <!-- Button Edita prodotto -->
+                <button type="submit" class="btn btn-primary button">Edita Prodotto</button>
             </div>
         </div>
     </form>
