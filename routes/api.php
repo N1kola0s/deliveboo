@@ -22,7 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 
-Route::namespace('API')->group( function () {
+Route::namespace('API')->group(function () {
     // rotta ristoranti
     Route::get('/restaurants', 'UserController@index');
 
@@ -34,8 +34,10 @@ Route::namespace('API')->group( function () {
     // rotta menu ristorante
     Route::get('/{restaurant:slug}', 'UserController@show');
 
-     // rotta checkout
-     Route::get('/checkout/{restaurant:slug}', 'UserController@show');
+    // rotta checkout
+    Route::get('/checkout/{restaurant:slug}', 'UserController@show');
+
+    Route::get('/orders/generate', 'OrderController@generate');
+
+    Route::post('/orders/make/payment', 'OrderController@makePayment');
 });
-
-
