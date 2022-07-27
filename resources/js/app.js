@@ -10,6 +10,10 @@ window.Vue = require('vue');
 
 import App from './views/App';
 import router from './router';
+import Vue from 'vue'
+import vuebraintree from "vue-braintree";
+Vue.use(vuebraintree);
+
 
 /**
  * The following block of code may be used to automatically register your
