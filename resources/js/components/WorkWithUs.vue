@@ -17,10 +17,10 @@
 
             <div class="cooperation d-flex justify-content-center my-4">
 
-                <div class="row row-cols-md-2 gx-5">
-
-                    <div class="col-md-6">
-                        <div class="card" style="width: 25rem;">
+                <div class="row gy-5 gx-5">
+                    
+                    <div class="col col-12 col-md-6">
+                        <div class="card" style="max-width: 30rem;">
                         <img src="../../img/rider01.png" class="card-img-top" alt="lavora con noi come rider">
                         <div class="card-body text-center">
                             <h4 class="card-title">Driver</h4>
@@ -31,8 +31,8 @@
                     </div>
                     <!-- /.col -->
 
-                    <div class="col-md-6">
-                        <div class="card" style="width: 25rem;">
+                    <div class="col col-12 col-md-6">
+                        <div class="card" style="max-width: 30rem;">
                         <img src="../../img/consegna_attivita01.png" class="card-img-top" alt="lavora con noi come attività">
                         <div class="card-body text-center">
                             <h4 class="card-title">Attività</h4>
@@ -48,9 +48,6 @@
             </div>
             <!-- /.cooperation -->
 
-        <!-- <p class="lead">
-                <a class="btn btn-danger text-white btn-lg" href="Jumbo action link" role="button">Scopri di più</a>
-            </p> -->
         </div>
         <!-- /.container -->
 
@@ -104,3 +101,4 @@
     }
     
 </style>
+
