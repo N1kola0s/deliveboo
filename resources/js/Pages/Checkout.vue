@@ -256,16 +256,16 @@ export default {
       }
     },
 
-    buy() {
-      axios.post("api/orders/make/payment", { form: this.form })
+    async buy() {
+      /* console.log(this.form) */
+      await axios.post("http://127.0.0.1:8000/api/orders/make/payment", { ...this.form })
         .then((response) => {
           console.log("Successfully uploaded: ", response);
+          localStorage.removeItem(this.restaurantId);
         })
         .catch((err) => {
           console.error("error occurred: ", err);
         });
-
-
     }
 
   },
