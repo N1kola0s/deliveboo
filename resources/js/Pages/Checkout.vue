@@ -6,59 +6,129 @@
         <h1 class="py-3">
           CHECKOUT PAGAMENTO ristorante con id {{ restaurantId }}
         </h1>
-        <div class="row justify-content-center">
-          <div
-            class="col-7 py-2"
-            v-for="(product, index) in restaurantCart"
-            :key="index"
-          >
-            {{ product.name }} - € {{ product.price }} - qty:
-            {{ product.quantity }} - total: € {{ product.total }}
-          </div>
 
-          <div
-            v-show="totalPriceCart != 0"
-            class="col-7 total-price-cart border-top py-2"
-          >
-            Totale: € {{ totalPriceCart }}
+
+        <!-- FORM GUEST -->
+
+        <!-- DATI GUEST PER L'ACQUISTO -->
+        <div class="form_guest">
+          <!-- guest name -->
+          <div class="mb-3 row">
+            <label for="guest_name" class="col-md-4 col-form-label text-md-right">Nome<span
+                class="text-primary">*</span></label>
+
+            <div class="col-md-6">
+              <input v-model="form.guest_name"
+                onkeypress="return (event.charCode >= 60 || event.charCode == 8 || event.charCode == 32)"
+                id="guest_name" type="text" class="form-control" name="guest_name"
+                placeholder="Inserisci il tuo cognome" required autocomplete="guest_name" autofocus>
+            </div>
+          </div>
+          <!-- guest surname -->
+          <div class="mb-3 row">
+            <label for="guest_surname" class="col-md-4 col-form-label text-md-right">Cognome<span
+                class="text-primary">*</span></label>
+
+            <div class="col-md-6">
+              <input v-model="form.guest_surname"
+                onkeypress="return (event.charCode >= 60 || event.charCode == 8 || event.charCode == 32)"
+                id="guest_surname" type="text" class="form-control" name="guest_surname"
+                placeholder="Inserisci il tuo cognome" required autocomplete="guest_surname" autofocus>
+            </div>
+          </div>
+          <!-- guest phone number -->
+          <div class="mb-3 row">
+            <label for="guest_phone_number" class="col-md-4 col-form-label text-md-right">Numero di Telefono <span
+                class="text-primary">*</span></label>
+
+            <div class="col-md-6">
+              <input v-model="form.guest_phone_number" id="guest_phone_number"
+                onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
+                type="text" class="form-control" name="guest_phone_number" placeholder="33433333333" required
+                autocomplete="guest_phone_number" minlength="10" maxlength="10" autofocus>
+            </div>
+          </div>
+          <!-- guest e-mail -->
+          <div class="mb-3 row">
+            <label for="guest_email" class="col-md-4 col-form-label text-md-right">E-mail<span
+                class="text-primary">*</span></label>
+
+            <div class="col-md-6">
+              <input v-model="form.guest_email" id="guest_email" type="guest_email" class="form-control"
+                name="guest_email" placeholder="email@gmail.com" required autocomplete="guest_email">
+            </div>
+          </div>
+          <!-- guest city -->
+          <div class="mb-3 row">
+            <label for="city" class="col-md-4 col-form-label text-md-right">Città</label>
+
+            <div class="col-md-6">
+              <input id="city" type="text" class="form-control" name="city" value="Milano" autocomplete="city" autofocus
+                disabled>
+            </div>
+          </div>
+          <!-- guest zip code -->
+          <div class="mb-3 row">
+            <label for="guest_zip_code" class="col-md-4 col-form-label text-md-right">Cap<span
+                class="text-primary">*</span></label>
+
+            <div class="col-md-6">
+              <input v-model="form.guest_zip_code" id="guest_zip_code" type="text"
+                onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
+                size="5" class="form-control" name="guest_zip_code" placeholder="52100" required
+                autocomplete="guest_zip_code" minlength="5" maxlength="5" autofocus>
+            </div>
+          </div>
+          <!-- guest address -->
+          <div class="mb-3 row">
+            <label for="guest_address" class="col-md-4 col-form-label text-md-right">Indirizzo <span
+                class="text-primary">*</span></label>
+
+            <div class="col-md-6">
+              <input v-model="form.guest_address" id="guest_address" type="text" class="form-control"
+                name="guest_address" placeholder="Via Taldetali, 22" required autocomplete="guest_address" autofocus>
+            </div>
+          </div>
+          <!-- guest Note -->
+          <div class="mb-3 row">
+            <label for="guest_note" class="col-md-4 col-form-label text-md-right">Note</label>
+            <div class="col-md-6">
+              <textarea v-model="form.note" class="form-control" placeholder="Inserisci delle info utiili per il rider"
+                name="guest_note" id="guest_note" rows="4" required></textarea>
+            </div>
           </div>
         </div>
 
-        <!-- componente braintree -->
-        <div class="col-4">
-          <v-braintree
-            locale="it_IT"
-            :vaultManager="true"
-            :authorization="tokenApi"
-            @success="onSuccess"
-            @error="onError"
-            @load="onLoad"
-          >
-            <!-- bottone custom -->
-            <template v-slot:button="slotProps">
-              <v-btn class="submit" @click="slotProps.submit">
-                <svg
-                  height="24"
-                  width="24"
-                  viewBox="0 0 24 24"
-                  class="ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205"
-                >
-                  <path
-                    d="M18 9H20V21H4V9H6C6 5.69158 8.69158 3 12 3C15.3084 3 18 5.69158 18 9ZM6 19H18V11H6V19ZM8 9H16C16 6.79442 14.2056 5 12 5C9.79442 5 8 6.79442 8 9ZM11.5 16V14H12.5V16H11.5Z"
-                  ></path>
-                </svg>
-                Ordina per la consegna
-              </v-btn>
-            </template>
-          </v-braintree>
+
+
+        <div class="row row-cols-1 row-cols-md-2">
+          <!-- CARRELLO -->
+          <div class="col py-2">
+            <div class="card-body" v-for="(product, index) in restaurantCart" :key="index">
+              {{ product.name }} - € {{ product.price }} - qty:
+              {{ product.quantity }} - total: € {{ product.total }}
+            </div>
+            <div v-show="totalPriceCart != 0" class="col-7 total-price-cart border-top py-2">
+              Totale: € {{ totalPriceCart }}
+            </div>
+          </div>
+
+
+
+          <!-- componente braintree -->
+          <div class="col d-flex justify-content-center">
+            <v-braintree locale="it_IT" :vaultManager="true" :authorization=tokenApi @success="onSuccess"
+              @error="onError" @load="onLoad">
+
+
+            </v-braintree>
+          </div>
         </div>
 
-        {{form}}
 
-        <!-- errore -->
-        <p v-if="error">
-          {{ error }}
-        </p>
+        {{ form }}
+
+
       </div>
     </div>
   </div>
@@ -72,27 +142,45 @@ export default {
 
   data() {
     return {
+      tokenApi: "",
       restaurantId: "",
       restaurantCart: "",
       totalPriceCart: 0,
-      tokenApi: "",
       loader: true,
       disableBuyButton: true,
       loadingPayment: true,
       form: {
         token: '',
-        product: ''
+        restaurantId: '',
+        products: [],
+        guest_name: '',
+        guest_surname: '',
+        guest_phone_number: '',
+        guest_email: '',
+        guest_city: 'Milano',
+        guest_zip_code: '',
+        guest_address: '',
+        note: '',
+        total_price: '',
+        status: 'false',
       }
     };
   },
 
+  mounted() {
+    this.generateKey();
+    this.getRestaurant();
+  },
+
   methods: {
+
     getRestaurant() {
       axios
         .get("/api/checkout/" + this.$route.params.slug)
         .then((response) => {
-          console.log(response);
+          /* console.log(response); */
           this.restaurantId = response.data.id;
+          this.form.restaurantId = response.data.id;
           this.cartLocalStorage();
         })
         .catch((e) => {
@@ -102,8 +190,12 @@ export default {
 
     // RIPRENDO I DATI DALLO STORAGE
     cartLocalStorage() {
-      this.restaurantCart = JSON.parse(localStorage.getItem(this.restaurantId));
+      let cart = JSON.parse(localStorage.getItem(this.restaurantId));
+      this.restaurantCart = cart
+
       this.getTotalPrice();
+      this.getFormData(cart)
+
     },
 
     getTotalPrice() {
@@ -111,15 +203,27 @@ export default {
       this.restaurantCart.forEach((element) => {
         priceNotRounded += element.total;
       });
-
+      this.form.total_price = priceNotRounded.toFixed(2);
       this.totalPriceCart = priceNotRounded.toFixed(2);
     },
+
+
+    getFormData(products) {
+      products.forEach(product => {
+        this.form.products.push({
+          product_id: product.id,
+          quantity: product.quantity,
+        })
+      })
+    },
+
+
     async generateKey() {
       await axios
         .get("http://127.0.0.1:8000/api/orders/generate")
         .then((res) => {
           this.tokenApi = res.data.token;
-          console.log(this.tokenApi);
+          /* console.log(this.tokenApi); */
           (this.loader = false), (this.loadingPayment = true);
         })
         .catch((err) => {
@@ -128,15 +232,21 @@ export default {
     },
 
     onLoad() {
-      alert("sta caricando");
+      /* alert("sta caricando"); */
       this.disableBuyButton = false;
     },
 
     onSuccess(payload) {
+
       let token = payload.nonce;
+      this.form.token = token;
       this.loader = false;
+
+      this.buy()
+
       // Do something great with the nonce...
     },
+
     onError(error) {
       let message = error.message;
       if (message === "No payment method is available.") {
@@ -145,35 +255,22 @@ export default {
         this.error = message;
       }
     },
-    paymentOnSuccess (nonce) {
-      // alert(nonce);
-      this.form.token = nonce
-      this.buy()
-    },
-    // eslint-disable-next-line node/handle-callback-err
-    paymentOnError (error) {
-    },
 
-    async buy () {
-      this.disableBuyButton = true
-      this.loadingPayment = true
-      try {
-        await axios
-        .post('/api/orders/make/payment', { ...this.form })
-        this.$router.push({ path: '/checkout/thankyou' })
-      } catch (error) {
-        this.disableBuyButton = false
-        this.loadingPayment = false
-      }
+    buy() {
+      axios.post("api/orders/make/payment", { form: this.form })
+        .then((response) => {
+          console.log("Successfully uploaded: ", response);
+        })
+        .catch((err) => {
+          console.error("error occurred: ", err);
+        });
+
+
     }
 
   },
 
-  mounted() {
-    this.generateKey();
-    this.getRestaurant();
-    this.form.product = this.restaurantId
-  },
+
 };
 </script>
 
@@ -181,14 +278,19 @@ export default {
 .submit {
   text-transform: lowercase;
   align-items: center;
+  margin-bottom: 10px;
+  padding: 5px 10px;
   width: 100%;
-  background-color: greenyellow;
+  background-color: green;
   color: #fff;
+
   svg {
     fill: currentColor;
     width: 20px;
     height: 20px;
     margin-right: 8px;
   }
+
+
 }
 </style>

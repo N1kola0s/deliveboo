@@ -10,6 +10,13 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- includes the Braintree JS client SDK -->
+<script src="https://js.braintreegateway.com/web/dropin/1.33.2/js/dropin.min.js"></script>
+
+<!-- includes jQuery -->
+<script src="http://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script>
