@@ -19,7 +19,7 @@
                 <div class="col-9 flex_start_restaurant gx-1 m-0 h-100 flex-wrap">
                     <!-- Questo è quello da ciclare -->
                     <!-- /.product_restaurant -->
-                    <div class="product_restaurant col-auto" v-for="product in restaurant.products" :key="product.id">
+                    <div :class="(product.visibility) ? '' : 'd-none'" class="product_restaurant col-auto" v-for="product in restaurant.products" :key="product.id">
                         <!-- Immagine del piatto -->
                         <div class="col-12 h-50 p-0">
                             <img class="product_image_restaurant" :src="product.cover_img.includes('uploads') ? '/storage/' + product.cover_img : product.cover_img" :alt="product.name">
