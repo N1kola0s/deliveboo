@@ -8,12 +8,12 @@
 
       <div class="row justify-content-center">
 
-        <div class="col-2">
+        <div class="col col-6 col-md-4 col-lg-2">
 
-            <div class="py-3">Categories</div>
+            <h5 class="categ_title pb-3 text-uppercase">Categorie</h5>
 
           <!-- TYPES -->
-          <div class="label-div">
+          <div class="categ_list label-div">
             
 
             <div class="p-2" v-for="(type, index) in types" :key="index">
@@ -26,27 +26,45 @@
 
         </div>
 
-        <div class="col-10">
+        <div class="col col-6 col-md-8 col-lg-10">
 
           <!-- RISTORANTI FILTRATI -->
           <div v-if="checkedTypes.length != 0" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
-            <div class="col food_card rounded-3" v-for="restaurant in filteredRestaurants" :key="restaurant.id">
-              <router-link :to="{ name: 'restaurant', params: { 'slug': restaurant.slug } }" class="restaurant">
-                <img class="img-fluid rounded-3"
-                  :src="restaurant.cover_img.includes('uploads') ? '/storage/' + restaurant.cover_img : restaurant.cover_img"
-                  :alt="restaurant.business_name">
-              </router-link>
+            <div class="col" v-for="restaurant in filteredRestaurants" :key="restaurant.id">
+              <div class="card">
+
+                <router-link :to="{ name: 'restaurant', params: { 'slug': restaurant.slug } }" class="restaurant">
+                  <img class="card-img-top"
+                    :src="restaurant.cover_img.includes('uploads') ? '/storage/' + restaurant.cover_img : restaurant.cover_img"
+                    :alt="restaurant.business_name">
+
+                </router-link>
+                  <div class="card-body">
+                    <h5 class="card-title text-uppercase text-center">
+                      {{restaurant.business_name}}
+                    </h5>
+                  </div>
+              </div>
             </div>
 
           </div>
           <!-- RISTORANTI PRIMA CHIAMATA -->
           <div v-else class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
-            <div class="col food_card rounded-3" v-for="restaurant in restaurantsResponse.data" :key="restaurant.id">
-              <router-link :to="{ name: 'restaurant', params: { 'slug': restaurant.slug } }" class="restaurant">
-                <img class="img-fluid rounded-3"
-                  :src="restaurant.cover_img.includes('uploads') ? '/storage/' + restaurant.cover_img : restaurant.cover_img"
-                  :alt="restaurant.business_name">
-              </router-link>
+            <div class="col" v-for="restaurant in restaurantsResponse.data" :key="restaurant.id">
+              <div class="card">
+
+                <router-link :to="{ name: 'restaurant', params: { 'slug': restaurant.slug } }" class="restaurant">
+                  <img class="card-img-top"
+                    :src="restaurant.cover_img.includes('uploads') ? '/storage/' + restaurant.cover_img : restaurant.cover_img"
+                    :alt="restaurant.business_name">
+
+                </router-link>
+                  <div class="card-body text-center">
+                    <h5 class="card-title text-uppercase">
+                      {{restaurant.business_name}}
+                    </h5>
+                  </div>
+              </div>
             </div>
           </div>
 
@@ -209,16 +227,49 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+ @import 'resources/sass/_variables';
 
-.food_card{
-  height: 200px;
+ .categ_title, .categ_list{
+  color:$text_primary;
+ }
+
+ .categ_list{
+  font-size: 1rem;
+ }
+
+ .categ_title{
+  font-weight: 600;
+ }
+
+.card{
+  border:none;
+  aspect-ratio: 2/1;
+  
+  .card-img-top{
+    max-width:18rem;
+    height: 10rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 50%); 
+    
+
+  }
+
+  .card-img-top:hover{
+    border-radius:25px;
+    outline: transparent solid 4px;
+    transition-delay: 0.1s;
+  }
+
+  .card-body{
+    
+      h5{
+        font-weight: 600;
+        font-size: 1rem;
+        color:$text_primary;
+      }    
+  }
 }
 
-.food_card img{
-  height: 100%;
-  width: 100%;
-}
 
 </style>
-

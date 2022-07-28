@@ -128,7 +128,7 @@
 
 .flex_start_restaurant {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
 }
 
