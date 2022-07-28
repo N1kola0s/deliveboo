@@ -45,8 +45,6 @@ class OrderController extends Controller
         $new_order->total_price = $request->total_price;
         $new_order->status = 1;
 
-        
-
         $new_order->save();
      
 
@@ -54,6 +52,29 @@ class OrderController extends Controller
             $new_order->products()->attach($product['product_id'], ['quantity' => $product["quantity"]]);
         }
         
+        // GENERATE SECOND KEY
+        $result = $gateway->transaction()->sale([
+            "amount" =>  "$request->total_price",
+            "paymentMethodNonce" => $request->token,
+            "options" => [
+                "submitForSettlement" => true,
+            ]
+        ]);
         
+
+        if($result->success){
+            $data = [
+                "success" => true,
+                "message" => "Transazione avvenuta con successo",
+            ];
+
+            return response()->json($data,200);
+        }else{
+            $data = [
+                "success" => false,
+                "message" => "Transazione negata"
+            ];
+            return response()->json($data,401);
+        };
     }
 }
