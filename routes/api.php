@@ -40,4 +40,6 @@ Route::namespace('API')->group(function () {
     Route::get('/orders/generate', 'OrderController@generate');
 
     Route::post('/orders/make/payment', 'OrderController@makePayment');
+
+    Route::get('/checkout/{restaurant:slug}/thankyou', 'OrderController@thankYou');
 });
