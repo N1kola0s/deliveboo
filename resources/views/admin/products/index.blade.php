@@ -53,6 +53,8 @@
                         <p class="mb-0"><span class="strong">Prezzo : </span> {{$product->price}} € </p>
                         <!-- ID piatto -->
                         <p class="mb-0"><span class="strong">ID : </span> {{$product->id}} </p>
+                         <!-- Visibility  -->
+                         <p class="mb-0"><span class="strong">Visibilità : </span>  {{ ($product->visibility) ? "Visibile" : "Non Visibile" }} </p>
                     </div>
                 </div>
                 <!-- Buttons goes here -->
