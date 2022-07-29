@@ -14,56 +14,84 @@
 
         <!-- SEZIONE MENU CARRELLO -->
         <div class="container menu-carrello py-4">
-            <div class="row h-100 p-0 m-0">
+            <div class="row row-cols-2">
                 <!-- Lista di piatti -->
-                <div class="col-9 flex_start_restaurant gx-1 m-0 h-100 flex-wrap">
-                    <!-- Questo è quello da ciclare -->
-                    <!-- /.product_restaurant -->
-                    <div :class="(product.visibility) ? '' : 'd-none'" class="product_restaurant col-auto" v-for="product in restaurant.products" :key="product.id">
-                        <!-- Immagine del piatto -->
-                        <div class="col-12 h-50 p-0">
-                            <img class="product_image_restaurant" :src="product.cover_img.includes('uploads') ? '/storage/' + product.cover_img : product.cover_img" :alt="product.name">
+                <div class="col col-12 col-lg-7 col-xl-9 m-0 flex-wrap">
+
+                  <div class="row">
+
+                    <div :class="(product.visibility) ? '' : 'd-none'" class="col col-12 col-sm-6 col-xl-4 mb-4" v-for="product in restaurant.products" :key="product.id">
+
+                      <div class="card product-card shadow border-0">
+                        <img class="card-img-top product_img" :src="product.cover_img.includes('uploads') ? '/storage/' + product.cover_img : product.cover_img" :alt="product.name">
+                        <div class="card-body">
+                          <h4 class="card-title">{{product.name}}</h4>
+                          <p class="card-text">{{product.description}}</p>
                         </div>
-                        <!-- Descrizione del piatto -->
-                        <div class="col-12 h-25 p-0">
-                            <!-- Nome piatto -->
-                            <h4 class="text-black mb-0 p-1">{{product.name}}</h4>
-                            <!-- Prezzo -->
-                            <p class="text-black p-1 mb-0">Prezzo : {{product.price}} €</p>
-                            <!-- Descrizione -->
-                            <p class="text-black p-1 mb-0">Descrizione : {{product.description}}</p>
+
+                        <div class="p-3 pb-4 row">
+
+                          <div class="col-6">
+                            <a class="btn btn-primary text-white rounded-pill" role="button" @click="addProduct(product)">Aggiungi</a>
+                          </div>
+                          <div class="col-6 text-end">
+                            <h3>€ {{product.price}}</h3>
+                          </div>
+
                         </div>
-                        <!-- Button per aggiungi al carrello -->
-                        <div class="col-12 h-25 flex_end_restaurant pb-3 p-0">
-                            <a class="btn btn-primary" role="button" @click="addProduct(product)">Aggiungi</a>
-                        </div>
+
+                      </div>
+
                     </div>
+
+                  </div>
+                    
+
                 </div>
                 <!-- Carrello laterale -->
-                <div class="col-3 bordo_visibile">
+                <div class="col col-12 col-lg-5 col-xl-3">
                     <!-- Card del carrello -->
-                    <div class="card">
+                    <div class="card border-0 p-4 shadow">
                         <!-- Titolo del carrello -->
-                        <h3>CARRELLO</h3>
+                        <h3 class="pb-3">CARRELLO</h3>
                         <!-- Carrello -->
                         <div class="container-fluid">
                             <!-- Row -->
-                            <div class="row row-cols-1">
-                                <div class="col" v-for="(product, index) in cart.products" :key="index">
-                                    {{ product.name }} - € {{ product.price }} - qty: {{ product.quantity }} - total: € {{ product.total }}
-                                    <button class="py-2" @click="removeQty(product)">-</button>
-                                    <button class="py-2" @click="addQty(product)">+</button>
+                            <div class="row align-items-center" v-for="(product, index) in cart.products" :key="index">
+                                <div class="col-12 pb-2" >
+
+                                  <h6>{{ product.name }} </h6>
+                                    
                                 </div>
+                                    
+                                <div class="col-6 d-flex align-items-center">
+
+                                  <button style="font-size: 16px;" class="px-2 py-0 btn btn-sm btn-outline-primary rounded-circle me-2" @click="removeQty(product)">-</button>
+                                  {{ product.quantity }}
+                                  <button style="font-size: 16px;" class="btn btn-sm py-0 px-2 btn-outline-primary rounded-circle ms-2" @click="addQty(product)">+</button>
+
+                                </div>
+
+                                <div class="col-6">
+                                  € {{ product.total }}
+                                </div>
+                                <!-- Linea separazione -->
+                                <hr class="my-3">
+
                             </div>
-                            <!-- Linea separazione -->
-                            <hr>
+                            
+                            
                             <!-- Prezzo Prodotto -->
-                            <div v-show="totalPriceCart > 0" class="total-price-cart">
-                                Totale: € {{ totalPriceCart }}
+                            <div v-show="totalPriceCart > 0" class="total-price-cart row pb-3">
+
+                              <div class="col"><h6>Totale:</h6> </div>
+                              <div class="col">€ {{ totalPriceCart }}</div>
+                                 
                             </div>
                             <!-- LINK AL PAGAMENTO -->
                             <router-link :to="{ name: 'checkout', params: { 'slug': restaurant.slug } }" class="restaurant">
-                                Vai al Pagamento
+                              <button class="btn btn-primary btn-lg text-white">Vai al Pagamento</button>
+                                
                             </router-link>
                         </div>
                     </div>
@@ -91,6 +119,7 @@
 </template>
 
 <style lang="scss" scoped>
+
 /* Immagine profilo Ristorante */
 
 .product_image_restaurant,
@@ -112,14 +141,11 @@
 }
 
 /* Questa è la singola card */
-.product_restaurant {
-    width: 300px;
-    margin-left: 15px;
-    height: 500px;
-    border-radius: 25px;
-    color: #fff;
-    border: 0.5px solid rgb(10, 10, 10);
-    box-shadow: 0 0 10px solid rgb(10, 10, 10);
+
+.product-card{
+  height: 488px;
+  border-radius: 25px;
+
 }
 
 .bordo_visibile {
@@ -139,11 +165,12 @@
 }
 
 /* Immagine del singolo prodotto */
-.product_image_restaurant {
-    width: 100%;
-    height: 100%;
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
+.product_img{
+  width: 100%;
+  height: 250px;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  object-fit: cover;
 }
 
 </style>
