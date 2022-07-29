@@ -1,7 +1,23 @@
+/* Titoli */
+h6 {
+    font-weight: 700;
+}
+
+.card_admin {
+    height: fit-content;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 50%);
+}
+
+.card-header {
+    background-color: #313A46 !important;
+    padding: 0;
+}
+
+
 .container {
     .plate_details {
         .row {
-            .col-12 {
+            .col-6 {
                 .cover_image {
                     img {
                         height: 350px;
@@ -16,10 +32,10 @@
                     min-height: 200px;
                     box-shadow: 0 2px 4px 0 rgb(0 0 0 / 50%);
                     .card-header {
-                        background-color: transparent;
+                        background-color: #313A46 !important;
                     }
                     h6 {
-                        font-weight: bold;
+                        font-weight: bolder;
                     }
                 }
             }

@@ -36,8 +36,9 @@ body {
     }
 }
 
-
-
+.img_admin_locale {
+    height: 450px;
+}
 
 #app {
     /* Background header */
@@ -57,14 +58,21 @@ body {
 
 /* .bordo_miseria {
     border: 3px solid red;
-} */
-
+}
+ */
 .analitics_img {
     width: 125px;
     height: 125px;
     object-fit: contain;
 }
 
+.card_info_home {
+    height: fit-content;
+}
+
+.card_analitics_img_admin {
+    height: 400px;
+}
 
 main {
     background-color: $bg_light;

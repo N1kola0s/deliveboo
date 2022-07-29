@@ -2,21 +2,15 @@
     color: $text_primary;
 
     .resturant-img{
-        height: 300px;
+        height: 400px;
         width: 100%;
         object-fit: cover;
-    }
-
-    .card-header{
-        background-color: $bg_orange !important;
     }
 
     .analythics{
         @media screen and (max-width: 400px) {
             margin-top: 2rem;
-            
         }
-
     }
 
 }

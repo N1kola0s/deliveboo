@@ -6,22 +6,17 @@
 
     {{-- resturant card --}}
 
-    <div class="row justify-content-center rounded-3">
+    <div class="row d-flex justify-content-between rounded-3">
         <!-- Immagine dell'account utente -->
-        <div class="col-12 px-0 box-shadow">
+        <div class="col-6 px-0 d-flex justify-content-start align-items-center box-shadow">
             @if(str_contains($user[0]->cover_img, '/img/'))
-                <img class="img-fluid resturant-img rounded-3" src="{{$user[0]->cover_img}}" alt="{{$user[0]->name}}">
+                <img class="resturant-img p-0 rounded-3" src="{{$user[0]->cover_img}}" alt="{{$user[0]->name}}">
             @else
-                <img class="img-fluid resturant-img rounded-3" src="{{asset('storage/' . $user[0]->cover_img)}}" alt="{{$user[0]->name}}">
+                <img class="resturant-img p-0 rounded-3" src="{{asset('storage/' . $user[0]->cover_img)}}" alt="{{$user[0]->name}}">
             @endif
         </div>
-    </div>
-
-
-    <div class="row my-4">
-
-        {{-- user card --}}
-        <div class="col me-3 rounded-3 shadow">
+        <!-- Dati utente -->
+        <div class="col-5 shadow card_info_home">
             <div class="row justify-content-center">
                 <!-- Intestazione utente -->
                 <div class="user_card_admin p-2 text-white">
@@ -32,10 +27,10 @@
                     <img class="img-fluid rounded-circle" src="{{asset('img/avatar_5.jpg')}}" alt="">
                 </div>
                 <!-- Dati Utente -->
-                <div class="col-10">
+                <div class="col-10 card_info_home">
                     <div class="card-body">
                         <h3 class="card-title">{{ucfirst($user[0]->name)}} {{ucfirst($user[0]->surname)}}</h3>
-                        <h4 class="card-title">{{$user[0]->business_name}}</h4>
+                        <h5 class="card-title">{{$user[0]->business_name}}</h5>
                         <address class="text-muted mb-1">{{$user[0]->city}}, {{$user[0]->address}}, {{$user[0]->zip_code}}</address>
                         <address class="text-muted mb-1">Tel : {{$user[0]->telephone_number}}</address>
                         <address class="text-muted mb-1">P.IVA : IT{{$user[0]->vat_number}}</address>
@@ -43,9 +38,12 @@
                 </div>
             </div>
         </div>
+    </div>
 
+
+    <div class="row my-4">
         <!-- Sezione del grafico -->
-        <div class="col p-0 rounded-3 shadow analythics">
+        <div class="col-12 card_analitics_img_admin p-0 rounded-3 shadow">
             <!-- Intestazione della colonna -->
             <div class="user_card_admin p-2 mb-2 text-white">
                 Analythics
