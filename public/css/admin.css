@@ -10404,27 +10404,56 @@ select:focus {
 
 html,
 body {
-  background-color: #fff;
   color: #636b6f;
   font-family: "Poppins", sans-serif;
   font-weight: 200;
   height: 100vh;
   margin: 0;
 }
-html .navbar,
-body .navbar {
-  background-color: rgb(255, 115, 0) !important;
+
+.navbar {
+  /* Immagine avatar */
 }
-html .navbar .user_avatar,
-body .navbar .user_avatar {
+.navbar .user_avatar {
   width: 45px;
   border-radius: 50%;
 }
 @media screen and (max-width: 768px) {
-  html .navbar .nav-logo,
-body .navbar .nav-logo {
+  .navbar .nav-logo {
     display: none !important;
   }
+}
+.navbar .navbar-brand > img {
+  width: 100px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+#app {
+  /* Background header */
+  /* Background aside laterale */
+}
+#app header {
+  background-color: #fff !important;
+}
+#app #sidebarMenu {
+  background-color: #313A46 !important;
+  /* Hover sui link */
+}
+#app #sidebarMenu .nav-link:hover {
+  background-color: #fff !important;
+  color: black;
+}
+
+/* .bordo_miseria {
+    border: 3px solid red;
+} */
+.analitics_img {
+  width: 125px;
+  height: 125px;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 main {
@@ -10469,6 +10498,14 @@ main {
   text-transform: uppercase;
 }
 
+.links > a:hover {
+  background-color: yellow;
+}
+
 .m-b-md {
   margin-bottom: 30px;
+}
+
+.user_card_admin {
+  background-color: #313A46;
 }
