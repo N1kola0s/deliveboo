@@ -66,9 +66,9 @@
                     Deliveboo
                     {{-- {{ config('app.name', 'Laravel') }} --}}
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
@@ -94,12 +94,23 @@
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                                 {{ ucfirst(Auth::user()->name) }}
                             </a>
+
+
+                            <div class="dropdown-menu dropdown-menu-right border-0" aria-labelledby="navbarDropdown">
+
+                                <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
+                                    Dashboard Admin
+                                </a>
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+
                             <!-- Menu Dropdown -->
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <!-- Link alla Dashboard -->
                                 <a class="dropdown-item" href="{{ route('admin.dashboard') }}">Dashboard Admin</a>
                                 <!-- Link al logout -->
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+
                                     {{ __('Logout') }}
                                 </a>
                                 <!-- Form con token sicurezza -->
@@ -113,7 +124,6 @@
                 </div>
             </div>
         </nav>
-
 
             @yield('content')
 
