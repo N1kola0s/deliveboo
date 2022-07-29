@@ -6045,34 +6045,36 @@ var render = function render() {
   })])]), _vm._v(" "), _c("div", {
     staticClass: "container menu-carrello py-4"
   }, [_c("div", {
-    staticClass: "row h-100 p-0 m-0"
+    staticClass: "row row-cols-2"
   }, [_c("div", {
-    staticClass: "col-9 flex_start_restaurant gx-1 m-0 h-100 flex-wrap"
+    staticClass: "col col-12 col-lg-7 col-xl-9 m-0 flex-wrap"
+  }, [_c("div", {
+    staticClass: "row"
   }, _vm._l(_vm.restaurant.products, function (product) {
     return _c("div", {
       key: product.id,
-      staticClass: "product_restaurant col-auto",
+      staticClass: "col col-12 col-sm-6 col-xl-4 mb-4",
       "class": product.visibility ? "" : "d-none"
     }, [_c("div", {
-      staticClass: "col-12 h-50 p-0"
+      staticClass: "card product-card shadow border-0"
     }, [_c("img", {
-      staticClass: "product_image_restaurant",
+      staticClass: "card-img-top product_img",
       attrs: {
         src: product.cover_img.includes("uploads") ? "/storage/" + product.cover_img : product.cover_img,
         alt: product.name
       }
-    })]), _vm._v(" "), _c("div", {
-      staticClass: "col-12 h-25 p-0"
+    }), _vm._v(" "), _c("div", {
+      staticClass: "card-body"
     }, [_c("h4", {
-      staticClass: "text-black mb-0 p-1"
+      staticClass: "card-title"
     }, [_vm._v(_vm._s(product.name))]), _vm._v(" "), _c("p", {
-      staticClass: "text-black p-1 mb-0"
-    }, [_vm._v("Prezzo : " + _vm._s(product.price) + " €")]), _vm._v(" "), _c("p", {
-      staticClass: "text-black p-1 mb-0"
-    }, [_vm._v("Descrizione : " + _vm._s(product.description))])]), _vm._v(" "), _c("div", {
-      staticClass: "col-12 h-25 flex_end_restaurant pb-3 p-0"
+      staticClass: "card-text"
+    }, [_vm._v(_vm._s(product.description))])]), _vm._v(" "), _c("div", {
+      staticClass: "p-3 pb-4 row"
+    }, [_c("div", {
+      staticClass: "col-6"
     }, [_c("a", {
-      staticClass: "btn btn-primary",
+      staticClass: "btn btn-primary text-white rounded-pill",
       attrs: {
         role: "button"
       },
@@ -6081,43 +6083,61 @@ var render = function render() {
           return _vm.addProduct(product);
         }
       }
-    }, [_vm._v("Aggiungi")])])]);
-  }), 0), _vm._v(" "), _c("div", {
-    staticClass: "col-3 bordo_visibile"
+    }, [_vm._v("Aggiungi")])]), _vm._v(" "), _c("div", {
+      staticClass: "col-6 text-end"
+    }, [_c("h3", [_vm._v("€ " + _vm._s(product.price))])])])])]);
+  }), 0)]), _vm._v(" "), _c("div", {
+    staticClass: "col col-12 col-lg-5 col-xl-3"
   }, [_c("div", {
-    staticClass: "card"
-  }, [_c("h3", [_vm._v("CARRELLO")]), _vm._v(" "), _c("div", {
+    staticClass: "card border-0 p-4 shadow"
+  }, [_c("h3", {
+    staticClass: "pb-3"
+  }, [_vm._v("CARRELLO")]), _vm._v(" "), _c("div", {
     staticClass: "container-fluid"
-  }, [_c("div", {
-    staticClass: "row row-cols-1"
-  }, _vm._l(_vm.cart.products, function (product, index) {
+  }, [_vm._l(_vm.cart.products, function (product, index) {
     return _c("div", {
       key: index,
-      staticClass: "col"
-    }, [_vm._v("\n                                " + _vm._s(product.name) + " - € " + _vm._s(product.price) + " - qty: " + _vm._s(product.quantity) + " - total: € " + _vm._s(product.total) + "\n                                "), _c("button", {
-      staticClass: "py-2",
+      staticClass: "row align-items-center"
+    }, [_c("div", {
+      staticClass: "col-12 pb-2"
+    }, [_c("h6", [_vm._v(_vm._s(product.name) + " ")])]), _vm._v(" "), _c("div", {
+      staticClass: "col-6 d-flex align-items-center"
+    }, [_c("button", {
+      staticClass: "px-2 py-0 btn btn-sm btn-outline-primary rounded-circle me-2",
+      staticStyle: {
+        "font-size": "16px"
+      },
       on: {
         click: function click($event) {
           return _vm.removeQty(product);
         }
       }
-    }, [_vm._v("-")]), _vm._v(" "), _c("button", {
-      staticClass: "py-2",
+    }, [_vm._v("-")]), _vm._v("\n                              " + _vm._s(product.quantity) + "\n                              "), _c("button", {
+      staticClass: "btn btn-sm py-0 px-2 btn-outline-primary rounded-circle ms-2",
+      staticStyle: {
+        "font-size": "16px"
+      },
       on: {
         click: function click($event) {
           return _vm.addQty(product);
         }
       }
-    }, [_vm._v("+")])]);
-  }), 0), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
+    }, [_vm._v("+")])]), _vm._v(" "), _c("div", {
+      staticClass: "col-6"
+    }, [_vm._v("\n                              € " + _vm._s(product.total) + "\n                            ")]), _vm._v(" "), _c("hr", {
+      staticClass: "my-3"
+    })]);
+  }), _vm._v(" "), _c("div", {
     directives: [{
       name: "show",
       rawName: "v-show",
       value: _vm.totalPriceCart > 0,
       expression: "totalPriceCart > 0"
     }],
-    staticClass: "total-price-cart"
-  }, [_vm._v("\n                            Totale: € " + _vm._s(_vm.totalPriceCart) + "\n                        ")]), _vm._v(" "), _c("router-link", {
+    staticClass: "total-price-cart row pb-3"
+  }, [_vm._m(0), _vm._v(" "), _c("div", {
+    staticClass: "col"
+  }, [_vm._v("€ " + _vm._s(_vm.totalPriceCart))])]), _vm._v(" "), _c("router-link", {
     staticClass: "restaurant",
     attrs: {
       to: {
@@ -6127,10 +6147,19 @@ var render = function render() {
         }
       }
     }
-  }, [_vm._v("\n                            Vai al Pagamento\n                        ")])], 1)])])])])]);
+  }, [_c("button", {
+    staticClass: "btn btn-primary btn-lg text-white"
+  }, [_vm._v("Vai al Pagamento")])])], 2)])])])])]);
 };
 
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "col"
+  }, [_c("h6", [_vm._v("Totale:")])]);
+}];
 render._withStripped = true;
 
 
@@ -36037,7 +36066,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n/* Immagine profilo Ristorante */\n.product_image_restaurant[data-v-31a36b26],\n.hero_restaurant[data-v-31a36b26] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center center;\n     object-position: center center;\n}\n.hero_restaurant[data-v-31a36b26] {\n  width: 100%;\n  height: 500px;\n}\n\n/* Questo è il titolo del ristorante */\n.restaurant_title[data-v-31a36b26] {\n  font-size: 40px;\n  color: black;\n  margin-top: 1rem;\n}\n\n/* Questa è la singola card */\n.product_restaurant[data-v-31a36b26] {\n  width: 300px;\n  margin-left: 15px;\n  height: 500px;\n  border-radius: 25px;\n  color: #fff;\n  border: 0.5px solid rgb(10, 10, 10);\n  box-shadow: 0 0 10px solid rgb(10, 10, 10);\n}\n.bordo_visibile[data-v-31a36b26] {\n  border: 2px solid black;\n}\n.flex_start_restaurant[data-v-31a36b26] {\n  display: flex;\n  justify-content: flex-start;\n  align-items: center;\n}\n.flex_end_restaurant[data-v-31a36b26] {\n  display: flex;\n  justify-content: center;\n  align-items: flex-end;\n}\n\n/* Immagine del singolo prodotto */\n.product_image_restaurant[data-v-31a36b26] {\n  width: 100%;\n  height: 100%;\n  border-top-left-radius: 25px;\n  border-top-right-radius: 25px;\n}", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/* Immagine profilo Ristorante */\n.product_image_restaurant[data-v-31a36b26],\n.hero_restaurant[data-v-31a36b26] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center center;\n     object-position: center center;\n}\n.hero_restaurant[data-v-31a36b26] {\n  width: 100%;\n  height: 500px;\n}\n\n/* Questo è il titolo del ristorante */\n.restaurant_title[data-v-31a36b26] {\n  font-size: 40px;\n  color: black;\n  margin-top: 1rem;\n}\n\n/* Questa è la singola card */\n.product-card[data-v-31a36b26] {\n  height: 488px;\n  border-radius: 25px;\n}\n.bordo_visibile[data-v-31a36b26] {\n  border: 2px solid black;\n}\n.flex_start_restaurant[data-v-31a36b26] {\n  display: flex;\n  justify-content: flex-start;\n  align-items: center;\n}\n.flex_end_restaurant[data-v-31a36b26] {\n  display: flex;\n  justify-content: center;\n  align-items: flex-end;\n}\n\n/* Immagine del singolo prodotto */\n.product_img[data-v-31a36b26] {\n  width: 100%;\n  height: 250px;\n  border-top-left-radius: 25px;\n  border-top-right-radius: 25px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}", ""]);
 
 // exports
 
