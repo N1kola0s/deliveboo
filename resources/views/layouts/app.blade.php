@@ -41,7 +41,7 @@
 
             if(password != passwordConfirm) {
                 document.getElementById('errors_password').innerHTML = 'Le password devono essere uguali';
-                
+
                 return false
             }
 
@@ -90,20 +90,19 @@
                         @endif
                         @else
                         <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                {{ Auth::user()->name }}
+                            <!-- Username -->
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                {{ ucfirst(Auth::user()->name) }}
                             </a>
-
+                            <!-- Menu Dropdown -->
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
-                                <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
-                                    Dashboard Admin
-                                </a>
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                <!-- Link alla Dashboard -->
+                                <a class="dropdown-item" href="{{ route('admin.dashboard') }}">Dashboard Admin</a>
+                                <!-- Link al logout -->
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-
+                                <!-- Form con token sicurezza -->
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
@@ -115,11 +114,11 @@
             </div>
         </nav>
 
-        
+
             @yield('content')
-        
+
     </div>
-    
+
 </body>
 
 </html>
