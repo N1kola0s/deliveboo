@@ -22,29 +22,30 @@
 </head>
 <body>
     <div id="app">
-        <!-- #1 incollo l'header dal clone app.blade -->
-        <header class="navbar navbar-dark py-1 sticky-top bg-dark align-items-center flex-md-nowrap p-0 shadow">
-            <a class="navbar-brand nav-logo col-md-3 col-lg-2 me-0 px-3 d-sm-none d-md-inline" href="/">Delivebool</a>
+
+        <header class="navbar py-1 sticky-top bg-dark align-items-center flex-md-nowrap p-0">
+            <!-- Parte SX navbar -->
+            <a class="navbar-brand bordo_miseria nav-logo col-md-3 col-lg-2 me-0 px-3 d-sm-none d-md-inline" href="/">
+                <img src="{{asset('img/deliveboo_logo.jpg')}}" alt="Logo Deliveboo">
+            </a>
             <div>
                 <button class="navbar-toggler border-0 d-sm-inline d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                </button> 
+                </button>
             </div>
-            
-            <div class="navbar-nav">
+            <!-- Parte DX navbar -->
+            <div class="navbar-nav h-100 bordo_miseria ">
                 <div class="nav-item text-nowrap px-3 d-flex align-items-center">
-
-                    <div class="user text-white">
-
-                        <img class="user_avatar me-2" src="{{asset('img/avatar_5.jpg')}}" alt="">
-                        Hi, {{Auth::user()->name}}
-
+                    <!-- Immagine utente -->
+                    <div class="user d-flex align-items-center">
+                        <img class="user_avatar  me-2" src="{{asset('img/avatar_5.jpg')}}" alt="Immagine utente">
+                        <span>Ciao {{ucfirst(Auth::user()->name)}}</span>
                     </div>
-
-                    <a class="nav-link px-3" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
+                    <!-- Link al Logout -->
+                    <a class="nav-link px-3" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
                     </a>
+                    <!-- Token sicurezza -->
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
@@ -57,44 +58,28 @@
             <!-- /.row -->
             <div class="row">
                 <!-- Aside laterale -->
-                <aside class="col-3 col-sm-2 col-md-2 min-vh-100 px-0 collapse multi-collapse d-md-inline" id="sidebarMenu">
-                    <nav class="navbar navbar-expand navbar-dark bg-dark h-100 align-items-start">
-                        <ul class="nav navbar-nav flex-column">
+                <aside class="col-2 col-sm-2 col-md-2 min-vh-100 px-0 collapse multi-collapse d-md-inline" id="sidebarMenu">
+                    <nav class="navbar pt-0 navbar-expand navbar-dark bg-dark h-100 align-items-start">
+                        <!-- Lista di link laterali -->
+                        <ul class="nav w-100 navbar-nav flex-column">
                             <!-- Collegamento alla home -->
-                            <li class="nav-item">
-                                <a class="nav-link" href="/">
-                                    Home
-                                </a>
-                            </li>
-
+                            <li class="nav-item w-100 pt-0 bordo_miseria "><a class="nav-link w-100" href="/">Home</a></li>
                             <!-- Collegamento alla Dashboard -->
                             <li class="nav-item active"><a class="nav-link" href="{{route('admin.dashboard')}}">Dashboard</a></li>
                             <!-- Collegamento a products  -->
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{route('admin.products.index')}}">
-                                    Products
-                                </a>
-                            </li>
+                            <li class="nav-item"><a class="nav-link" href="{{route('admin.products.index')}}">Products</a></li>
                             <!-- Collegamento a orders  -->
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{route('admin.orders.index')}}">
-                                    Orders
-                                </a>
-                            </li>
+                            <li class="nav-item"><a class="nav-link" href="{{route('admin.orders.index')}}">Orders</a></li>
                         </ul>
                     </nav>
                 </aside>
                 <!-- Colonna dell'admin, show ecc -->
                 <!--  #2 taglio menu di navigazione e lo incollo nel partials header -->
-                <main class="col-9 col-sm-10 col-md-10 py-4">
+                <main class="col-10 col-sm-10 col-md-10 py-4">
                     @yield('content')
                 </main>
             </div>
         </div>
-
-        <!-- #6 - Aggiungo anche il Footer. Nella schermata admin non serve -->
-
-        @yield('script-footer')
     </div>
 </body>
 </html>
