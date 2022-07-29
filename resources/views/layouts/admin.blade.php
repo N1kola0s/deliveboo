@@ -25,7 +25,7 @@
 
         <header class="navbar py-1 sticky-top bg-dark align-items-center flex-md-nowrap p-0">
             <!-- Parte SX navbar -->
-            <a class="navbar-brand bordo_miseria nav-logo col-md-3 col-lg-2 me-0 px-3 d-sm-none d-md-inline" href="/">
+            <a class="navbar-brand nav-logo col-md-3 col-lg-2 me-0 px-3 d-sm-none d-md-inline" href="/">
                 <img src="{{asset('img/deliveboo_logo.jpg')}}" alt="Logo Deliveboo">
             </a>
             <div>
@@ -34,7 +34,7 @@
                 </button>
             </div>
             <!-- Parte DX navbar -->
-            <div class="navbar-nav h-100 bordo_miseria ">
+            <div class="navbar-nav h-100 ">
                 <div class="nav-item text-nowrap px-3 d-flex align-items-center">
                     <!-- Immagine utente -->
                     <div class="user d-flex align-items-center">
@@ -42,7 +42,7 @@
                         <span>Ciao {{ucfirst(Auth::user()->name)}}</span>
                     </div>
                     <!-- Link al Logout -->
-                    <a class="nav-link px-3" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <a class="nav-link btn create_button text-black-50 mx-3 me-2 px-3" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
                     </a>
                     <!-- Token sicurezza -->
@@ -63,7 +63,7 @@
                         <!-- Lista di link laterali -->
                         <ul class="nav w-100 navbar-nav flex-column">
                             <!-- Collegamento alla home -->
-                            <li class="nav-item w-100 pt-0 bordo_miseria "><a class="nav-link w-100" href="/">Home</a></li>
+                            <li class="nav-item w-100 pt-0 "><a class="nav-link w-100" href="/">Home</a></li>
                             <!-- Collegamento alla Dashboard -->
                             <li class="nav-item active"><a class="nav-link" href="{{route('admin.dashboard')}}">Dashboard</a></li>
                             <!-- Collegamento a products  -->
