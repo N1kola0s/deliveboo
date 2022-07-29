@@ -6,228 +6,255 @@
     <div v-if="loader">CARICAMENTO</div>
     <div v-else>
       <div class="container">
-        <h1 class="py-3">
-          CHECKOUT PAGAMENTO ristorante con id {{ restaurantId }}
+        <h1 class="p-3">
+          CHECKOUT
         </h1>
 
         <!-- FORM GUEST -->
 
         <!-- DATI GUEST PER L'ACQUISTO -->
         <div class="form_guest">
-          <!-- guest name -->
-          <div class="mb-3 row">
-            <label
-              for="guest_name"
-              class="col-md-4 col-form-label text-md-right"
-              >Nome<span class="text-primary">*</span></label
-            >
 
-            <div class="col-md-6">
-              <input
-                v-model="form.guest_name"
-                onkeypress="return (event.charCode >= 60 || event.charCode == 8 || event.charCode == 32)"
-                id="guest_name"
-                type="text"
-                class="form-control"
-                name="guest_name"
-                placeholder="Inserisci il tuo cognome"
-                required
-                autocomplete="guest_name"
-                autofocus
-              />
-            </div>
-          </div>
-          <!-- guest surname -->
-          <div class="mb-3 row">
-            <label
-              for="guest_surname"
-              class="col-md-4 col-form-label text-md-right"
-              >Cognome<span class="text-primary">*</span></label
-            >
+          <div class="row justify-content-center">
+            <div class="col col-12 col-md-6 px-5">
 
-            <div class="col-md-6">
-              <input
-                v-model="form.guest_surname"
-                onkeypress="return (event.charCode >= 60 || event.charCode == 8 || event.charCode == 32)"
-                id="guest_surname"
-                type="text"
-                class="form-control"
-                name="guest_surname"
-                placeholder="Inserisci il tuo cognome"
-                required
-                autocomplete="guest_surname"
-                autofocus
-              />
-            </div>
-          </div>
-          <!-- guest phone number -->
-          <div class="mb-3 row">
-            <label
-              for="guest_phone_number"
-              class="col-md-4 col-form-label text-md-right"
-              >Numero di Telefono <span class="text-primary">*</span></label
-            >
+              <!-- guest name -->
+              <div class="mb-3">
+                <label
+                  for="guest_name"
+                  class="col-md-4 col-form-label text-md-right"
+                  >Nome<span class="text-primary">*</span></label
+                >
 
-            <div class="col-md-6">
-              <input
-                v-model="form.guest_phone_number"
-                id="guest_phone_number"
-                onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
-                type="text"
-                class="form-control"
-                name="guest_phone_number"
-                placeholder="33433333333"
-                required
-                autocomplete="guest_phone_number"
-                minlength="10"
-                maxlength="10"
-                autofocus
-              />
-            </div>
-          </div>
-          <!-- guest e-mail -->
-          <div class="mb-3 row">
-            <label
-              for="guest_email"
-              class="col-md-4 col-form-label text-md-right"
-              >E-mail<span class="text-primary">*</span></label
-            >
+                <div>
+                  <input
+                    v-model="form.guest_name"
+                    onkeypress="return (event.charCode >= 60 || event.charCode == 8 || event.charCode == 32)"
+                    id="guest_name"
+                    type="text"
+                    class="form-control"
+                    name="guest_name"
+                    placeholder="Inserisci il tuo cognome"
+                    required
+                    autocomplete="guest_name"
+                    autofocus
+                  />
+                </div>
+              </div>
+              <!-- guest surname -->
+              <div class="mb-3">
+                <label
+                  for="guest_surname"
+                  class="col-md-4 col-form-label text-md-right"
+                  >Cognome<span class="text-primary">*</span></label
+                >
 
-            <div class="col-md-6">
-              <input
-                v-model="form.guest_email"
-                id="guest_email"
-                type="guest_email"
-                class="form-control"
-                name="guest_email"
-                placeholder="email@gmail.com"
-                required
-                autocomplete="guest_email"
-              />
-            </div>
-          </div>
-          <!-- guest city -->
-          <div class="mb-3 row">
-            <label for="city" class="col-md-4 col-form-label text-md-right"
-              >Città</label
-            >
+                <div >
+                  <input
+                    v-model="form.guest_surname"
+                    onkeypress="return (event.charCode >= 60 || event.charCode == 8 || event.charCode == 32)"
+                    id="guest_surname"
+                    type="text"
+                    class="form-control"
+                    name="guest_surname"
+                    placeholder="Inserisci il tuo cognome"
+                    required
+                    autocomplete="guest_surname"
+                    autofocus
+                  />
+                </div>
+              </div>
+              <!-- guest phone number -->
+              <div class="mb-3">
+                <label
+                  for="guest_phone_number"
+                  class="col-md-4 col-form-label text-md-right"
+                  >Numero di Telefono <span class="text-primary">*</span></label
+                >
 
-            <div class="col-md-6">
-              <input
-                id="city"
-                type="text"
-                class="form-control"
-                name="city"
-                value="Milano"
-                autocomplete="city"
-                autofocus
-                disabled
-              />
-            </div>
-          </div>
-          <!-- guest zip code -->
-          <div class="mb-3 row">
-            <label
-              for="guest_zip_code"
-              class="col-md-4 col-form-label text-md-right"
-              >Cap<span class="text-primary">*</span></label
-            >
+                <div >
+                  <input
+                    v-model="form.guest_phone_number"
+                    id="guest_phone_number"
+                    onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
+                    type="text"
+                    class="form-control"
+                    name="guest_phone_number"
+                    placeholder="33433333333"
+                    required
+                    autocomplete="guest_phone_number"
+                    minlength="10"
+                    maxlength="10"
+                    autofocus
+                  />
+                </div>
+              </div>
+              <!-- guest e-mail -->
+              <div class="mb-3">
+                <label
+                  for="guest_email"
+                  class="col-md-4 col-form-label text-md-right"
+                  >E-mail<span class="text-primary">*</span></label
+                >
 
-            <div class="col-md-6">
-              <input
-                v-model="form.guest_zip_code"
-                id="guest_zip_code"
-                type="text"
-                onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
-                size="5"
-                class="form-control"
-                name="guest_zip_code"
-                placeholder="52100"
-                required
-                autocomplete="guest_zip_code"
-                minlength="5"
-                maxlength="5"
-                autofocus
-              />
-            </div>
-          </div>
-          <!-- guest address -->
-          <div class="mb-3 row">
-            <label
-              for="guest_address"
-              class="col-md-4 col-form-label text-md-right"
-              >Indirizzo <span class="text-primary">*</span></label
-            >
+                <div >
+                  <input
+                    v-model="form.guest_email"
+                    id="guest_email"
+                    type="guest_email"
+                    class="form-control"
+                    name="guest_email"
+                    placeholder="email@gmail.com"
+                    required
+                    autocomplete="guest_email"
+                  />
+                </div>
+              </div>
+              <!-- guest city -->
+              <div class="mb-3">
+                <label for="city" class="col-md-4 col-form-label text-md-right"
+                  >Città</label
+                >
 
-            <div class="col-md-6">
-              <input
-                v-model="form.guest_address"
-                id="guest_address"
-                type="text"
-                class="form-control"
-                name="guest_address"
-                placeholder="Via Taldetali, 22"
-                required
-                autocomplete="guest_address"
-                autofocus
-              />
+                <div >
+                  <input
+                    id="city"
+                    type="text"
+                    class="form-control"
+                    name="city"
+                    value="Milano"
+                    autocomplete="city"
+                    autofocus
+                    disabled
+                  />
+                </div>
+              </div>
+              <!-- guest zip code -->
+              <div class="mb-3">
+                <label
+                  for="guest_zip_code"
+                  class="col-md-4 col-form-label text-md-right"
+                  >Cap<span class="text-primary">*</span></label
+                >
+
+                <div >
+                  <input
+                    v-model="form.guest_zip_code"
+                    id="guest_zip_code"
+                    type="text"
+                    onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
+                    size="5"
+                    class="form-control"
+                    name="guest_zip_code"
+                    placeholder="52100"
+                    required
+                    autocomplete="guest_zip_code"
+                    minlength="5"
+                    maxlength="5"
+                    autofocus
+                  />
+                </div>
+              </div>
+              <!-- guest address -->
+              <div class="mb-3">
+                <label
+                  for="guest_address"
+                  class="col-md-4 col-form-label text-md-right"
+                  >Indirizzo <span class="text-primary">*</span></label
+                >
+
+                <div >
+                  <input
+                    v-model="form.guest_address"
+                    id="guest_address"
+                    type="text"
+                    class="form-control"
+                    name="guest_address"
+                    placeholder="Via Taldetali, 22"
+                    required
+                    autocomplete="guest_address"
+                    autofocus
+                  />
+                </div>
+              </div>
+              <!-- guest Note -->
+              <div class="mb-3">
+                <label
+                  for="guest_note"
+                  class="col-md-4 col-form-label text-md-right"
+                  >Note</label
+                >
+                <div >
+                  <textarea
+                    v-model="form.note"
+                    class="form-control"
+                    placeholder="Inserisci delle info utiili per il rider"
+                    name="guest_note"
+                    id="guest_note"
+                    rows="4"
+                    required
+                  ></textarea>
+                </div>
+              </div>
             </div>
-          </div>
-          <!-- guest Note -->
-          <div class="mb-3 row">
-            <label
-              for="guest_note"
-              class="col-md-4 col-form-label text-md-right"
-              >Note</label
-            >
-            <div class="col-md-6">
-              <textarea
-                v-model="form.note"
-                class="form-control"
-                placeholder="Inserisci delle info utiili per il rider"
-                name="guest_note"
-                id="guest_note"
-                rows="4"
-                required
-              ></textarea>
+
+              <!-- CARRELLO -->
+
+            <div class="col col-12 col-md-6 px-5 py-3">
+
+              <div class="row flex-column">
+
+                <div class="col py-2">
+
+                  <div class="card border-0 p-3 shadow  text-start">
+                    <h3 class="ps-3">Summary</h3>
+                    <div class="card-body" v-for="(product, index) in restaurantCart"
+                    :key="index">
+                      
+                      <div class="row pb-3 border-bottom">
+
+                        <div class="col">{{product.name}}</div>
+                        <div class="col">Qt. {{product.quantity}}</div>
+                        <div class="col">€ {{product.total}}</div>
+
+                      </div>
+
+                    </div>
+
+                    <div
+                    v-show="totalPriceCart != 0"
+                    class="col total-price-cart p-3 pb-0"
+                    >
+                      <h4>Totale: € {{ totalPriceCart }}</h4>  
+                    </div>
+
+                  </div>
+
+                  
+                </div>
+
+                <!-- componente braintree -->
+                <div class="col d-flex justify-content-center">
+                  <v-braintree
+                    locale="it_IT"
+                    :vaultManager="true"
+                    :authorization="tokenApi"
+                    @success="onSuccess"
+                    @error="onError"
+                    @load="onLoad"
+                  >
+                  </v-braintree>
+                </div>
+
+
+              </div>
+
             </div>
+            
+
+
           </div>
         </div>
-
-        <div class="row row-cols-1 row-cols-md-2">
-          <!-- CARRELLO -->
-          <div class="col py-2">
-            <div
-              class="card-body"
-              v-for="(product, index) in restaurantCart"
-              :key="index"
-            >
-              {{ product.name }} - € {{ product.price }} - qty:
-              {{ product.quantity }} - total: € {{ product.total }}
-            </div>
-            <div
-              v-show="totalPriceCart != 0"
-              class="col-7 total-price-cart border-top py-2"
-            >
-              Totale: € {{ totalPriceCart }}
-            </div>
-          </div>
-
-          <!-- componente braintree -->
-          <div class="col d-flex justify-content-center">
-            <v-braintree
-              locale="it_IT"
-              :vaultManager="true"
-              :authorization="tokenApi"
-              @success="onSuccess"
-              @error="onError"
-              @load="onLoad"
-            >
-            </v-braintree>
-          </div>
-        </div>
-
-        {{ form }}
       </div>
     </div>
   </div>
