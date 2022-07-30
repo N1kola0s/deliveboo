@@ -17,37 +17,39 @@
             <div class="row row-cols-2">
                 <!-- Lista di piatti -->
                 <div class="col col-12 col-lg-7 col-xl-9 m-0 flex-wrap">
-
-                  <div class="row">
-
+                <div class="row">
                     <div :class="(product.visibility) ? '' : 'd-none'" class="col col-12 col-sm-6 col-xl-4 mb-4" v-for="product in restaurant.products" :key="product.id">
+                    <div class="card product-card shadow border-0">
+                            <img class="card-img-top product_img" :src="product.cover_img.includes('uploads') ? '/storage/' + product.cover_img : product.cover_img" :alt="product.name">
+                            <!-- Nome prodotto e descrizione -->
+                            <div class="card-body p-0">
 
-                      <div class="card product-card shadow border-0">
-                        <img class="card-img-top product_img" :src="product.cover_img.includes('uploads') ? '/storage/' + product.cover_img : product.cover_img" :alt="product.name">
-                        <div class="card-body">
-                          <h4 class="card-title">{{product.name}}</h4>
-                          <p class="card-text">{{product.description}}</p>
+                                <!-- Questa condizione in cui non mostro -->
+                                <div class="w-100 p-2 prod_desc_rest p-0" v-show="!showText">
+                                    <h4 class="card-title mb-2">{{product.name}}</h4>
+                                    <p class="card-text"> {{trimText(product.description)}}</p> <span @click="showText=true">Read more</span>
+                                    <!-- <button @click="showText=true">Prova</button> -->
+                                </div>
+                                <!-- Altrimenti mostro tutto il testo -->
+                                <div class="overflow_trim_text prod_desc_rest p-2" v-show="showText">
+                                    <h4 class="card-title mb-1">{{product.name}}</h4>
+                                    <p class="card-text"> {{product.description}} </p> <span @click="showText=false">Read less</span>
+                                    <!-- <button @click="showText=false">Prova</button> -->
+                                </div>
+                            </div>
+                            <!-- Prezzo del prodotto -->
+                            <div class="p-3 pb-4 row">
+                                <div class="col-6">
+                                    <a class="btn btn-primary text-white rounded-pill" role="button" @click="addProduct(product)">Aggiungi</a>
+                                </div>
+                                <div class="col-6 d-flex align-items-center justify-content-end">
+                                    <h3 class="mb-0">€ {{product.price}}</h3>
+                                </div>
+                            </div>
                         </div>
-
-                        <div class="p-3 pb-4 row">
-
-                          <div class="col-6">
-                            <a class="btn btn-primary text-white rounded-pill" role="button" @click="addProduct(product)">Aggiungi</a>
-                          </div>
-                          <div class="col-6 text-end">
-                            <h3>€ {{product.price}}</h3>
-                          </div>
-
-                        </div>
-
-                      </div>
-
                     </div>
-
-                  </div>
-                    
-
                 </div>
+            </div>
                 <!-- Carrello laterale -->
                 <div class="col col-12 col-lg-5 col-xl-3">
                     <!-- Card del carrello -->
@@ -58,48 +60,36 @@
                         <div class="container-fluid">
                             <!-- Row -->
                             <div class="row align-items-center" v-for="(product, index) in cart.products" :key="index">
+                                <!-- Nome prodotto -->
                                 <div class="col-12 pb-2" >
-
-                                  <h6>{{ product.name }} </h6>
-                                    
+                                    <h6>{{ product.name }} </h6>
                                 </div>
-                                    
+                                <!-- Carrello con quantità -->
                                 <div class="col-6 d-flex align-items-center">
-
-                                  <button style="font-size: 16px;" class="px-2 py-0 btn btn-sm btn-outline-primary rounded-circle me-2" @click="removeQty(product)">-</button>
-                                  {{ product.quantity }}
-                                  <button style="font-size: 16px;" class="btn btn-sm py-0 px-2 btn-outline-primary rounded-circle ms-2" @click="addQty(product)">+</button>
-
+                                    <button style="font-size: 16px;" class="px-2 py-0 btn btn-sm btn-outline-primary rounded-circle me-2" @click="removeQty(product)">-</button>
+                                    {{ product.quantity }}
+                                    <button style="font-size: 16px;" class="btn btn-sm py-0 px-2 btn-outline-primary rounded-circle ms-2" @click="addQty(product)">+</button>
                                 </div>
-
+                                <!-- Prezzo del prodotto -->
                                 <div class="col-6">
-                                  € {{ product.total }}
+                                    € {{ product.total }}
                                 </div>
                                 <!-- Linea separazione -->
                                 <hr class="my-3">
-
                             </div>
-                            
-                            
                             <!-- Prezzo Prodotto -->
                             <div v-show="totalPriceCart > 0" class="total-price-cart row pb-3">
-
-                              <div class="col"><h6>Totale:</h6> </div>
-                              <div class="col">€ {{ totalPriceCart }}</div>
-                                 
+                                <div class="col"><h6>Totale:</h6> </div>
+                                <div class="col">€ {{ totalPriceCart }}</div>
                             </div>
                             <!-- LINK AL PAGAMENTO -->
                             <router-link :to="{ name: 'checkout', params: { 'slug': restaurant.slug } }" class="restaurant">
-                              <button class="btn btn-primary btn-lg text-white">Vai al Pagamento</button>
-                                
+                                <button class="btn btn-primary btn-lg text-white">Vai al Pagamento</button>
                             </router-link>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
                 <!-- <div class="row row-cols-3 row-cols-xxl-3 bordo_visibile row-cols-md-2 g-4">
                     <div class="col bordo_visibile h-100" v-for="product in restaurant.products" :key="product.id"> -->
                         <!-- Immagine profilo -->
@@ -111,9 +101,6 @@
                     </div>
                 </div>
             </div> -->
-
-
-
         </div>
     </div>
 </template>
@@ -127,6 +114,33 @@
     object-fit: cover;
     object-position: center center;
 }
+
+.overflow_trim_text {
+    overflow-y: scroll;
+    height: 150px;
+}
+
+.overflow_trim_text::-webkit-scrollbar {
+  width: 6px;
+}
+
+.overflow_trim_text::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.overflow_trim_text::-webkit-scrollbar-thumb {
+    background-color: #3490dc;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 0.5px solid #3490dc;  /* creates padding around scroll thumb */
+}
+
+.prod_desc_rest span{
+    color: rgba(10, 113, 230, 0.8);
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
 
 .hero_restaurant {
     width: 100%;
@@ -178,19 +192,20 @@
 
 <script>
 export default {
-  name: 'Restaurant',
-  data() {
-    return {
-      restaurant: '',
-      quantityDefault: 1,
-      cart: {
-        key: "",
-        products: [],
-      },
-      productNameClicked: '',
-      totalPriceCart: 0,
-    }
-  },
+    name: 'Restaurant',
+    data() {
+        return {
+            restaurant: '',
+            quantityDefault: 1,
+            showText: false,
+            cart: {
+                key: "",
+                products: [],
+            },
+            productNameClicked: '',
+            totalPriceCart: 0,
+        }
+    },
 
 
   methods: {
@@ -224,32 +239,31 @@ export default {
     },
 
     addProduct(product) {
-      let productName = product.name;
-      let confronto = false;
-      if (this.cart.products.length >= 1) {
-        this.cart.products.forEach(element => {
-          if (element.name === productName) {
-            element.quantity++
-            element.total = element.price * element.quantity;
-            confronto = true
-            this.sync()
-          }
-        })
-      }
-
-      if (confronto === false) {
-        let newProduct = {
-          name: product.name,
-          id: product.id,
-          img: product.cover_img,
-          price: product.price,
-          quantity: this.quantityDefault,
-          total: product.price * this.quantityDefault,
+        let productName = product.name;
+        let confronto = false;
+        if (this.cart.products.length >= 1) {
+            this.cart.products.forEach(element => {
+            if (element.name === productName) {
+                element.quantity++
+                element.total = element.price * element.quantity;
+                confronto = true
+                this.sync()
+            }
+            })
         }
-        this.cart.products.push(newProduct)
 
-      }
-      this.sync()
+        if (confronto === false) {
+            let newProduct = {
+            name: product.name,
+            id: product.id,
+            img: product.cover_img,
+            price: product.price,
+            quantity: this.quantityDefault,
+            total: product.price * this.quantityDefault,
+            }
+            this.cart.products.push(newProduct)
+        }
+        this.sync()
     },
 
     //SINCRONIZZAZIONE DATI LOCAL STORAGE
@@ -259,8 +273,6 @@ export default {
 
       this.getTotalPrice()
     },
-
-
 
     // AGGIUNTA QUANTITA' AL PRODOTTO
     addQty(product) {
@@ -306,8 +318,17 @@ export default {
       /* console.log(priceNotRounded) */
       this.totalPriceCart = priceNotRounded.toFixed(2)
       /* console.log(this.totalPriceCart) */
-    }
-  },
+    },
+
+    /* Trim Text per ridurre quantità del testo */
+    trimText(text) {
+        /* Condizione se testo di content va oltre i 75 caratteri */
+        if(text.length > 75) {
+            return text.slice(0, 75) + '...'
+        }
+        return text;
+    },
+},
 
 
   mounted() {
