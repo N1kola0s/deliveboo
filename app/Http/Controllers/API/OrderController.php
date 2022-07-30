@@ -4,13 +4,15 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Order\OrderRequest;
+use App\Mail\GuestEmail;
+use App\Mail\SendAdminEmail;
 use App\Order;
 use App\Product;
 use App\User;
 use Braintree\Gateway;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -30,6 +32,17 @@ class OrderController extends Controller
     {
         $products = Product::all();
 
+
+        $this_restaurant = User::find($request->restaurantId);
+        $all_products = [];
+        foreach($request->products as $product){
+            $this_product = Product::where("id", $product['product_id'])->where("user_id", $this_restaurant->id)->get()->first();
+            // PUSH IN ARRAY FOR DATA EMAIL
+            $this_product["quantity"] = $product['quantity'];
+            array_push($all_products, $this_product);
+        }
+
+
         // POPULATE ORDER TABLE
         $new_order = new Order();
     
@@ -46,11 +59,14 @@ class OrderController extends Controller
         $new_order->status = 1;
 
         $new_order->save();
-     
+
+        
+
 
         foreach ($request->products as $product) {
             $new_order->products()->attach($product['product_id'], ['quantity' => $product["quantity"]]);
         }
+        
         
         // GENERATE SECOND KEY
         $result = $gateway->transaction()->sale([
@@ -67,6 +83,32 @@ class OrderController extends Controller
                 "success" => true,
                 "message" => "Transazione avvenuta con successo",
             ];
+
+           
+            $this_restaurant = User::find($request->restaurantId);
+            $user= User::where("id", $this_restaurant["id"])->get()->first();
+
+
+            $this_order =  [
+                "total_price" => $request->total_price,
+                "restaurant_name" => $user['business_name'],
+                "guest_name" => $request->guest_name,
+                "guest_surname"=> $request->guest_surname,
+                "guest_address" => $request->guest_address,
+                "all_products" => $all_products,
+                "deliveboo_client" => $user['name'],
+            ];
+           
+           
+            
+            
+            //email da deliveboo a ristoratore
+            Mail::to($user['email'])->send(new SendAdminEmail($this_order ));
+
+            //email da deliveboo a cliente
+            Mail::to($request->guest_email)->send(new GuestEmail($this_order));
+
+
 
             return response()->json($data,200);
         }else{
