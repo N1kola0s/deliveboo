@@ -10,19 +10,20 @@
 
         <div class="col-12 col-md-3 col-lg-2">
 
-          <h5 class="categ_title pb-3 text-uppercase">Categorie</h5>
+          <h5 class="categ_title pb-3 text-uppercase">
+            Categorie
+
+
+            <a class="btn rounded-circle d-md-none" @click="showType == true ? showType = false : showType = true">
+              {{ showType === false ? '+' : '-' }}
+            </a>
+
+          </h5>
+
 
           <!-- TYPES -->
-          <div class="categ_list label-div mb-4">
+          <div class="categ_list label-div mb-4" :class="showType == false ? 'd-none' : ''">
             <div class="row row-cols-2  row-cols-md-1 row-cols-lg-1 g-3">
-
-              <!--               <div class="p-2" v-for="(type, index) in types" :key="index">
-                <label class="p-1 form-check-label position-relative ps-4"
-                  :class="{ checked: checkedTypes.includes(type.id) }" :for="type.id">{{ type.name }}
-                  <input type="checkbox" class="form-check-label position-absolute start-0 mt-1" :name="type"
-                    :id="type.id" :value="type.id" v-model="checkedTypes" @change="searching()">
-                </label>
-              </div> -->
 
               <div class="col btn-group d-flex flex-wrap" role="group" aria-label="Basic checkbox toggle button group"
                 v-for="(type, index) in types" :key="index">
@@ -30,8 +31,8 @@
                 <input type="checkbox" class="btn-check" :name="type" :id="type.id" :value="type.id"
                   v-model="checkedTypes" @change="searching()" autocomplete="off">
 
-                <label style="font-size:0.7rem;" class="btn"
-                  :class="{ checked: checkedTypes.includes(type.id) }" :for="type.id">{{ type.name }}</label>
+                <label style="font-size:0.7rem;" class="btn" :class="{ checked: checkedTypes.includes(type.id) }"
+                  :for="type.id">{{ type.name }}</label>
               </div>
 
             </div>
@@ -44,7 +45,7 @@
 
           <!-- RISTORANTI FILTRATI -->
           <div v-if="checkedTypes.length != 0"
-            class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 pt-5">
+            class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 g-4 pt-5">
             <div class="col" v-for="restaurant in filteredRestaurants" :key="restaurant.id">
               <div class="card">
 
@@ -65,7 +66,8 @@
 
           </div>
           <!-- RISTORANTI PRIMA CHIAMATA -->
-          <div v-else class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 pt-5">
+          <div v-else
+            class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 g-4 pt-5">
             <div class="col" v-for="restaurant in restaurantsResponse.data" :key="restaurant.id">
               <div class="card">
 
@@ -160,6 +162,7 @@ import JumboSection from '../components/JumboSection.vue';
 import AboutUs from '../components/AboutUs.vue';
 import WorkWithUs from '../components/WorkWithUs.vue';
 import FooterSection from '../components/FooterSection.vue';
+import { computed } from 'vue';
 
 export default {
   name: 'Home',
@@ -176,7 +179,7 @@ export default {
       types: '',
       checkedTypes: [],
       filteredRestaurants: [],
-
+      showType: true,
     }
   },
   methods: {
@@ -232,11 +235,13 @@ export default {
         this.filteredRestaurants = [];
       }
     },
+
   },
   mounted() {
     this.getRestaurants(1);
     this.getTypes();
-  }
+  },
+
 }
 </script>
 
@@ -329,6 +334,7 @@ export default {
   .card-body {
 
     h5 {
+      display: inline-block;
       font-weight: 600;
       font-size: 1rem;
       color: $text_primary;
@@ -342,6 +348,8 @@ export default {
         max-width: 65%;
       }
     }
+
+
   }
 
   @media screen and (max-width: 479px) {
