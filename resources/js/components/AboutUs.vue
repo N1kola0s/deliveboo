@@ -1,114 +1,160 @@
 <template>
-    <div :class="about_container">
-        <!-- sottotitolo di sezione -->
-        <h5>Testimonial</h5>
-        <!-- Titolo di sezione -->
-        <h2>Perchè ci scelgono</h2>
-        <!-- Row Principale -->
-        <div :class="about_principal_row">
-            <!-- Container delle cards -->
-            <div :class="cards_container">
-                <!-- Tre semplici Card -->
-                <div :class="row_cards">
-                    <!-- Queste 3 sono dinamiche -->
-                    <div :class="dynamic_card" v-for="(element, index) in dynamic_component" :key="index">
-                        <!-- Testimonianza -->
-                        <p>{{element.paragrafo}}</p>
-                        <!-- Foto profilo -->
-                        <img class="img_testimonial" :src="element.img" alt="element.desc">
-                        <!-- Nome profilo -->
-                        <h5 class="pt-2">{{element.nome_utente}}</h5>
+    <section class="about py-5">
+        <h2 class="display-3 pb-3 text-center">Come ti aiutiamo</h2>
+
+        <div class="container">
+
+            <div class="introduction_text d-flex justify-content-center pb-3">
+
+                <p class="lead">
+                    I nostri servizi per aiutarti ad avere successo
+                </p>
+                <!-- /.lead -->
+
+            </div>
+            <!-- /.introduction_text -->
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                <div class="col" v-for="service in services" :key="service.id">
+                    <div class="cards bg-white">
+                        <div class="card-img-top position-relative">
+                            <img :src="service.img" class="img-fluid" :alt="service.title">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                                <path fill="#ffffff" fill-opacity="1" d="M0,288L1440,64L1440,320L0,320Z"></path>
+                            </svg>
+                        </div>
+                        <!-- /.card-img-top -->
+                        <div class="card-body bg-white">
+                            <h4 class="card-title text-center py-2">{{ service.title }}</h4>
+                            <!-- /.card-title -->
+                            <p class="card-text text-start">{{ service.desc }}</p>
+                            <!-- /.card-text -->
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-links">
+                            <a href="#">Scopri di più</a>
+                            <!-- /.btn -->
+                        </div>
+                        <!-- /.card-links -->
                     </div>
                 </div>
-                <!-- NON CANCELLATEMI -->
-                <!-- Questa card da generare dinamicamente e con slider (è il mio Slideshow container). Sarà un componente -->
-                <!-- <div class="row w-100 h-75 m-0 border_try flex_cent_about">
-                    <div class="mySlides fade">
-                        <div class="text">Caption Text</div>
-                    </div>
-                </div> -->
+                <!-- /.cards -->
             </div>
+            <!-- /.row -->
         </div>
-    </div>
+        <!-- /.container -->
+    </section>
 </template>
 
 <script>
-    export default {
-        name: 'AboutUs',
-        data() {
-            return {
-                /* Classi dinamiche */
-                about_container : "container flex_cent container-sm container-md container-lg container-xl text-center",
-                about_principal_row : "row about_us_cont row-cols-xxl-1 row-cols-xl-1 row-cols-lg-1 row-cols-lg-1  flex_cent_about p-0",
-                cards_container : "col-xxl-11 col-xl-11 col-lg-11 col-md-11 col-sm-11 text-center  h-100 p-0",
-                row_cards : "row row-cols-xxl-3 row-cols-xl-3 row-cols-lg-3 row-cols-md-1 row-cols-sm-1 w-100 h-100 m-0 flex_cent_about flex-xxl-nowrap flex-xl-nowrap flex-lg-nowrap flex-md-wrap",
-                dynamic_card : "col-4 h-100 p-2  d-flex flex-column justify-content-center align-items-center",
-                dynamic_component :
-                [
-                    /* Primo oggetto */
-                    {
-                        paragrafo : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint omnis rem debitis, dignissimos porro, voluptatum aperiam aliquid impedit deleniti aspernatur eaque eveniet culpa quaerat dolor!",
-                        img: "https://picsum.photos/100/100",
-                        desc: "Utente",
-                        nome_utente : "Maria"
-                    },
-                    /* Primo oggetto */
-                    {
-                        paragrafo : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint omnis rem debitis, dignissimos porro, voluptatum aperiam aliquid impedit deleniti aspernatur eaque eveniet culpa quaerat dolor!",
-                        img: "https://picsum.photos/100/100",
-                        desc: "Utente",
-                        nome_utente : "Antonietta"
-                    },
-                    /* Primo oggetto */
-                    {
-                        paragrafo : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint omnis rem debitis, dignissimos porro, voluptatum aperiam aliquid impedit deleniti aspernatur eaque eveniet culpa quaerat dolor!",
-                        img: "https://picsum.photos/100/100",
-                        desc: "Utente",
-                        nome_utente : "Luigi"
-                    },
-                ],
-            }
-        },
-        mounted() {
-            /* Verifica in console log */
-            console.log('Component mounted.')
-        },
-    }
+export default {
+    name: 'AboutUs',
+    data() {
+        return {
+            services: [
+                {
+                    id: 1,
+                    img: '/img/packaging.png',
+                    title: 'Driver',
+                    desc: 'Soluzioni di packaging personalizzato per qualsiasi tipo di cucina, con consegna gratuita il giorno successivo.',
+                },
+                {
+                    id: 2,
+                    img: '/img/marketing.jpg',
+                    title: 'Marketing',
+                    desc: "Fatti conoscere da nuovi clienti con gli strumenti promozionali dell'app.",
+                },
+                {
+                    id: 3,
+                    img: '/img/assistenza.jpg',
+                    title: 'Centro assistenza',
+                    desc: 'Hai delle domande? Cerca la risposta nel nostro Centro Assistenza o contattaci in chat..',
+                },
+            ]
+        }
+    },
+    mounted() {
+        /* Verifica in console log */
+        console.log('Component mounted.')
+    },
+}
 </script>
 
 <style lang="scss" scoped>
-/* Classe bordo per verifica */
-.border_try {
-    border: 1px solid rgb(100, 70, 70);
-}
-.about_us_cont {
-    height: 500px;
-}
-/* Costante display flex che si ripete */
-.flex_cent_about {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+@import 'resources/sass/_variables';
 
-.img_testimonial {
-    width: 100px;
-    height: 100px;
-    border-radius: 50px;
-    background-color: gray;
+section {
+    background-color: $bg_cian;
+    color: $text_primary;
+
+    h2 {
+        font-weight: 600;
+    }
+
+    .row {
+
+        .col {
+
+            .cards {
+                border-TOP-left-radius: 8px;
+                border-TOP-right-radius: 8px;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 15px;
+
+                transition: 0.4s;
+
+                &:hover {
+                    transform: translateY(-13px);
+                    box-shadow: 0px 5px 7px 1px rgb(0 0 0 / 20%);
+                }
+
+                .card-img-top {
+
+
+                    img {
+                        border-radius: 10px;
+                        aspect-ratio: 1.5;
+                    }
+
+                    svg {
+                        position: absolute;
+                        bottom: -2px;
+                        left: 0;
+                    }
+                }
+
+                .card-body {
+                    height: 130px;
+                    padding: 5px 24px;
+                    border-bottom-left-radius: 10px;
+                    border-bottom-right-radius: 15px;
+
+                    p {
+                        font-size: 0.8rem;
+                    }
+
+                }
+
+                .card-links {
+                    padding: 5px 24px;
+
+                    a {
+                        color: $btn_yellow;
+                        text-align: left !important;
+                        text-decoration: none;
+                        transition: transform 0.3s padding-left 0.2s;
+
+                        &:hover {
+                            color: $btn_orange;
+                            transform: scale(1.1);
+                            padding-left: 15px;
+                            display: block;
+                        }
+                    }
+                }
+
+            }
+
+        }
+    }
 }
-
-/* Media Queries per sistemare cards */
-@media screen and (max-width: 991.98px) {
-
-.about_us_cont {
-    height: 1300px;
-}
-
-.col-4 {
-    height: 350px !important;
-}
-
-}
-
 </style>
