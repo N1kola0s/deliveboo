@@ -4,11 +4,14 @@
     <JumboSection />
 
     <!-- RISTORANTI che poi vanno filtrati e TIPI  -->
+    <a name="Jumbo action link"></a>
     <div class="container-fluid py-5">
+      
 
       <div class="row justify-content-center">
-
+        
         <div class="col-12 col-md-3 col-lg-2">
+
 
           <h5 class="categ_title pb-3 text-uppercase">
             Categorie
@@ -40,9 +43,8 @@
         </div>
 
 
-
+        
         <div class="col-12 col-md-9 col-lg-10">
-
           <!-- RISTORANTI FILTRATI -->
           <div v-if="checkedTypes.length != 0"
             class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 g-4 pt-5">
