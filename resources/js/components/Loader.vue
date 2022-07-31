@@ -1,6 +1,6 @@
 <template>
     <div id="loader" class="d-flex flex-column">
-        <img id="img-loader" src="/img/giphy-unscreen.gif" alt="ciao"/>
+        <img id="img-loader" src="/img/loader-hamburger.gif" alt="ciao"/>
     </div>
 </template>
 

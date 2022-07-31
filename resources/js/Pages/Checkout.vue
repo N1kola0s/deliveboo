@@ -3,7 +3,7 @@
     <div v-if="loadingGif">
       <Loader></Loader>
     </div>
-    <div v-if="loader"><Loader></Loader></div>
+    <div v-if="loader">CARICAMENTO</div>
     <div v-else>
       <div class="container">
         <h1 class="p-3">
@@ -257,7 +257,6 @@
         </div>
       </div>
     </div>
-    <footerSection></footerSection>
   </div>
 </template>
 
@@ -265,12 +264,10 @@
 <script>
 import axios from "axios";
 import Loader from "../components/Loader.vue";
-import FooterSection from "../components/FooterSection.vue";
 export default {
   name: "Checkout",
   components: {
     Loader,
-    FooterSection
   },
 
   data() {
@@ -421,5 +418,4 @@ export default {
     margin-right: 8px;
   }
 }
-
 </style>

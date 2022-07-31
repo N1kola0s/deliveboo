@@ -16,7 +16,7 @@
             <div class="jumbo_cta mt-4">
                 <a
                 class="btn text-white btn-lg"
-                href="Jumbo action link"
+                href="#Jumbo action link"
                 role="button"
                 >Inizia</a
                 >

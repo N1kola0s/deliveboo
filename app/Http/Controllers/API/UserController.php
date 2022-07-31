@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $restaurants = User::with(['types', 'products'])->orderByDesc('id')->paginate(12);
+        $restaurants = User::with(['types', 'products'])->orderByDesc('id')->paginate(15);
 
         return $restaurants;
     }
