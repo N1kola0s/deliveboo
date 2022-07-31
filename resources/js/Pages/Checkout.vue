@@ -6,18 +6,14 @@
     <div v-if="loader"><Loader></Loader></div>
     <div v-else>
       <div class="container">
-        <h1 class="p-3">
-          CHECKOUT
-        </h1>
+        <h1 class="p-3">CHECKOUT</h1>
 
         <!-- FORM GUEST -->
 
         <!-- DATI GUEST PER L'ACQUISTO -->
         <div class="form_guest">
-
           <div class="row justify-content-center">
             <div class="col col-12 col-md-6 px-5">
-
               <!-- guest name -->
               <div class="mb-3">
                 <label
@@ -49,7 +45,7 @@
                   >Cognome<span class="text-primary">*</span></label
                 >
 
-                <div >
+                <div>
                   <input
                     v-model="form.guest_surname"
                     onkeypress="return (event.charCode >= 60 || event.charCode == 8 || event.charCode == 32)"
@@ -72,7 +68,7 @@
                   >Numero di Telefono <span class="text-primary">*</span></label
                 >
 
-                <div >
+                <div>
                   <input
                     v-model="form.guest_phone_number"
                     id="guest_phone_number"
@@ -97,7 +93,7 @@
                   >E-mail<span class="text-primary">*</span></label
                 >
 
-                <div >
+                <div>
                   <input
                     v-model="form.guest_email"
                     id="guest_email"
@@ -116,7 +112,7 @@
                   >Città</label
                 >
 
-                <div >
+                <div>
                   <input
                     id="city"
                     type="text"
@@ -137,7 +133,7 @@
                   >Cap<span class="text-primary">*</span></label
                 >
 
-                <div >
+                <div>
                   <input
                     v-model="form.guest_zip_code"
                     id="guest_zip_code"
@@ -163,7 +159,7 @@
                   >Indirizzo <span class="text-primary">*</span></label
                 >
 
-                <div >
+                <div>
                   <input
                     v-model="form.guest_address"
                     id="guest_address"
@@ -184,7 +180,7 @@
                   class="col-md-4 col-form-label text-md-right"
                   >Note</label
                 >
-                <div >
+                <div>
                   <textarea
                     v-model="form.note"
                     class="form-control"
@@ -198,39 +194,32 @@
               </div>
             </div>
 
-              <!-- CARRELLO -->
+            <!-- CARRELLO -->
 
             <div class="col col-12 col-md-6 px-5 py-3">
-
               <div class="row flex-column">
-
                 <div class="col py-2">
-
-                  <div class="card border-0 p-3 shadow  text-start">
+                  <div class="card border-0 p-3 shadow text-start">
                     <h3 class="ps-3">Summary</h3>
-                    <div class="card-body" v-for="(product, index) in restaurantCart"
-                    :key="index">
-                      
+                    <div
+                      class="card-body"
+                      v-for="(product, index) in restaurantCart"
+                      :key="index"
+                    >
                       <div class="row pb-3 border-bottom">
-
-                        <div class="col">{{product.name}}</div>
-                        <div class="col">Qt. {{product.quantity}}</div>
-                        <div class="col">€ {{product.total}}</div>
-
+                        <div class="col">{{ product.name }}</div>
+                        <div class="col">Qt. {{ product.quantity }}</div>
+                        <div class="col">€ {{ product.total }}</div>
                       </div>
-
                     </div>
 
                     <div
-                    v-show="totalPriceCart != 0"
-                    class="col total-price-cart p-3 pb-0"
+                      v-show="totalPriceCart != 0"
+                      class="col total-price-cart p-3 pb-0"
                     >
-                      <h4>Totale: € {{ totalPriceCart }}</h4>  
+                      <h4>Totale: € {{ totalPriceCart }}</h4>
                     </div>
-
                   </div>
-
-                  
                 </div>
 
                 <!-- componente braintree -->
@@ -245,13 +234,15 @@
                   >
                   </v-braintree>
                 </div>
-
-
               </div>
-
             </div>
-            
+            <p v-if="error" class="text-red-500 mb-4">
+              {{ error }}
+            </p>
 
+            <p v-if="form == null">
+              errore
+            </p>
 
           </div>
         </div>
@@ -270,7 +261,7 @@ export default {
   name: "Checkout",
   components: {
     Loader,
-    FooterSection
+    FooterSection,
   },
 
   data() {
@@ -360,6 +351,7 @@ export default {
           console.log(err);
         });
     },
+    
 
     onLoad() {
       /* alert("sta caricando"); */
@@ -367,10 +359,10 @@ export default {
     },
 
     onSuccess(payload) {
+      this.loadingGif = true;
       let token = payload.nonce;
       this.form.token = token;
       this.loader = false;
-      this.loadingGif = true;
       this.buy();
 
       // Do something great with the nonce...
@@ -392,14 +384,18 @@ export default {
         .then((response) => {
           console.log("Successfully uploaded: ", response);
           localStorage.removeItem(this.restaurantId);
-          setTimeout(function() {
-             this.$router.push('/checkout/:slug/thankyou');
-          }.bind(this), 4000);
+          setTimeout(
+            function () {
+              this.$router.push("/checkout/:slug/thankyou");
+            }.bind(this),
+            4000
+          );
         })
         .catch((err) => {
           console.error("error occurred: ", err);
         });
     },
+
   },
 };
 </script>
@@ -421,5 +417,4 @@ export default {
     margin-right: 8px;
   }
 }
-
 </style>

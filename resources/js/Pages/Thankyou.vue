@@ -10,7 +10,7 @@
       </div>
       <router-link class="route_link" :to="{ name: 'home' }"
         ><div class="jumbo_cta mt-4">
-          <button class="btn text-white btn-lg">Inizia </button>
+          <button class="btn text-white btn-lg">Home</button>
         </div>
         </router-link>
     </div>
