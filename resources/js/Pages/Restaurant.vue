@@ -470,6 +470,7 @@
                 </div>
             </div>    
         </div>
+        <footerSection></footerSection>
     </div>
 </template>
 
@@ -550,8 +551,12 @@
 
 
 <script>
+import FooterSection from '../components/FooterSection.vue';
 export default {
   name: "Restaurant",
+  components: {
+    FooterSection
+  },
   data() {
     return {
       antipasti: [],
