@@ -308,9 +308,9 @@ export default {
       axios
         .get("/api/checkout/" + this.$route.params.slug)
         .then((response) => {
-          /* console.log(response); */
-          this.restaurantId = response.data.id;
-          this.form.restaurantId = response.data.id;
+          this.restaurantId = response.data.restaurant.id;
+          this.form.restaurantId = response.data.restaurant.id;
+          console.log(this.restaurantId);
           this.cartLocalStorage();
         })
         .catch((e) => {

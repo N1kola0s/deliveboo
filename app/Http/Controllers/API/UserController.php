@@ -46,7 +46,14 @@ class UserController extends Controller
     {
         $restaurant = User::with(['types', 'products'])->where('slug', $slug)->first();
 
-        return $restaurant;
+        $products = Product::where("user_id", $restaurant->id)->with(["category"])->get();
+
+        $data = [
+            "restaurant" => $restaurant,
+            "products" => $products,
+        ];
+
+        return response()->json($data);
     }
 
     /**
