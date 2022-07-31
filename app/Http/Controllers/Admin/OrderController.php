@@ -17,9 +17,16 @@ class OrderController extends Controller
     public function index()
     {
         $currentUser= Auth::id();
-        $orders= Order::where('user_id', '=', $currentUser)->orderByDesc('id')->get();
-        
-        return view('admin.orders.index', compact('orders'));
+        /* Nome dell'utente */
+        $nomeUtente = Auth::user()->where('id', '=', $currentUser)->get('name');
+        /* Cognome dell'utente */
+        $cognomeUtente = Auth::user()->where('id', '=', $currentUser)->get('surname');
+        /* Nome completo */
+        $name = $nomeUtente;
+        $surname = $cognomeUtente;
+        $orders= Order::where('user_id', '=', $currentUser)->orderByDesc('created_at')->get();
+
+        return view('admin.orders.index', compact('orders', 'name', 'surname'));
     }
 
     /**
