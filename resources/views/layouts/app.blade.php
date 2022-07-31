@@ -41,7 +41,7 @@
 
             if(password != passwordConfirm) {
                 document.getElementById('errors_password').innerHTML = 'Le password devono essere uguali';
-                
+
                 return false
             }
 
@@ -63,19 +63,14 @@
         <nav class="navbar navbar-expand-md navbar-light sticky-top bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Deliveboo
+                    <img style="width: 80px" src="{{asset('img/deliveboo_logo.jpg')}}" alt="Logo Deliveboo">
                     {{-- {{ config('app.name', 'Laravel') }} --}}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
     </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
@@ -91,19 +86,14 @@
                         @else
                         <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                {{ Auth::user()->name }}
+                                {{ ucfirst(Auth::user()->name) }}
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right border-0" aria-labelledby="navbarDropdown">
-
-                                <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
-                                    Dashboard Admin
-                                </a>
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
+                                <!-- Dashboard Admin -->
+                                <a class="dropdown-item" href="{{ route('admin.dashboard') }}">Dashboard Admin</a>
+                                <!-- Logout -->
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
@@ -114,13 +104,9 @@
                 </div>
             </div>
         </nav>
-
-
-        
-            @yield('content')
-        
+        @yield('content')
     </div>
-    
+
 </body>
 
 </html>
