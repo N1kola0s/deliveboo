@@ -35,7 +35,8 @@ class SendAdminEmail extends Mailable
     public function build()
     {
         return $this
-        ->view('mail.orders.created')
+        /* ->view('mail.orders.created') */
+        ->markdown('mail.markdown.emailtoadmin')
         ->subject('Nuovo ordine richiesto')
         ->with(['order'=> $this->my_order]);
        
