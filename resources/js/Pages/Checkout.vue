@@ -351,6 +351,7 @@ export default {
           console.log(err);
         });
     },
+    
 
     onLoad() {
       /* alert("sta caricando"); */
